@@ -1,7 +1,11 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== "production";
+const PUBLIC_PATH = "/";
+console.log("当下环境：",process.env.NODE_ENV);
+console.log("服务文档路经",PUBLIC_PATH);
 var dynamicLoader = devMode ? {
     loader:'style-loader',
     options:{
@@ -16,11 +20,15 @@ module.exports = {
     output:{
         filename:'[name].bundle.js',
         path:path.resolve(__dirname,'dist'),
-        clean:true
+        clean:true,
+        publicPath:PUBLIC_PATH
     },
     optimization:{
         splitChunks:{
-            chunks:'all'
+            chunks:'all',
+            minSize: 20000,
+            maxSize: 244000,
+            automaticNameDelimiter: "-"
         }
     },
     plugins:[
@@ -28,7 +36,11 @@ module.exports = {
             title:devMode?'恒韵翡翠-开发中...':'恒韵翡翠-非凡品质',
             //template:'./src/index.html'
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV),
+            PUBLIC_PATH:JSON.stringify(PUBLIC_PATH)
+        })
     ],
     module:{
         rules:[
