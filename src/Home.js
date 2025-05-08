@@ -1,12 +1,13 @@
 import React ,{useEffect} from 'react';
 import {useWindowState} from '@caveats/externalStore';
 import { useTranslation } from 'react-i18next';
+import LanguageSelect from '@/components/common';
 import '@css/home.css';
 export default function Home(){
     const winRec = useWindowState();
     const { t ,i18n,ready} =  useTranslation();
     useEffect(()=>{
-        document.documentElement.setAttribute('lang','zh-Hans-CN');
+        //document.documentElement.setAttribute('lang','zh-Hans-CN');
         //i18n.changeLanguage('zh-Hans-CN');
         window.skrollr.init({
            
@@ -23,11 +24,12 @@ export default function Home(){
     },[])
     return (
         <section style={{width:'100%',position:'relative'}}>
+            <LanguageSelect />
             <div className="head" style={{height:winRec.winHeight}}>
                 <h1> { t('s1-title1') } </h1>
-                <h2>我们郑重申明：无任何商业套路！</h2>
-                <p>让天下没有烫手的山芋，让平民也有趁手的工具</p>
-                <p><button>查看规则 &gt;&gt;</button></p>
+                <h2>{ t('s1-title2') }</h2>
+                <p>{ t('s1-title3') }</p>
+                <p><button>{t('widgets:ruleBtn')} &gt;&gt;</button></p>
             </div>
             <div className="body">
                 <ul>

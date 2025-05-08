@@ -15,7 +15,7 @@ import Home from './Home';
 i18n.use(detector).use(resourcesToBackend((lng,ns)=>
     import(`@locale/${lng}/${ns}.json`)
 )).init({
-    lng:'zh-Hans-CN',
+    lng:localStorage.getItem('i18nextLng')?localStorage.getItem('i18nextLng'):'zh-Hans-CN',
     ns:['common','contents','widgets'],
     fallbackLng: 'zh-Hans-CN',
     debug: true,

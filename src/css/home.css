@@ -1,3 +1,13 @@
+.languageSelect{
+    position:absolute;
+    top:2%;
+    right:2%;
+    z-index:2;
+    appearance:none;
+    padding:1rem 3rem;
+    background:transparent;
+    color:#ffffff;
+}
 .head{
     position:relative;
     text-align: center;
