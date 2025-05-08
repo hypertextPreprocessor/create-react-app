@@ -15,13 +15,21 @@ var dynamicLoader = devMode ? {
 } : MiniCssExtractPlugin.loader;
 module.exports = {
     entry:{
-        app:'./src/index.js'
+        app:{
+            import:'./src/index.js',
+            dependOn:'skrollr'
+        },
+        skrollr:'./src/skrollr.min.js'
     },
     output:{
         filename:'[name].bundle.js',
         path:path.resolve(__dirname,'dist'),
         clean:true,
-        publicPath:PUBLIC_PATH
+        publicPath:PUBLIC_PATH,
+        library:{
+            name:'skrollr',
+            type:'var'
+        }
     },
     optimization:{
         splitChunks:{
@@ -73,7 +81,14 @@ module.exports = {
     },
     resolve:{
         alias:{
-            '@':path.resolve(__dirname,'src')
+            '@':path.resolve(__dirname,'src'),
+            '@css':path.resolve(__dirname,'src/css'),
+            '@img':path.resolve(__dirname,'assets/image'),
+            '@caveats':path.resolve(__dirname,'src/caveats'),
+            '@locale':path.resolve(__dirname,'locales')
+        },
+        fallback:{
+            'fs':require.resolve('fs')
         }
     }
 }
