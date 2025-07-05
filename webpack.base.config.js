@@ -66,11 +66,17 @@ module.exports = {
             {
                 test:/\.css$/i,
                 use:[dynamicLoader,{
-                    loader:'css-loader'
+                    loader:'css-loader',
+                    options:{
+                        modules:{
+                            auto:true
+                        },
+                        sourceMap:true
+                    }
                 }]
             },
             {
-                test:/\.(png|svg|jpg|jpeg|gif)$/,
+                test:/\.(png|svg|jpg|jpeg|gif|webp)$/,
                 type:'asset/resource'
             },
             {
