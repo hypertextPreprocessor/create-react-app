@@ -88,6 +88,8 @@ module.exports = {
     resolve:{
         alias:{
             '@':path.resolve(__dirname,'src'),
+            '@api':path.resolve(__dirname,'api'),
+            '@cnf':path.resolve(__dirname,'config'),
             '@css':path.resolve(__dirname,'src/css'),
             '@img':path.resolve(__dirname,'assets/image'),
             '@caveats':path.resolve(__dirname,'src/caveats'),

@@ -19,7 +19,8 @@ module.exports = merge(baseConfig,{
         proxy:[{
             context:['/api'],
             target:'http://127.0.0.1:8080',
-            pathRewrite:{'^/api':''}
+            pathRewrite:{'^/api':''},
+            xfwd:true
         }],
         historyApiFallback: true,
     }
