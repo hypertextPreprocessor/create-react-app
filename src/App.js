@@ -3,9 +3,10 @@ import { I18nextProvider } from 'react-i18next';
 import detector from "i18next-browser-languagedetector";
 import resourcesToBackend from 'i18next-resources-to-backend'
 import i18n from "i18next";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import router from "@router";
 import '@css/main.css';
-import Home from './Home';
+
 
 //const fs = import('node:fs');
 
@@ -39,11 +40,7 @@ const PUBLICPATH = PUBLIC_PATH || '/';
 export default function App(){
     return (
         <I18nextProvider i18n={i18n} defaultNS={['common']}>
-            <BrowserRouter basename={PUBLICPATH}>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                </Routes>
-            </BrowserRouter>
+            <RouterProvider router={router}/>
         </I18nextProvider>
     )
 }

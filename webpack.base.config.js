@@ -41,7 +41,7 @@ module.exports = {
     },
     plugins:[
         new HtmlWebpackPlugin({
-            title:devMode?'恒韵翡翠-开发中...':'恒韵翡翠-非凡品质',
+            title:devMode?'ejuan shop-constructing...':'ejuan shop',
             //template:'./src/index.html'
         }),
         new MiniCssExtractPlugin(),
@@ -93,7 +93,8 @@ module.exports = {
             '@css':path.resolve(__dirname,'src/css'),
             '@img':path.resolve(__dirname,'assets/image'),
             '@caveats':path.resolve(__dirname,'src/caveats'),
-            '@locale':path.resolve(__dirname,'locales')
+            '@locale':path.resolve(__dirname,'locales'),
+            '@router':path.resolve(__dirname,'router')
         },
         fallback:{
             'fs':require.resolve('fs')
