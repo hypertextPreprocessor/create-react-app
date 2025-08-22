@@ -1,6 +1,7 @@
 import React, { useEffect,useState,useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay,Pagination, Scrollbar } from 'swiper/modules';
+import {Menu} from "@com";
 import images from "@img/icons";
 import image from "@img";
 import Model from "@com/Modal";
@@ -133,53 +134,7 @@ export default function Header(){
                 <span style={{marginLeft:3}}>Delivery to China</span>
             </section>
         </section>
-        <section>
-            <div className={styles["mainContent"]}>
-                <Swiper
-                    modules={[Navigation,Autoplay]}
-                    navigation={{enabled:true}}
-                    autoplay={
-                        {
-                            delay: 2500,
-                            disableOnInteraction: true,
-                        }
-                    }
-                    spaceBetween={0}
-                    slidesPerView={1}
-                >
-                    <SwiperSlide>
-                        <div className={styles["swiperimg"]}>
-                            <img src={image["R"]} alt=""/>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className={styles["swiperimg"]}>
-                            <img src={image["R"]} alt=""/>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className={styles["swiperimg"]}>
-                            <img src={image["R"]} alt=""/>
-                        </div>
-                    </SwiperSlide>
-                </Swiper>
-                <div className={styles["groupitems"]}>
-                    {[1,2,3,4].map((m,n)=>(
-                        <div key={n} className={styles["groupitem"]}>
-                            <h1>Pre-loved designer jewelry</h1>
-                            <div className={styles["subitemcontainer"]}>
-                                {[1,2,3,4].map((v,i)=>(
-                                    <div key={i} className={styles["groupItemImg"]}>
-                                        <p><img src={image["list2-c1"]} alt=""/></p>
-                                        <p>Cartier</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+        <Menu />
     </>
     );
 }
@@ -217,6 +172,11 @@ function HotSellCategory(){ //热卖产品列表
     },[]);
     return <>
         <ul ref={ulRef} className={styles["HotSellCategory"]} >
+            <li>
+                <svg height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px">
+                    <path fill="#fff" d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
+                </svg>
+            </li>
             {arr.map((it,ii)=><li key={ii}>{it}</li>)}
         </ul>
     </>

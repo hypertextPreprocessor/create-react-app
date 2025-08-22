@@ -212,6 +212,8 @@
 .sectionBottom ul li{
     display: inline-block;;
     padding: 0 8px;
+    vertical-align: middle;
+    cursor: pointer;
 }
 .nav select{
     padding:10px 10px;
@@ -266,6 +268,28 @@
     width:100%;
 }
 @media only screen and (max-width:1024px){
+    .mobileContent{
+        width:96%;
+        margin:0 auto;
+    }
+    .samplearea{
+        white-space: pre;
+        overflow-y:scroll;
+        scrollbar-width:none;
+        margin:1rem 0;
+    }
+    .samplearea p:last-child{
+        margin-right:2%;
+    }
+    .samplearea p{
+        display:inline-block;
+        width:77%;
+        text-align: center;
+        margin-left: 2%;
+        border-radius: 15px;
+        overflow:hidden;
+    }
+    .samplearea p img{width:100%;}
     .mainContent{
         width:100%;
         min-width:0;

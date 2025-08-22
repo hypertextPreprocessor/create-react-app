@@ -1,13 +1,16 @@
 import { useSyncExternalStore } from 'react';
+import { checkDevice } from '@utlis/index';
 var obj = {
     winWidth:document.documentElement.clientWidth,
-    winHeight:document.documentElement.clientHeight
+    winHeight:document.documentElement.clientHeight,
+    devices:checkDevice()
 }
 let listeners = [];
 function getClientRectSezi(){
     obj = Object.assign({},obj,{
         winHeight:document.documentElement.clientHeight,
-        winWidth:document.documentElement.clientWidth
+        winWidth:document.documentElement.clientWidth,
+        devices:checkDevice()
     })
     emitChange();
 }

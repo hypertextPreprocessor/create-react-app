@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router";
+import SignIn from "@com/SignIn";
 import * as styles from "@css/header.module.css";
 export default function Footer(){
     function scrollToTop(){
@@ -10,11 +11,7 @@ export default function Footer(){
     }
     return <>
         {/* singin ?*/}
-        <div className={styles["signinmodule"]}>
-            <h1>See personalized recommendations</h1>
-            <button>Sign in</button>
-            <p>New customer?<NavLink to="/sign-in">Start here.</NavLink></p>
-        </div>
+        <SignIn/>
         <div className={styles["backToTop"]}><button onClick={scrollToTop}>Back To Top</button></div>
         <div className={styles["footerBottom"]}>
 

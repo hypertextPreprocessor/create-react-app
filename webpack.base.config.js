@@ -91,6 +91,7 @@ module.exports = {
     resolve:{
         alias:{
             '@':path.resolve(__dirname,'src'),
+            '@utlis':path.resolve(__dirname,'utlis'),
             '@com':path.resolve(__dirname,'src/components'),
             '@api':path.resolve(__dirname,'api'),
             '@cnf':path.resolve(__dirname,'config'),
