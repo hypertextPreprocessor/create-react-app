@@ -42,6 +42,9 @@ module.exports = {
     plugins:[
         new HtmlWebpackPlugin({
             title:devMode?'ejuan shop-constructing...':'ejuan shop',
+            meta:{
+                viewport:"width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"
+            }
             //template:'./src/index.html'
         }),
         new MiniCssExtractPlugin(),
@@ -88,6 +91,7 @@ module.exports = {
     resolve:{
         alias:{
             '@':path.resolve(__dirname,'src'),
+            '@com':path.resolve(__dirname,'src/components'),
             '@api':path.resolve(__dirname,'api'),
             '@cnf':path.resolve(__dirname,'config'),
             '@css':path.resolve(__dirname,'src/css'),

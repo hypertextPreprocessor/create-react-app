@@ -2,11 +2,24 @@
     margin:0;
     padding:0;
 }
+:root{
+    --main-color:#454545;
+    --second-color:#6a6a6a;
+    --third-color:#61ff79;
+    --fourth-color:#4a90e2;
+    --fifth-color:#50e3c2;
+    --font-family: 'Roboto', sans-serif;
+    --btn-bg-color:#b34363;
+    --container-bg-color:#e5e5e5;
+}
 html{
     font-size:62.5%;
 }
 body,html{
     width:100%;
+}
+body{
+    background-color: var(--container-bg-color);
 }
 ::-webkit-scrollbar {
     height: 12px;

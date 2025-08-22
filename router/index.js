@@ -1,11 +1,16 @@
 import {createBrowserRouter} from "react-router";
 import Home from '@/Home';
+import ProductTemplate from "@/views/ProductTemplate"
 
+// eslint-disable-next-line no-undef
 const PUBLICPATH = PUBLIC_PATH || '/';
 const router = createBrowserRouter([
     {
         path:"/",
-        Component:Home
+        Component:Home,
+        children:[{
+            index:true,Component:ProductTemplate
+        }]
     }
 ],{
     basename:PUBLICPATH
