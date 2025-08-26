@@ -55,7 +55,9 @@ export function TopSellerProduct({productArrayList=[],title="Product Title"}){
                 <div style={{width:'23%',padding:'2%'}}><p><img style={{width:'100%'}} src={image['example']} alt=""/></p></div>
                 <div style={{width:'71%',padding:'2% 2% 2% 0',fontSize:'1.5rem'}}>
                     <p style={{display:'-webkit-box',WebkitBoxOrient:'vertical',WebkitLineClamp:2,overflow:'hidden'}}>Moncozy KleanPal Pro Baby Bottle Washer,Sterilizer & Dryer - All-inOne Product,nice and hight quility and qs guerrentee</p>
-                    <p><span>$</span><span style={{fontSize:'1.8rem',fontWeight:'bold',padding:'0 3px'}}>299</span><sup>99</sup></p>
+                    <p className="priceTag">
+                        <span>$</span><span>299</span><sup>99</sup>
+                    </p>
                 </div>
             </div>)}
         </div>

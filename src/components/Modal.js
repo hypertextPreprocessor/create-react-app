@@ -10,7 +10,7 @@ export default function Model({show=true,title="title",content="null",children,o
                     <h1>{title}</h1>
                     <p onClick={onClose}><img src={images["cancel_close_delete_icon"]} alt=""/></p>
                 </div>
-                <div class="modal-content">
+                <div className="modal-content">
                     {content? <p>{content}</p> : children}
                 </div>
                 <div className="modal-footer">

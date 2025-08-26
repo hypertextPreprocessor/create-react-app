@@ -1,6 +1,8 @@
 import React, { useEffect,useState,useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay,Pagination, Scrollbar } from 'swiper/modules';
+import { useNavigate } from "react-router";
+import {useWindowState} from "@caveats/externalStore";
 import {Menu} from "@com";
 import images from "@img/icons";
 import image from "@img";
@@ -13,17 +15,25 @@ import "swiper/css/autoplay";
 import 'swiper/css/scrollbar';
 import * as styles from "@css/header.module.css"; //className={styles["sectionTop"]}
 export default function Header(){
+    let navigate = useNavigate();
    const [state,setState] = useGeoLocation({latitude:33.4484,longitude:-112.074});
    const [model,setModel] = useState(false);
+   const menuRef = useRef(null);
+   function menuclick(){
+        menuRef.current.openMenu();
+   }
     useEffect(()=>{
 
         
     },[]);
+    function toHome(){
+        navigate("/");
+    }
     return (
     <>
         <section className={styles["pcHeadStyle"]}>
             <section className={styles["sectionTop"]}>
-                <div className={styles["logo"]}>
+                <div className={styles["logo"]} onClick={toHome}>
                     <img src={images["logo"]} alt="logo"/>
                 </div>
                 <div className={styles["location"]} onClick={()=>{setModel(true)}}>
@@ -75,7 +85,7 @@ export default function Header(){
                 </div>
             </section>
             <section className={styles["sectionBottom"]}>
-                <HotSellCategory />
+                <HotSellCategory menuClick={menuclick}/>
             </section>
             <Model show={model} title="choose your location" content="We are trying to access your location ,you have to allow us to have your geo location permission." onClose={()=>{setModel(false)}}/>
         </section>
@@ -83,10 +93,10 @@ export default function Header(){
             <section className={styles["sectionTop"]}>
                 <div className={styles["menu_logo"]}>
                     <div>
-                        <svg height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" fill="#ffffff">
+                        <svg onClick={menuclick} height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" fill="#ffffff">
                             <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
                         </svg>
-                        <img src={images["logo"]} alt="logo"/>
+                        <img src={images["logo"]} alt="logo" onClick={toHome}/>
                     </div>
                     <div>
                         <p>
@@ -120,7 +130,7 @@ export default function Header(){
                     </div>
                 </div>
                 <div className={styles['hscory']}>
-                    <HotSellCategory/>
+                    <HotSellCategory menuClick={menuclick}/>
                 </div>
             </section>
             <section className={styles["sectionBottom"]}>
@@ -134,12 +144,12 @@ export default function Header(){
                 <span style={{marginLeft:3}}>Delivery to China</span>
             </section>
         </section>
-        <Menu />
+        <Menu ref={menuRef}/>
     </>
     );
 }
 
-function HotSellCategory(){ //热卖产品列表
+function HotSellCategory({menuClick}){ //热卖产品列表
     var arr = ["Video","Image","Car pets","Hot Sale","Housing falicating","Main Tool","Tesla","New Realeases","Today's Deal","Customer Service","Smart Home","New Energy","Media Widgets","Shop By Interest",15,16,17,18,19,20,21,22,23];
     const ulRef = useRef(null);
   
@@ -167,16 +177,19 @@ function HotSellCategory(){ //热卖产品列表
         }
         ul.addEventListener("wheel",handleWhellEvent);
         return ()=>{
-            ul.removeEventListener("wheel");
+            ul.removeEventListener("wheel",handleWhellEvent);
         }
     },[]);
+    const {devices} = useWindowState();
     return <>
         <ul ref={ulRef} className={styles["HotSellCategory"]} >
-            <li>
-                <svg height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px">
-                    <path fill="#fff" d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
-                </svg>
-            </li>
+            {devices.isDesktop?(
+                <li onClick={menuClick}>
+                    <svg height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px">
+                        <path fill="#fff" d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
+                    </svg>
+                </li>
+            ):null}
             {arr.map((it,ii)=><li key={ii}>{it}</li>)}
         </ul>
     </>

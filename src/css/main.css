@@ -10,7 +10,11 @@
     --fifth-color:#50e3c2;
     --font-family: 'Roboto', sans-serif;
     --btn-bg-color:#b34363;
+    --tarifa-color:#ff366f;
+    --light-tarifa:#ffdfe8;
     --container-bg-color:#e5e5e5;
+    --disabled-color:#8b8b8b;
+    --star-bg-color:#f4c331;
 }
 html{
     font-size:62.5%;
@@ -29,4 +33,30 @@ body{
 ::-webkit-scrollbar-thumb {
     background: #fafafa;
     -webkit-border-radius: 5px;
+}
+.priceTag{
+    margin:0.5rem 0;
+}
+.priceTag sup{
+    font-size:1.2rem;
+}
+.priceTag span.list{
+    text-decoration: line-through;
+    margin-left:0.4rem;
+    color:var(--disabled-color);
+}
+.priceTag>span:nth-of-type(1){
+    font-size:1.2rem;
+    vertical-align:super;
+}
+.priceTag>span:nth-of-type(2){
+    margin:0  0 0 0.4rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+@media only screen and (max-width:1024px){
+    .nav-disabled .swiper-button-prev,
+    .nav-disabled .swiper-button-next {
+        display:none;
+    }
 }

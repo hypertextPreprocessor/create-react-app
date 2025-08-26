@@ -1,0 +1,203 @@
+.shopHeader{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;;
+}
+.shopHeader>div{
+    flex:1;
+}
+.shopBrief{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    gap:1rem;
+}
+.shopBrief>p{
+    width:8rem;
+    border:1px solid var(--main-color);
+}
+.shopBrief>p>img{
+    width:100%;
+}
+.shopBrief>div{
+    height:-webkit-fill-available;
+    display:flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.shopBrief>div>p:nth-of-type(1){
+    font-size:1.8rem;
+}
+.shopBrief>div>p:nth-of-type(1)>span{
+    background-color: var(--star-bg-color);
+    font-size:1.4rem;
+    padding:0.2rem;
+    border-radius: 0.4rem;
+    vertical-align: super;
+    margin-left:0.5rem;
+}
+.shopBrief>div>div:nth-of-type(1){
+    font-size:1.5rem;
+    color:var(--second-color);
+    width: 100%;
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.shopBrief>div>div:nth-of-type(1)>p{
+    border:1px solid var(--second-color);
+    border-radius: 0.4rem;
+    padding:0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.shopBrief>div>div:nth-of-type(1)>p>span{
+    margin-left:0.5rem;
+}
+.shopBrief>div>div:nth-of-type(1)>span:nth-of-type(1){
+   /*background:url(../../../assets/image/icons/heart_icon.svg) no-repeat left center / contain;*/
+}
+.Content{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    gap:1.5%;
+}
+.leftContent{
+    width:54%;
+}
+.rightContent{
+    background-color: white;
+    width:46%;
+}
+.festervial{
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: #ff75c7;
+    color:#ffffff;
+    justify-content: space-between;
+    padding:1.2rem;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+.festervial>p:nth-of-type(1){
+    font-size:2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+.festervial>p:nth-of-type(2){
+    font-size:1.4rem;
+}
+.productTitleCon{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    background-color: white;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+    position: relative;
+    top:-1rem;
+}
+.productTitleCon>h1{
+    flex:6;
+    border-right:1px solid #b4b4b4;
+    padding:1.2rem;
+    font-size:1.6rem;
+    
+}
+.productTitleCon>p{
+    flex:1;
+}
+.productTitleCon>p{
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.productTitleCon>p>span{
+    margin-left: 0.4rem;
+    font-size:1.4rem;
+    color:#666;
+}
+.priceCon{
+    padding:0 1.2rem;
+}
+.priceMain{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.priceMain>div:nth-of-type(1){
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    flex:4;
+}
+.priceMain>div:nth-of-type(1)>p:nth-of-type(1){
+    font-size: 1.3rem;
+    color:#666;
+    margin-right: 1.2rem;
+}
+.priceMain>div:nth-of-type(1)>div:nth-of-type(1){
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.priceMain>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(2){
+    margin-left:0.5rem;
+}
+.priceMain>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(3){
+    font-size:1.3rem;
+    color:#999999;
+    text-decoration: line-through;
+    margin-left: 0.5rem;
+}
+.priceMain>div:nth-of-type(2){
+    flex:1;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.priceMain>div:nth-of-type(2)>p{
+    font-size:1.4rem;
+    color:#666;
+    margin-left: 0.5rem;
+}
+.priceMain>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(2){
+    background-color: var(--tarifa-color);
+    color:#ffffff;
+    padding:0.3rem 0.5rem;
+    font-size: 1.3rem;
+}
+.cupons{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    margin:1.2rem 0;
+}
+.cupons>p{
+    background-color: var(--light-tarifa);
+    color:var(--tarifa-color);
+    padding:0.3rem 1rem;
+    border-radius: 0.4rem;
+    font-size:1.4rem;
+    margin-right:0.8rem;
+
+}
+@media only screen and (max-width:1024px){
+
+}

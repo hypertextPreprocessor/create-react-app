@@ -1,6 +1,10 @@
-import React from 'react';
+import React,{useRef,useImperativeHandle,useState} from 'react';
+import {MenuGenerator} from "@com";
+import * as styles from '@com/css/com.module.css';
+
 const m = {
     container:{
+        display:'none',
         position:'fixed',
         top:0,
         left:0,
@@ -12,10 +16,11 @@ const m = {
     menu:{
         position:'fixed',
         top:0,
-        left:0,
+        left:'-375px',
         backgroundColor:'#fff',
         width:'375px',
-        height:'100%'
+        height:'100%',
+        transition:'all 0.8s 0.2s ease-in-out'
     },
     usertitle:{
         backgroundColor:'var(--second-color)',
@@ -25,13 +30,135 @@ const m = {
         //justifyContent:'center'
         padding:'3%',
         color:'#ffffff'
+    },
+    close:{
+        position:'fixed',
+        top:'2%',
+        left:'390px',
+        cursor:'pointer',
+        transition:'all 2s .2s ease-in-out'
+    },
+    title:{
+        padding:'2%',
+        width:'88%',
+        margin:'0 auto'
     }
 }
-export default function Menu(){
+export default function Menu({ref}){
+    const [itemConHeight,setItemConHeight] = useState('auto');
+    const menu = [{
+        title:'Trending',
+        items:[{title:'Best Sellers',url:"/category/12"},{title:'New Releases'},{title:'Movers & Shakers'}]
+    },{
+        title:'Digital Content And Devices',
+        items:[{
+            title:'Prime Video',
+            subItems:[{
+                    title:'Prime Video',
+                    items:[{title:"Video1"}]
+                },{
+                    title:'Categories',
+                    items:[{title:"Categories1"}]
+                },{
+                    title:'My Stuff',
+                    items:[{title:"Stuff1"}]
+                },{
+                    title:'Watch Anywhere',
+                    items:[{title:"Anywhere1"}]
+                },{
+                    title:'Getting Started',
+                    items:[{title:"Started1"}]
+                }
+            ]
+        },{
+            title:'More to Explore',
+            subItems:[{
+                title:'Kids',
+                items:[{title:"Kids"}]
+            },{
+                title:"Olds",
+                items:[{
+                    title:"Olds",
+                    subItems:[{
+                        title:"Olds",
+                        items:[{title:"facilities"}]
+                    }]
+                }]
+            }]
+        },{title:'Echo & Alexa'},{title:'Fire Tablets'},{title:'Fire TV'},{title:'Kindle E-readers & Books'},{title:'Audible Audiobooks'}]
+    },{
+        title:'Shop By Department',
+        items:[{
+            title:'Clothing,Shoes,Jewelry & watches'
+        },{
+            title:'Amazon Fresh'
+        },{
+            title:'Whole Foods Market'
+        },{
+            title:'Books'
+        },{
+            title:'Old styles'
+        },{
+            title:"New Products"
+        }]
+    }];
+    const bgCover = useRef();
+    const menuRef = useRef();
+    const userLogRef = useRef();
+    const closeMenuRef = useRef();
+    const menuPanelRef = useRef();
+    function closeMenu(){
+        document.body.style.overflow='auto';
+        //menuRef.current.classList.add(styles["moveOut"]);
+        menuRef.current.style.left='-375px';
+        closeMenuRef.current.style.left='-390px';
+        setTimeout(()=>{
+            bgCover.current.style.display='none';
+        },1000);
+    }
+    function openMenu(){
+        document.body.style.overflow='hidden';
+        bgCover.current.style.display='block';
+        setTimeout(()=>{
+            var docH = document.documentElement.clientHeight - userLogRef.current.clientHeight;
+            //setItemConHeight(`calc(100% - ${userLogRef.current.clientHeight})`);
+            setItemConHeight(docH + 'px')
+            menuRef.current.style.left='0';
+            closeMenuRef.current.style.left='390px';
+        })
+    }
+    const [menulist,setMenulist] = useState(menu);
+    useImperativeHandle(ref,()=>{
+        return {
+            openMenu:openMenu,
+            closeMenu:closeMenu
+        }
+    },[])
+    function itemClicked(subItems,num){
+        console.log('subItems',subItems);
+        if(!subItems){
+            closeMenu();
+        }else{
+            setTimeout(()=>{
+                menuPanelRef.current.scroll({
+                    left:userLogRef.current.clientWidth*(num+1),
+                    behavior:"smooth"
+                })
+            })
+        }
+
+    }
+    function navBack(num){
+        console.log('num',num);
+        menuPanelRef.current.scroll({
+            left:userLogRef.current.clientWidth * (num),
+            behavior:"smooth"
+        })
+    }
     return (
-    <div style={m.container}>
-        <menu style={m.menu}>
-            <div style={m.usertitle}>
+    <div style={m.container} ref={bgCover}>
+        <menu style={m.menu} ref={menuRef}>
+            <div id="menu" style={m.usertitle} ref={userLogRef}>
                 <p>
                     <svg version="1.1" viewBox="0 0 24 24" width="34" height="34">
                         <g id="info"/>
@@ -40,10 +167,19 @@ export default function Menu(){
                         </g>
                     </svg>
                 </p>
-                <h1>Hello,Sign in</h1>
+                <h1 style={{marginLeft:'1.2rem'}}>Hello,Sign in</h1>
             </div>
-            <h2>Title</h2>
+            <div className={styles["menuPanel"]} ref={menuPanelRef}>
+                <MenuGenerator list={menu} itemConHeight={itemConHeight} itemClicked={itemClicked} navBack={navBack}/>
+            </div>
         </menu>
+        <p ref={closeMenuRef} style={m.close} onClick={closeMenu}>
+            <svg viewBox="0 0 32 32" width="32" height="32">
+                <g id="cross" fill="#fff" stroke='#fff'><line className="cls-1" x1="7" x2="25" y1="7" y2="25"/>
+                    <line className="cls-1" x1="7" x2="25" y1="25" y2="7"/>
+                </g>
+            </svg>
+        </p>
     </div>
     );
 }
