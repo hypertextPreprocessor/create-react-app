@@ -1,10 +1,199 @@
-import React from "react";
-import {SearchBar} from "@com";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import {SearchBar,Button,Tabs,Modal,RatingStar,PopOver} from "@com";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import BigNumber from "bignumber.js";
 import icon from "@img/icons";
 import image from "@img";
 import {mainContent} from "@css/header.module.css";
 import * as styles from "@/views/css/view.module.css";
+import 'react-photo-view/dist/react-photo-view.css';
 export default function ProductItemTemplate(){
+    const escaparateRef = useRef(null);
+    const scrollViewRef = useRef(null);
+    const esCoverRef = useRef(null);
+    const zoomStageRef = useRef(null);
+    const onStateImg = useRef(null);
+    const rightConTopPartRef = useRef(null);
+    const rightContentRef = useRef(null);
+    const leftContentRef = useRef(null);
+    const effectiveCommentRef = useRef(null);
+    const modalRef = useRef(null);
+    const [escaparateHeight,setEscaparateHeight] = useState(640);
+    const [zoomStageWidth,setZoomStageWidth] = useState('auto');
+    const [commentDetailShow,setCommentDetailShow] = useState(false);
+    function scrollDown(){
+        var moveArea = scrollViewRef.current.scrollHeight - scrollViewRef.current.clientHeight;
+        var clientHeight = scrollViewRef.current.clientHeight;
+        var currentScrollPoint = scrollViewRef.current.scrollTop;
+        if(currentScrollPoint<=moveArea){
+            currentScrollPoint = currentScrollPoint + clientHeight;
+        }else{
+            currentScrollPoint = moveArea;
+        }
+        scrollViewRef.current.scroll({
+            top:currentScrollPoint,
+            behavior: "smooth"
+        })
+    }
+    function scrollUp(){
+        var currentScrollPoint = scrollViewRef.current.scrollTop;
+        var mov = 0;
+        if(currentScrollPoint>=scrollViewRef.current.clientHeight){
+            mov = currentScrollPoint - scrollViewRef.current.clientHeight;
+        }else{
+            mov = 0;
+        }
+        scrollViewRef.current.scroll({
+            top:mov,
+            behavior: "smooth"
+        })
+    }
+    function viewThisItem(v){
+        console.log(v);
+    }
+    function setZoomContainer(w,h,mx,my){
+        let maskWidth = new BigNumber(esCoverRef.current.clientWidth);
+        let maskHeight = new BigNumber(esCoverRef.current.clientHeight);
+        let containerWidth = new BigNumber(w);
+        let containerHeight = new BigNumber(h);
+        //zoomStageWidth;
+        let copulativa =  maskWidth.dividedBy(zoomStageWidth); //系数
+        let stateImgWidth = containerWidth.dividedBy(copulativa);
+        let stateImgHeight = containerHeight.dividedBy(copulativa);
+        onStateImg.current.style.width=stateImgWidth.toNumber() + 'px';
+        onStateImg.current.style.height=stateImgHeight.toNumber() + 'px';
+
+        //橱窗处
+        let maxScrollLeftEscaparate = containerWidth.minus(maskWidth);
+        let maxScrollTopEscaparate = containerHeight.minus(maskHeight);
+        //放大处
+        let maxScrollLetStage = stateImgWidth.minus(zoomStageWidth);
+        let maxScrollTopStage = stateImgHeight.minus(zoomStageWidth);
+        //求系
+        let copulativaX = maxScrollLeftEscaparate.dividedBy(maxScrollLetStage);
+        let copulativaY = maxScrollTopEscaparate.dividedBy(maxScrollTopStage);
+
+       
+
+        let st = new BigNumber(mx).dividedBy(copulativaX);
+        let sl = new BigNumber(my).dividedBy(copulativaY);
+        zoomStageRef.current.scroll({
+            top:sl.toNumber(),
+            left:st.toNumber(),
+            behavior:'instant'
+        });
+    }
+    function zoomInObject(event){
+        var width =event.currentTarget.clientWidth;
+        var height = event.currentTarget.clientHeight;
+        event.currentTarget.addEventListener('mousemove',(v)=>{
+            //console.log(esCoverRef.current.clientWidth,esCoverRef.current.clientHeight);
+            var centerX = esCoverRef.current.clientWidth / 2;
+            var centerY = esCoverRef.current.clientHeight / 2;
+            var containerX = width - centerX;
+            var containerY = height - centerY;
+            esCoverRef.current.style.display='block';
+            let xx = v.offsetX - centerX<0?0:(v.offsetX > containerX?containerX-centerX:v.offsetX - centerX);
+            let yy = v.layerY - centerY <0?0:(v.layerY > containerY?containerY - centerY:v.layerY - centerY);
+            esCoverRef.current.style.left= xx + 'px';
+            esCoverRef.current.style.top= yy + 'px';
+            //var start = [v.offsetX,v.layerY];
+            //var end = [v.offsetX+esCoverRef.current.clientWidth,v.layerY+esCoverRef.current.clientHeight];
+            //var containerWidth = escaparateRef.current.clientWidth;
+            //var containerHeight = escaparateRef.current.clientHeight;
+            //var perX = start / containerWidth;
+            //var perY = end / containerHeight;
+            setZoomContainer(width,height,xx,yy);
+            zoomStageRef.current.style.display = 'block';
+            setZoomStageWidth(zoomStageRef.current.clientWidth);
+        })
+    }
+    function cancelZoomOnObject(event){
+        //event.currentTarget.removeEventListener('mousemove');
+        zoomStageRef.current.style.display='none';
+        esCoverRef.current.style.display='none';
+    }
+    function getLeftContainterBottomEdge(){
+        let x = new BigNumber(document.documentElement.clientHeight);
+        let y = new BigNumber(leftContentRef.current.clientHeight);
+        let z = new BigNumber(leftContentRef.current.getBoundingClientRect().top);
+        let v = x.minus(y).minus(z).toNumber();
+        return v;
+    }
+    function adjustLeftConHeight(){
+        let x = new BigNumber(document.documentElement.clientHeight);
+        let y = new BigNumber(rightContentRef.current.clientHeight);
+        let z = new BigNumber(rightContentRef.current.getBoundingClientRect().top);
+        let v = x.minus(y).minus(z).toNumber();
+        rightConTopPartRef.current.style.height=(rightConTopPartRef.current.clientHeight + v) + 'px';
+    }
+    var reserveWidth;
+    var left;
+    const lpp = useCallback((event)=>{
+        leftPanelPositing(event)
+    },[]);
+    function leftPanelPositing(event){
+        var top = escaparateRef.current.getBoundingClientRect().top;
+        if(top>0){
+            reserveWidth = rightContentRef.current.clientWidth;
+            left = rightContentRef.current.getBoundingClientRect().left;
+
+            rightContentRef.current.removeAttribute('style');
+        }else{
+            if(getLeftContainterBottomEdge()>0){
+                rightContentRef.current.removeAttribute('style');
+                rightContentRef.current.style.setProperty('position','absolute');
+                rightContentRef.current.style.setProperty('bottom',0);
+            }else{
+                rightContentRef.current.style.setProperty('position','fixed');
+                rightContentRef.current.style.setProperty('top',0);
+                rightContentRef.current.style.setProperty('left',left+'px');
+                rightContentRef.current.style.setProperty('width',reserveWidth+'px');
+            }
+        }
+        adjustLeftConHeight();
+    }
+    function commentModalShow(){
+        document.body.style.overflow='hidden';
+        //effectiveCommentRef
+        //console.log(modalRef);
+        setCommentDetailShow(true);
+    }
+    function commentModalHide(){
+        document.body.style.overflow='auto';
+        setCommentDetailShow(false);
+    }
+    useEffect(()=>{
+        if(commentDetailShow){
+            let h1 = modalRef.current.querySelector(".modal-header").clientHeight;
+            let h2 = modalRef.current.querySelector(".modal-footer").clientHeight;
+            let hh = new BigNumber(modalRef.current.clientWidth).times(0.04);
+            let maxHeight = new BigNumber(window.innerHeight).minus(h1).minus(h2).minus(hh).toNumber();
+            
+            modalRef.current.querySelector(".modal-content").style.setProperty('scrollbar-width','thin');
+            modalRef.current.querySelector(".modal-content").style.setProperty('overflow-y','scroll');
+            modalRef.current.querySelector(".modal-content").style.setProperty('max-height',maxHeight+'px');
+        }
+        adjustLeftConHeight();
+        window.addEventListener('scroll',lpp);
+        window.addEventListener('resize',lpp);
+        setEscaparateHeight(escaparateRef.current.clientWidth);
+        setZoomStageWidth(zoomStageRef.current.clientWidth);
+        //viewerjs
+        //const viewer = new Viewer()
+        return ()=>{
+            window.removeEventListener('scroll',lpp);
+            window.removeEventListener('resize',lpp);
+        }
+    },[commentDetailShow,lpp]);
+    function freshCommentList({event,type}){
+        console.log(event.currentTarget.classList.contains(styles['active']));
+        if(event.currentTarget.classList.contains(styles['active'])){
+            event.currentTarget.classList.remove(styles['active']);
+        }else{
+            event.currentTarget.classList.add(styles['active']);
+        }
+    }
     return <section>
         <section className={mainContent}>
             <section className={styles["shopHeader"]}>
@@ -34,44 +223,268 @@ export default function ProductItemTemplate(){
                 </div>
             </section>
             <section className={styles["Content"]}>
-                <div className={styles["leftContent"]}>
-                    
-                </div>
-                <div className={styles["rightContent"]}>
-                    <div className={styles['festervial']}><p>七夕节</p><p>送礼上ejuan</p></div>
-                    <div className={styles["productTitleCon"]}>
-                        <h1>AOCTIK德国品牌智能早教机器狗机器人儿童玩具男女孩1-3-7-13岁生日礼物 金色 豪华顶配-六一儿童节 送礼佳品</h1>
-                        <p><img style={{width:'25px'}} src={icon['favourite_folder_yellow_icon']} alt=""/><span>收藏</span></p>
-                    </div>
-                    <div className={styles['priceCon']}>
-                        <div className={styles["priceMain"]}>
-                            <div>
-                                <div>
-                                    <p className="priceTag"><span>$</span><span>410</span><sup>06</sup></p>
-                                    <p>到手价</p>
-                                    <p>$420.26</p>
-                                </div>
-                                <p>累计评价<span>200+</span></p>
-                            </div>
-                            <div>
-                                <svg viewBox="0 0 32 32" width="20" height="20">
-                                    <g data-name="Layer 31" id="Layer_31" fill="var(--star-bg-color)">
-                                        <path class="cls-1" d="M27,27H5a1,1,0,0,1-.89-1.45,18.14,18.14,0,0,0,1.89-8V14a10,10,0,0,1,20,0v3.53a18.14,18.14,0,0,0,1.89,8A1,1,0,0,1,27,27ZM6.55,25h18.9A20.14,20.14,0,0,1,24,17.53V14A8,8,0,0,0,8,14v3.53A20.14,20.14,0,0,1,6.55,25Z"/><path class="cls-1" d="M16,31a5,5,0,0,1-5-5,1,1,0,0,1,2,0,3,3,0,0,0,.88,2.12,3.08,3.08,0,0,0,4.24,0,1,1,0,0,1,1.42,1.42A5,5,0,0,1,16,31Z"/>
-                                        <path class="cls-1" d="M16,6a1,1,0,0,1-1-1V2a1,1,0,0,1,2,0V5A1,1,0,0,1,16,6Z"/>
-                                        <path class="cls-1" d="M26,5a2,2,0,1,1,2-2A2,2,0,0,1,26,5Zm0-2h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Z"/>
-                                    </g>
+                <div className={styles["leftContent"]} ref={leftContentRef}>
+                    <div className={styles["escaparate"]} ref={escaparateRef} style={{height:escaparateHeight}}>
+                        <div>
+                            <button onClick={scrollUp}>
+                                <svg height="18" viewBox="0 0 48 48" width="18">
+                                    <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/><path d="M0 0h48v48h-48z" fill="none"/>
                                 </svg>
-                                <p>降价通知</p>
+                            </button>
+                            <div ref={scrollViewRef}>
+                                <div>
+                                    {Array.from({length:20}).map((v,i)=><p key={i} onMouseEnter={()=>{viewThisItem(v)}}><img src={image["example"]} alt=""/></p>)}
+                                </div>
+                            </div>
+                            <button onClick={scrollDown}>
+                                <svg height="18" viewBox="0 0 48 48" width="18" style={{transform:'rotate(180deg)'}}>
+                                    <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/><path d="M0 0h48v48h-48z" fill="none"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div onMouseEnter={(e)=>{zoomInObject(e)}} onMouseOut={(e)=>{cancelZoomOnObject(e)}}>
+                            <img src={image['CB483369110']} alt="" ref={esCoverRef}/>
+                            <p><img src={image["example"]} alt=""/></p>
+                        </div>
+                    </div>
+                    <Tabs style={{marginTop:'1.2rem'}} defaultActiveKey="0" 
+                        bindScroll={true}
+                        items={[{label:"大家评",key:"0",children:<h1>Hello</h1>},{label:"店铺",key:"1",children:"H2"},{label:"商品详情",key:"2",children:"H3"},{label:"售后保障",key:"3",children:"H4"},{label:"推荐","key":4,children:"H5"}]}
+                    >
+                       <div id="#0">
+                            <div className={styles['commentHead']}>
+                                <p>买家评价<span>(200+)</span></p>
+                                <p onClick={()=>{commentModalShow()}}>
+                                    好评率高达<span>100%</span>
+                                    <svg id="Layer_1" version="1.1" viewBox="0 0 50 50" width="12" height="12">
+                                        <g id="Layer_1_1_">
+                                            <polygon points="13.854,48.707 37.561,25 13.854,1.293 12.439,2.707 34.732,25 12.439,47.293  "/>
+                                        </g>
+                                    </svg>
+                                </p>
+                            </div>
+                            <div className={styles["commentSpecifics"]}>
+                                <p>材质坚固</p>
+                                <p>质量好</p>
+                            </div>
+                            <div className={styles["commentContentExtracion"]}>
+                                <div className={styles["cce-head"]}>
+                                    <p><img src={icon['logo']} alt=""/></p>
+                                    <p>用户昵称</p>
+                                </div>
+                                <div className={styles["cce-content"]}>
+                                    <p>机器狗的外观萌趣可爱，材质结实耐摔。智能互动很丰富，能讲故事、做游戏，孩子的欢乐源泉，真心不错！</p>
+                                    <div>
+                                        {Array.from({length:9}).map((v,i)=>
+                                            <p key={i} onClick={()=>{commentModalShow()}}><img src={image['example']} alt=""/></p>
+                                        )}
+                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className={styles['cupons']}>
-                            <p>满额返券</p>
-                            <p>满11减10</p>
-                            <p>最高返10</p>
+                        <div id="1">
+
+                        </div>
+                    </Tabs>
+                </div>
+                <div className={styles["rightContent"]} ref={rightContentRef}>
+                    <div ref={zoomStageRef} style={{height:zoomStageWidth}} className={styles['zoomStage']}>
+                        <p ref={onStateImg}>
+                            <img src={image['example']} alt=""/>
+                        </p>
+                        
+                    </div>
+                    <div className={styles['festervial']}><p>七夕节</p><p>送礼上ejuan</p></div>
+                    <div className={styles['rightConTopPart']} ref={rightConTopPartRef}>
+                        <div>
+                            <div className={styles["productTitleCon"]}>
+                                <h1>AOCTIK德国品牌智能早教机器狗机器人儿童玩具男女孩1-3-7-13岁生日礼物 金色 豪华顶配-六一儿童节 送礼佳品</h1>
+                                <p><img style={{width:'25px'}} src={icon['favourite_folder_yellow_icon']} alt=""/><span>收藏</span></p>
+                            </div>
+                            <div className={styles['priceCon']}>
+                                <div className={styles["priceMain"]}>
+                                    <div>
+                                        <div>
+                                            <p className="priceTag"><span>$</span><span>410</span><sup>06</sup></p>
+                                            <p>到手价</p>
+                                            <p>$420.26</p>
+                                        </div>
+                                        <p>累计评价<span>200+</span></p>
+                                    </div>
+                                    <div>
+                                        <svg viewBox="0 0 32 32" width="20" height="20">
+                                            <g data-name="Layer 31" id="Layer_31" fill="var(--star-bg-color)">
+                                                <path d="M27,27H5a1,1,0,0,1-.89-1.45,18.14,18.14,0,0,0,1.89-8V14a10,10,0,0,1,20,0v3.53a18.14,18.14,0,0,0,1.89,8A1,1,0,0,1,27,27ZM6.55,25h18.9A20.14,20.14,0,0,1,24,17.53V14A8,8,0,0,0,8,14v3.53A20.14,20.14,0,0,1,6.55,25Z"/>
+                                                <path d="M16,31a5,5,0,0,1-5-5,1,1,0,0,1,2,0,3,3,0,0,0,.88,2.12,3.08,3.08,0,0,0,4.24,0,1,1,0,0,1,1.42,1.42A5,5,0,0,1,16,31Z"/>
+                                                <path d="M16,6a1,1,0,0,1-1-1V2a1,1,0,0,1,2,0V5A1,1,0,0,1,16,6Z"/>
+                                                <path d="M26,5a2,2,0,1,1,2-2A2,2,0,0,1,26,5Zm0-2h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Z"/>
+                                            </g>
+                                        </svg>
+                                        <p>降价通知</p>
+                                    </div>
+                                </div>
+                                <div className={styles['cupons']}>
+                                    <p>满额返券</p>
+                                    <p>满11减10</p>
+                                    <p>最高返10</p>
+                                </div>
+                            </div>
+                            <div className={styles["formCon"]}>
+                                <div className={styles["formItem"]}>
+                                    <div>送至</div>
+                                    <div>
+                                        <p><span>10:10前付款，预计今天（08月27日）送达</span><span>包邮</span></p>
+                                        <div className={styles["addressSelect"]}>
+                                            <p><span>ejuan物流</span><span>211限时达</span></p>
+                                            <p>广东省广州市白云湖街道</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles["formItem"]}>
+                                    <div>规格</div>
+                                    <div className={styles["guige"]}>
+                                        <p className={styles["active"]}>
+                                            <span><img src={image['55x']} alt=""/></span>
+                                            <span>灰色</span>
+                                        </p>
+                                        <p>
+                                            <span><img src={image['55x']} alt=""/></span>
+                                            <span>粉色</span>
+                                        </p>
+                                        <p>
+                                            <span><img src={image['55x']} alt=""/></span>
+                                            <span>金色</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className={styles["formItem"]}>
+                                    <div>服务</div>
+                                    <div className={styles["servioso"]}>
+                                        <ul><li>可配送全球</li><li>7天保价</li><li>闪电退款</li><li>免费更换</li><li>售后服务</li></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles['billout']}>
+                            <div className={styles['BottomBtn']}>
+                                <p>
+                                    <Button ghost>-</Button><span>1</span><Button ghost>+</Button>
+                                </p>
+                                <p>
+                                    <Button>加入购物车</Button>
+                                    <Button>立即购买</Button>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         </section>
+        <Modal ref={modalRef} style={{flex:0.5}} show={commentDetailShow} title={<div>
+            <p style={{fontSize:'1.8rem',fontWeight:'bold',marginBottom:'1.2rem'}}>商品评价</p>
+            <div className={styles["commentpopheadtab"]}>
+                <p className={styles['active']}>全部好评</p>
+                <p>图/视频<span>50</span></p>
+                <p>好评<span>100+</span></p>
+                <p>中评<span>3</span></p>
+                <p>差评<span>0</span></p>
+            </div>
+        </div>} onClose={()=>{commentModalHide()}}>
+            <div>
+                <div className={styles["commentparamsoption"]}>
+                    <div>
+                        <p onClick={(event)=>{freshCommentList({event,type:'new'})}}>最新</p>
+                        <hr/>
+                        <p onClick={(event)=>{freshCommentList({event,type:'present'})}}>当前商品</p>
+                    </div>
+                    <div>
+                        <p>ejuan鼓励真实、有用的评价</p>
+                        <p>
+                            <svg height="15" version="1.1" viewBox="0 0 512 512" width="15">
+                                <g>
+                                    <g>
+                                        <circle cx="251.5" cy="172" r="20"/><polygon points="272,344 272,216 224,216 224,224 240,224 240,344 224,344 224,352 288,352 288,344   "/>
+                                    </g>
+                                    <g>
+                                        <path d="M256,48C141.1,48,48,141.1,48,256c0,114.9,93.1,208,208,208c114.9,0,208-93.1,208-208C464,141.1,370.9,48,256,48z     M256,446.7c-105.1,0-190.7-85.5-190.7-190.7c0-105.1,85.5-190.7,190.7-190.7c105.1,0,190.7,85.5,190.7,190.7    C446.7,361.1,361.1,446.7,256,446.7z"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </p>
+                    </div>
+                </div>
+                <div ref={effectiveCommentRef}>
+                    <div className={styles["commentContentList"]}>
+                        <div className={styles["commentContentHeadPart"]}>
+                            <div>
+                                <p><img src={icon['logo']} alt=""/></p>
+                                <p>用户昵称</p>
+                                <p>该店铺购买2次</p>
+                            </div>
+                        </div>
+                        <div className={styles["commentRating"]}>
+                            <p>超赞</p>
+                            <div><RatingStar size={16} value={5}/></div>
+                            <hr/>
+                            <p>2024-12-27 灰色 豪华顶配-六一儿童节 送礼佳品</p>
+                        </div>
+                        <div className={styles["cce-content"]}>
+                            <p>机器狗的外观萌趣可爱，材质结实耐摔。智能互动很丰富，能讲故事、做游戏，孩子的欢乐源泉，真心不错！</p>
+                            <div>
+                                <PhotoProvider>
+                                    <PhotoView src={image['example']}>
+                                        <p><img src={image['example']} alt=""/></p>
+                                    </PhotoView>
+                                </PhotoProvider>
+                            </div>
+                        </div>
+                        <div className={styles["commentFeedback"]}>
+                            <p>
+                                <PopOver position="bottom" content={<div>
+                                    <p style={{cursor:'pointer'}}>举报</p>
+                                </div>}>
+                                    <svg style={{verticalAlign:'middle'}} fill="none" height="24" viewBox="0 0 24 24" width="24"><path d="M12 12H12.01" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
+                                    <path d="M8 12H8.01" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
+                                    <path d="M16 12H16.01" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/></svg>
+                                </PopOver>
+                            </p>
+                            <p>
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20.76799 15.178269"
+                                    version="1.1"
+                                    id="svg1"
+                                >
+                                    <defs id="defs1" />
+                                    <g id="layer1" transform="translate(-4.6622975,-7.2795904)" fill="none" stroke="#000">
+                                        <g id="g3" transform="translate(-89.91539,-133.8324)">
+                                            <path d="m 103.94264,141.36199 h 10.1919 c 0,0 0.80946,0.0736 0.84626,0.66229 0.0368,0.5887 0.11038,7.46915 0.11038,7.46915 0,0 0.11038,0.91985 -0.73588,1.2142 -0.84626,0.29435 -2.02366,0.0368 -2.02366,0.0368 l 0.18397,2.13405 -2.90672,-2.31802 -5.11434,-0.0368 c 0,0 -1.10382,0.0368 -1.25099,-0.73588 -0.14718,-0.77267 -0.14718,-6.88045 -0.14718,-6.88045 0,0 -0.11038,-1.28778 0.84626,-1.54534 z" id="path1" />
+                                            <path d="m 101.88218,144.2687 h -5.666248 c 0,0 -0.993437,-0.0736 -1.250993,1.06703 -0.257556,1.14061 -0.07359,6.77007 -0.07359,6.77007 0,0 0.357886,1.08894 1.145211,1.205 0.66017,0.0973 1.871885,-0.0276 1.871885,-0.0276 l -0.110381,2.46519 3.017096,-2.4284 4.89359,0.14718 c 0,0 1.50854,-0.55191 1.39816,-1.91328" id="path2" />
+                                            <path d="m 106.02003,144.49944 h 6.062" id="path3" strokeWidth={0.5}/>
+                                            <path d="m 106.08072,145.93972 h 6.062" id="path3-9" strokeWidth={0.5} />
+                                            <path d="m 106.08072,147.39713 h 6.062" id="path3-9-1" strokeWidth={0.5} />
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span>2</span>
+                            </p>
+                            <p>
+                                <svg id="Layer_1" version="1.1" viewBox="0 0 64 64" width="20" height="20">
+                                    <g fill="#000">
+                                        <g id="Icon-Like" transform="translate(78.000000, 528.000000)">
+                                            <path d="M-22-495.6c0-3.2-2.5-4.9-6-4.9h-10.1c0.7-2.7,1.1-5.3,1.1-7.5c0-8.7-2.4-10.5-4.5-10.5     c-1.4,0-2.4,0.1-3.8,1c-0.4,0.2-0.6,0.6-0.7,1l-1.5,8.1c-1.6,4.3-5.7,8-9,10.5v21.4c1.1,0,2.5,0.6,3.8,1.3     c1.6,0.8,3.3,1.6,5.2,1.6h14.3c3,0,5.2-2.4,5.2-4.5c0-0.4,0-0.8-0.1-1.1c1.9-0.7,3.1-2.3,3.1-4.1c0-0.9-0.2-1.7-0.5-2.3     c1.1-0.8,2.3-2.1,2.3-3.7c0-0.8-0.4-1.8-1-2.5C-22.9-492.8-22-494.2-22-495.6L-22-495.6z M-25.1-495.6c0,1.9-2,2.1-2.3,3     c-0.3,1,1.2,1.4,1.2,3.2c0,1.9-2.3,1.9-2.6,2.8c-0.4,1.1,0.7,1.5,0.7,3.3c0,0.1,0,0.2,0,0.3c-0.3,1.5-2.6,1.6-3,2.2     c-0.4,0.7,0.1,1.1,0.1,2.7c0,0.9-1,1.5-2.2,1.5h-14.3c-1.1,0-2.5-0.6-3.8-1.3c-1.2-0.6-2.4-1.2-3.7-1.5v-15.9     c3.7-2.8,8.5-7.1,10.4-12.3c0-0.1,0-0.2,0.1-0.2l1.4-7.5c0.5-0.2,0.9-0.2,1.7-0.2c0.3,0,1.5,1.8,1.5,7.5c0,2.2-0.4,4.7-1.2,7.5     h-0.4c-0.8,0-1.5,0.7-1.5,1.5c0,0.8,0.7,1.5,1.5,1.5H-28C-26.5-497.5-25.1-496.8-25.1-495.6L-25.1-495.6z" id="Fill-4_2_"/>
+                                            <path d="M-58-473.5h-9c-1.7,0-3-1.3-3-3v-21c0-1.7,1.3-3,3-3h9c1.7,0,3,1.3,3,3v21     C-55-474.8-56.3-473.5-58-473.5L-58-473.5z M-67-497.5v21h9l0-21H-67L-67-497.5z M-70-518.5" id="Fill-6_2_"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span>有用</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Modal>
     </section>
 }

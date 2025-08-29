@@ -43,3 +43,33 @@
 .SearchBar>div>button{
     margin:0 0.3rem;
 }
+.tabContainer{
+    width:96%;
+    background-color: #ffffff;
+    padding:2%;
+}
+
+.tabs{
+    list-style: none;
+    display:flex;
+    flex-flow:row nowrap;
+    border-bottom:1px solid #767676;
+}
+.tabs li{
+    font-size:1.4rem;
+    padding:1rem 1.2rem;
+    cursor: pointer;
+    
+}
+.tabs li.active{
+    color:var(--btn-bg-color);
+    border-bottom:1px solid var(--btn-bg-color)
+}
+.tabs-float{
+    position: fixed;
+    top: 0;
+    width: 588px;
+    background: #ffffff;
+    left: 176px;
+    z-index: 100;
+}

@@ -10,3 +10,5 @@ export {default as FeaturedShops} from "./FeaturedShops";
 export {default as ShopByBrand} from "./ShopByBrand";
 export {default as SearchBar} from "./SearchBar";
 export {default as Button} from "./Button";
+export {default as Tabs} from "./Tabs";
+export {default as PopOver} from "./PopOver";

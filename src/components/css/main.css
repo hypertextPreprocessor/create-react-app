@@ -5,7 +5,7 @@
     left:0;
     top:0;
     background-color: rgba(0, 0, 0, 0.315);
-    z-index: 9999;
+    z-index: 103;
     display:flex;
     flex-flow:row nowrap;
     align-items: center;
@@ -21,7 +21,7 @@
     background-color: #d7d7d7;
     display:flex;
     flex-flow:row nowrap;
-    align-items:center;
+    align-items:flex-start;
     justify-content: space-between;
 }
 .modal-header>p{
@@ -46,4 +46,5 @@
     border:1px solid #fefefe;
     cursor: pointer;
     padding: 5px 10px;
+    color:#fff;
 }

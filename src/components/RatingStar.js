@@ -33,7 +33,7 @@ export default function RatingStar({fillColor="#f4c331",count=5,size=20,value=4.
     return <>
         <p>
             {starArr.map((v,i)=>
-                <svg key={i} viewBox="0 0 256 256" width={size} height={size}>
+                <svg key={i} viewBox="0 0 256 256" width={size} height={size} style={{verticalAlign:"middle"}}>
                     <rect fill="none" height="256" width="256"/>
                     {v.state==='half'?(
                         <>
