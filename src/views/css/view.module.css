@@ -640,9 +640,193 @@
 .commentFeedback>p:hover{
     color:var(--tarifa-color);
 }
+.commentFeedback>p:nth-of-type(2) svg{
+    fill:none;
+    stroke:var(--tarifa-color);
+}
+.commentFeedback>p:nth-of-type(2)>svg{
+    fill:none;
+    stroke:#000;
+}
+.commentFeedback>p:nth-of-type(3):hover svg{
+    fill:var(--tarifa-color);
+}
+.commentFeedback>p:nth-of-type(3)>svg{
+    fill:#000;
+}
+.commentFeedback>p:nth-of-type(2):hover svg{
+    fill:none;
+    stroke:var(--tarifa-color);
+}
+.commentFeedback>p:nth-of-type(1):hover svg{
+    fill:none;
+    stroke:var(--tarifa-color);
+}
+.commentFeedback>p:nth-of-type(1) svg{
+    fill:none;
+    stroke:#000;
+}
 .commentFeedback>p>span{
     font-size: 1.3rem;
     margin-left: 0.6rem;
+}
+.commentInputArea{
+    display:flex;
+    flex-flow:row nowrap;
+}
+.commentInputArea>input{
+    flex:1;
+    border:1px solid var(--tarifa-color);
+    outline:none;
+    padding: 0.8rem 1.2rem;
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
+}
+.commentInputArea>button{
+    width:80px;
+    background-color: var(--btn-bg-color);
+    border:none;
+    color:#fff;
+    cursor: pointer;
+    border-top-right-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+}
+.storeBriefCon{
+    margin-top:1.2rem;
+    border-top:1px solid var(--disabled-color);
+    border-bottom:1px solid var(--disabled-color);
+    margin-bottom:1.2rem;
+    padding:1rem 0rem;
+}
+.storeBriefCon>h1{
+    font-size:1.8rem;
+    padding-bottom:1.2rem;
+}
+.storeBrief{
+    display:flex;
+    flex-flow:row wrap;
+    gap:1rem;
+    justify-content: space-between;
+}
+.storeBrief>div:nth-of-type(1){
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    gap:1rem;
+}
+.storeBrief>div:nth-of-type(1)>div:nth-of-type(1){
+    width:8rem;
+    border:1px solid var(--main-color);
+}
+.storeBrief>div:nth-of-type(1)>div:nth-of-type(1)>img{
+    width:100%;
+    vertical-align: middle;
+}
+.storeBrief>div:nth-of-type(1)>div:nth-of-type(2){
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height:8rem;
+}
+.storeBrief>div:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(1){
+    font-size:1.6rem;
+
+}
+.storeBrief>div:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(2){
+    margin-top:0.5rem;
+    font-size:1.4rem;
+    background-color: var(--star-bg-color);
+    padding:0.2rem;
+    border-radius: 0.4rem;
+    
+}
+.storeBrief>div:nth-of-type(2){
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    gap:1rem;
+}
+.storeBrief>div:nth-of-type(2)>p{
+    font-size:1.5rem;
+
+}
+.storeBrief>div:nth-of-type(2)>p>span{
+    color:var(--tarifa-color);
+}
+.storeBrief>div:nth-of-type(3){
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    gap:1rem;
+    flex:1;
+    justify-content:center;
+}
+.storeBrief>div:nth-of-type(3)>p{
+    border:1px solid var(--second-color);
+    border-radius:0.4rem;
+    padding:0.5rem 1rem;
+    cursor: pointer;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items:center;
+    justify-content:space-between;
+}
+.storeBrief>div:nth-of-type(3)>p>span{
+    margin-left:0.5rem;
+}
+.productDetail{}
+.productDetail>h1{
+    margin-top:1.2rem;
+    font-size:1.8rem;
+}
+.goods-base{
+    display:flex;
+    flex-flow:row wrap;
+    align-items: flex-start;
+}
+.item{
+    width:50%;
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+}
+.flex-center{
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: #f9fafc;
+    border-bottom:1px solid #f9fafc;
+    padding:0.6rem;
+    flex:0.4;
+}
+.flex-center>p{
+    line-height: 3rem;
+    padding-left: 0.8rem;
+}
+.adaptive{
+    font-size:1.4rem;
+    flex:0.6;
+    padding:0.6rem;
+    border-bottom:1px solid #0000000f;
+}
+.adaptive>p{
+    line-height: 3rem;
+    padding-left: 0.8rem;
+}
+.exclusive-row{
+    width:100%;
+}
+.exclusive-row>.flex-center{
+    flex:0.242;
+}
+.exclusive-row>.adaptive{
+    flex:1;
+}
+.afterSaleProof{
+    margin-top:1.2rem;
+}
+.afterSaleProof>h1{
+    font-size:1.8rem;
 }
 @media only screen and (max-width:1024px){
 

@@ -54,6 +54,12 @@ body{
     font-size: 1.8rem;
     font-weight: bold;
 }
+.twoLineTxt{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
 @media only screen and (max-width:1024px){
     .nav-disabled .swiper-button-prev,
     .nav-disabled .swiper-button-next {

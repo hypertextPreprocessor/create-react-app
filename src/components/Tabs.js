@@ -11,7 +11,20 @@ export default function Tabs({style={},defaultActiveKey,items,bindScroll=true,ch
             tablist[i].classList.remove(styles["active"]);
         }
         event.currentTarget.classList.add(styles["active"]);
-
+        if(bindScroll){
+            /*
+            window.scroll({
+                top:
+            })
+            */
+           var ele = document.getElementById(`${tab.key}`);
+           console.log(ele.getBoundingClientRect());
+           /*
+           window.scroll({
+                top:ele.getBoundingClientRect().top
+            })
+           */
+        }
     }
     window.addEventListener('scroll',(event)=>{
         if(tabContainerRef.current.getBoundingClientRect().top <= 0){

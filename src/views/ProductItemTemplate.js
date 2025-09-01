@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {SearchBar,Button,Tabs,Modal,RatingStar,PopOver} from "@com";
+import { Outlet } from "react-router";
+import cn from 'classnames';
+import {SearchBar,Button,Tabs,Modal,RatingStar,PopOver,ProductGrid} from "@com";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import BigNumber from "bignumber.js";
 import icon from "@img/icons";
@@ -251,7 +253,7 @@ export default function ProductItemTemplate(){
                         bindScroll={true}
                         items={[{label:"大家评",key:"0",children:<h1>Hello</h1>},{label:"店铺",key:"1",children:"H2"},{label:"商品详情",key:"2",children:"H3"},{label:"售后保障",key:"3",children:"H4"},{label:"推荐","key":4,children:"H5"}]}
                     >
-                       <div id="#0">
+                       <div id="0">
                             <div className={styles['commentHead']}>
                                 <p>买家评价<span>(200+)</span></p>
                                 <p onClick={()=>{commentModalShow()}}>
@@ -284,7 +286,82 @@ export default function ProductItemTemplate(){
                             </div>
                         </div>
                         <div id="1">
-
+                            <div className={styles["storeBriefCon"]}>
+                                <h1>进店逛逛</h1>
+                                <div className={styles["storeBrief"]}>
+                                <div>
+                                    <div><img src={icon['logo']} alt=""/></div>
+                                    <div>
+                                        <p>ACOTICK 玩具旗舰店</p>
+                                        <p>五星店铺</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>商品评价<span>高</span></p>
+                                    <p>物流速度<span>高</span></p>
+                                    <p>客服表现<span>高</span></p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <svg height="18px" width="18px" id="Layer_1" version="1.1" viewBox="0 0 512 512">
+                                            <path d="M340.8,98.4c50.7,0,91.9,41.3,91.9,92.3c0,26.2-10.9,49.8-28.3,66.6L256,407.1L105,254.6c-15.8-16.6-25.6-39.1-25.6-63.9  c0-51,41.1-92.3,91.9-92.3c38.2,0,70.9,23.4,84.8,56.8C269.8,121.9,302.6,98.4,340.8,98.4 M340.8,83C307,83,276,98.8,256,124.8  c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8  c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z"/>
+                                        </svg>
+                                        <span>关注店铺</span>
+                                    </p>
+                                    <p>
+                                    <svg viewBox="0 0 1024 1024" width="18" height="18">
+                                            <path d="M894.1 355.6h-1.7C853 177.6 687.6 51.4 498.1 54.9S148.2 190.5 115.9 369.7c-35.2 5.6-61.1 36-61.1 71.7v143.4c0.9 40.4 34.3 72.5 74.7 71.7 21.7-0.3 42.2-10 56-26.7 33.6 84.5 99.9 152 183.8 187 1.1-2 2.3-3.9 3.7-5.7 0.9-1.5 2.4-2.6 4.1-3 1.3 0 2.5 0.5 3.6 1.2a318.46 318.46 0 0 1-105.3-187.1c-5.1-44.4 24.1-85.4 67.6-95.2 64.3-11.7 128.1-24.7 192.4-35.9 37.9-5.3 70.4-29.8 85.7-64.9 6.8-15.9 11-32.8 12.5-50 0.5-3.1 2.9-5.6 5.9-6.2 3.1-0.7 6.4 0.5 8.2 3l1.7-1.1c25.4 35.9 74.7 114.4 82.7 197.2 8.2 94.8 3.7 160-71.4 226.5-1.1 1.1-1.7 2.6-1.7 4.1 0.1 2 1.1 3.8 2.8 4.8h4.8l3.2-1.8c75.6-40.4 132.8-108.2 159.9-189.5 11.4 16.1 28.5 27.1 47.8 30.8C846 783.9 716.9 871.6 557.2 884.9c-12-28.6-42.5-44.8-72.9-38.6-33.6 5.4-56.6 37-51.2 70.6 4.4 27.6 26.8 48.8 54.5 51.6 30.6 4.6 60.3-13 70.8-42.2 184.9-14.5 333.2-120.8 364.2-286.9 27.8-10.8 46.3-37.4 46.6-67.2V428.7c-0.1-19.5-8.1-38.2-22.3-51.6-14.5-13.8-33.8-21.4-53.8-21.3l1-0.2zM825.9 397c-71.1-176.9-272.1-262.7-449-191.7-86.8 34.9-155.7 103.4-191 190-2.5-2.8-5.2-5.4-8-7.9 25.3-154.6 163.8-268.6 326.8-269.2s302.3 112.6 328.7 267c-2.9 3.8-5.4 7.7-7.5 11.8z" fill="#2c2c2c" p-id="4714">
+                                            </path>
+                                        </svg>
+                                        <span>联系客服</span>
+                                    </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="2">
+                            <div className={styles["productDetail"]}>
+                                <h1>商品详情</h1>
+                                <div className={styles['goods-base']}>
+                                    {Array.from({length:6}).map((v,i)=>
+                                        <div className={styles['item']} key={i}>
+                                            <div className={styles['flex-center']}><p>品牌</p></div>
+                                            <div className={styles['adaptive']}><p>AOCTIK</p></div>
+                                        </div>
+                                    )}
+                                    <div className={cn(styles['exclusive-row'],styles['item'])}>
+                                        <div className={styles['flex-center']}><p>包装清单</p></div>
+                                        <div className={styles['adaptive']}><p>AOCTIK</p></div>
+                                    </div>
+                                </div>
+                                {Array.from({length:6}).map((v,i)=><p><img style={{width:'100%',verticalAlign:'middle'}} src={image['example']} alt=''/></p>)}
+                            </div>
+                            
+                        </div>
+                        <div id="3">
+                            <div className={cn(styles['afterSaleProof'],'margin-top')}>
+                                <h1>售后保障</h1>
+                                <div>
+                                    <h1 className="padding-tb">卖家服务</h1>
+                                    <div>
+                                        送货上门
+                                    </div>
+                                    <h1 className="padding-tb">卖家承诺</h1>
+                                    <div>
+                                        京东平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
+                                    </div>
+                                    <h1 className="padding-tb">正品行货</h1>
+                                    <div>
+                                        京东商城向您保证所售商品均为正品行货，京东自营商品开具机打发票或电子发票。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="4">
+                            <div>
+                                <h1 className="margin-tb text-xxl">看了又看</h1>
+                                <ProductGrid colNum={3}/>
+                            </div>
                         </div>
                     </Tabs>
                 </div>
@@ -414,76 +491,7 @@ export default function ProductItemTemplate(){
                         </p>
                     </div>
                 </div>
-                <div ref={effectiveCommentRef}>
-                    <div className={styles["commentContentList"]}>
-                        <div className={styles["commentContentHeadPart"]}>
-                            <div>
-                                <p><img src={icon['logo']} alt=""/></p>
-                                <p>用户昵称</p>
-                                <p>该店铺购买2次</p>
-                            </div>
-                        </div>
-                        <div className={styles["commentRating"]}>
-                            <p>超赞</p>
-                            <div><RatingStar size={16} value={5}/></div>
-                            <hr/>
-                            <p>2024-12-27 灰色 豪华顶配-六一儿童节 送礼佳品</p>
-                        </div>
-                        <div className={styles["cce-content"]}>
-                            <p>机器狗的外观萌趣可爱，材质结实耐摔。智能互动很丰富，能讲故事、做游戏，孩子的欢乐源泉，真心不错！</p>
-                            <div>
-                                <PhotoProvider>
-                                    <PhotoView src={image['example']}>
-                                        <p><img src={image['example']} alt=""/></p>
-                                    </PhotoView>
-                                </PhotoProvider>
-                            </div>
-                        </div>
-                        <div className={styles["commentFeedback"]}>
-                            <p>
-                                <PopOver position="bottom" content={<div>
-                                    <p style={{cursor:'pointer'}}>举报</p>
-                                </div>}>
-                                    <svg style={{verticalAlign:'middle'}} fill="none" height="24" viewBox="0 0 24 24" width="24"><path d="M12 12H12.01" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
-                                    <path d="M8 12H8.01" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
-                                    <path d="M16 12H16.01" stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/></svg>
-                                </PopOver>
-                            </p>
-                            <p>
-                                <svg
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 20.76799 15.178269"
-                                    version="1.1"
-                                    id="svg1"
-                                >
-                                    <defs id="defs1" />
-                                    <g id="layer1" transform="translate(-4.6622975,-7.2795904)" fill="none" stroke="#000">
-                                        <g id="g3" transform="translate(-89.91539,-133.8324)">
-                                            <path d="m 103.94264,141.36199 h 10.1919 c 0,0 0.80946,0.0736 0.84626,0.66229 0.0368,0.5887 0.11038,7.46915 0.11038,7.46915 0,0 0.11038,0.91985 -0.73588,1.2142 -0.84626,0.29435 -2.02366,0.0368 -2.02366,0.0368 l 0.18397,2.13405 -2.90672,-2.31802 -5.11434,-0.0368 c 0,0 -1.10382,0.0368 -1.25099,-0.73588 -0.14718,-0.77267 -0.14718,-6.88045 -0.14718,-6.88045 0,0 -0.11038,-1.28778 0.84626,-1.54534 z" id="path1" />
-                                            <path d="m 101.88218,144.2687 h -5.666248 c 0,0 -0.993437,-0.0736 -1.250993,1.06703 -0.257556,1.14061 -0.07359,6.77007 -0.07359,6.77007 0,0 0.357886,1.08894 1.145211,1.205 0.66017,0.0973 1.871885,-0.0276 1.871885,-0.0276 l -0.110381,2.46519 3.017096,-2.4284 4.89359,0.14718 c 0,0 1.50854,-0.55191 1.39816,-1.91328" id="path2" />
-                                            <path d="m 106.02003,144.49944 h 6.062" id="path3" strokeWidth={0.5}/>
-                                            <path d="m 106.08072,145.93972 h 6.062" id="path3-9" strokeWidth={0.5} />
-                                            <path d="m 106.08072,147.39713 h 6.062" id="path3-9-1" strokeWidth={0.5} />
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>2</span>
-                            </p>
-                            <p>
-                                <svg id="Layer_1" version="1.1" viewBox="0 0 64 64" width="20" height="20">
-                                    <g fill="#000">
-                                        <g id="Icon-Like" transform="translate(78.000000, 528.000000)">
-                                            <path d="M-22-495.6c0-3.2-2.5-4.9-6-4.9h-10.1c0.7-2.7,1.1-5.3,1.1-7.5c0-8.7-2.4-10.5-4.5-10.5     c-1.4,0-2.4,0.1-3.8,1c-0.4,0.2-0.6,0.6-0.7,1l-1.5,8.1c-1.6,4.3-5.7,8-9,10.5v21.4c1.1,0,2.5,0.6,3.8,1.3     c1.6,0.8,3.3,1.6,5.2,1.6h14.3c3,0,5.2-2.4,5.2-4.5c0-0.4,0-0.8-0.1-1.1c1.9-0.7,3.1-2.3,3.1-4.1c0-0.9-0.2-1.7-0.5-2.3     c1.1-0.8,2.3-2.1,2.3-3.7c0-0.8-0.4-1.8-1-2.5C-22.9-492.8-22-494.2-22-495.6L-22-495.6z M-25.1-495.6c0,1.9-2,2.1-2.3,3     c-0.3,1,1.2,1.4,1.2,3.2c0,1.9-2.3,1.9-2.6,2.8c-0.4,1.1,0.7,1.5,0.7,3.3c0,0.1,0,0.2,0,0.3c-0.3,1.5-2.6,1.6-3,2.2     c-0.4,0.7,0.1,1.1,0.1,2.7c0,0.9-1,1.5-2.2,1.5h-14.3c-1.1,0-2.5-0.6-3.8-1.3c-1.2-0.6-2.4-1.2-3.7-1.5v-15.9     c3.7-2.8,8.5-7.1,10.4-12.3c0-0.1,0-0.2,0.1-0.2l1.4-7.5c0.5-0.2,0.9-0.2,1.7-0.2c0.3,0,1.5,1.8,1.5,7.5c0,2.2-0.4,4.7-1.2,7.5     h-0.4c-0.8,0-1.5,0.7-1.5,1.5c0,0.8,0.7,1.5,1.5,1.5H-28C-26.5-497.5-25.1-496.8-25.1-495.6L-25.1-495.6z" id="Fill-4_2_"/>
-                                            <path d="M-58-473.5h-9c-1.7,0-3-1.3-3-3v-21c0-1.7,1.3-3,3-3h9c1.7,0,3,1.3,3,3v21     C-55-474.8-56.3-473.5-58-473.5L-58-473.5z M-67-497.5v21h9l0-21H-67L-67-497.5z M-70-518.5" id="Fill-6_2_"/>
-                                        </g>
-                                    </g>
-                                </svg>
-                                <span>有用</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <Outlet />
             </div>
         </Modal>
     </section>

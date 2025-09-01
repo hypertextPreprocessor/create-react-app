@@ -12,3 +12,5 @@ export {default as SearchBar} from "./SearchBar";
 export {default as Button} from "./Button";
 export {default as Tabs} from "./Tabs";
 export {default as PopOver} from "./PopOver";
+export {default as AppBar} from "./AppBar";
+export {default as ProductGrid} from "./ProductGrid";

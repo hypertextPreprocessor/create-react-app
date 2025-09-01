@@ -6,6 +6,7 @@ import i18n from "i18next";
 import { RouterProvider } from "react-router/dom";
 import router from "@router";
 import '@css/main.css';
+import '@css/home.css';
 
 
 //const fs = import('node:fs');
