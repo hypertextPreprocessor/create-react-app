@@ -58,6 +58,14 @@ body{
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp:2;
+    overflow: hidden;
+}
+.back_cover_effect{
+    transition:all .2s ease-in-out;
+    transform:scale(0.95,0.98);
+    transform-origin: center;
+    border-radius: 2rem;
     overflow: hidden;
 }
 @media only screen and (max-width:1024px){

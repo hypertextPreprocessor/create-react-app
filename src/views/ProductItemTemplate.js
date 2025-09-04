@@ -1,7 +1,10 @@
+//bellow for PC
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router";
 import cn from 'classnames';
-import {SearchBar,Button,Tabs,Modal,RatingStar,PopOver,ProductGrid} from "@com";
+import {SearchBar,Button,Tabs,Modal,RatingStar,PopOver,ProductGrid,SkuTemplate,ScrollSelectionList,Drawer} from "@com";
+import {canAllClassOnParentEle} from "@utlis";
+import {useWindowState} from "@caveats/externalStore";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import BigNumber from "bignumber.js";
 import icon from "@img/icons";
@@ -9,7 +12,112 @@ import image from "@img";
 import {mainContent} from "@css/header.module.css";
 import * as styles from "@/views/css/view.module.css";
 import 'react-photo-view/dist/react-photo-view.css';
+//bellow for mobile
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {Pagination} from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import SvgIcon from "@img/icons/SvgIcon";
+function DrawerContent(){
+    return <div className={styles['drawer_content']}>
+        <h2>Chooise your Location</h2>
+        <p>Delivery options and delivery speeds may vary of different locations</p>
+        <p><Button>Sign in to see your address</Button></p>
+        <ul>
+            <li>
+                <SvgIcon icon="location" width="25" height="25" fill="#000"/>
+                <p>Enter a US zip code</p>
+            </li>
+            <li>
+                <SvgIcon icon="gps_tracking" width="25" height="25"/>
+                <p>Use my Current Location</p>
+            </li>
+            <li>
+                <p style={{width:'25px',height:'25px',display:'flex',alignItems:'center',justifyContent:'center'}}><SvgIcon icon="world_wide" width="18" height="18" continentColor="#b5b5b5"/></p>
+                <p>Ship outside the US</p>
+            </li>
+        </ul>
+    </div>;
+}
 export default function ProductItemTemplate(){
+    const {devices} = useWindowState();
+    if(devices.isDesktop){
+        return <ProductItemTemplatePC />;
+    }else{
+        return <ProductItemTemplateMobile />;
+    }
+}
+export function ProductItemTemplateMobile(){
+    function openDrawer(){
+        Drawer.show({
+            title:false,
+            content:<DrawerContent/>
+        });
+    }
+    return <section>
+        <PhotoProvider>
+            <Swiper spaceBetween={0} slidesPerView={1} modules={[Pagination]} pagination={{ clickable: true }}>
+                {Array.from({length:6}).map((v,i)=><SwiperSlide key={i}>
+                    <PhotoView src={image['example']}>
+                        <div><img style={{width:'100%'}} src={image['example']} alt=""/></div>
+                    </PhotoView>
+                </SwiperSlide>)}
+            </Swiper>
+        </PhotoProvider>
+        <div className="bg-white radius padding-sm">
+            <p className="priceTag"><span>$</span><span>469</span><sup>63</sup></p>
+            <h1>AOCTIK德国品牌智能早教机器狗机器人儿童玩具男女孩1-3-7-13岁生日礼物 金色 豪华顶配-六一儿童节 送礼佳品</h1>
+        </div>
+        <div>
+            <SkuTemplate 
+                defaultKey="1"
+                skuList={[
+                    {
+                        key:'1',
+                        label:
+                            <>
+                                <p>Capicity:</p>
+                                <p className="text-bold padding-tb-sm">Intel i7 - 9700</p>
+                            </>,
+                        children:<ScrollSelectionList singleton={true} defaultSelected={true} list={[{key:'sku1',value:'Intel i7 Core - GTx8010'},{key:"sku2",value:"AMD Ec200-1600"}]} onSelect={(v)=>{
+                            console.log(v);
+                        }}></ScrollSelectionList>
+                },{
+                        key:'2',
+                        label:
+                            <>
+                                <p>Style:</p>
+                                <p className="text-bold padding-tb-sm">64GB</p>
+                            </>,
+                        children:<ScrollSelectionList>
+                            {Array.from({length:5}).map((sku,ski)=><div key={ski} className={cn(styles['sku_custom'],{[styles['sku_custom_active']]:ski===0})} onClick={(event)=>{
+                                canAllClassOnParentEle(event.currentTarget,styles['sku_custom_active'])
+                            }}>
+                                <p>64GB RAM | 1TB SSD</p>
+                                <div>
+                                    <div>
+                                        <p className="priceTag"><span>$</span><span>688</span><sup>98</sup></p>
+                                        <p>in stock</p>
+                                    </div>
+                                    <div><img src={image['example']} alt=""/></div>
+                                </div>
+                            </div>)}
+                        </ScrollSelectionList>
+                }]}/>
+        </div>
+        <div className="padding-sm radius bg-white margin-tb">
+            <p className="text-xl">Free Delivery <span className="text-bold">Tomorrow , {new Date().toLocaleDateString()},</span> Order within <span className="text-green">8 hours 38 mins.</span>Details</p>
+            <p className="text-lg padding-top-sm">
+                <SvgIcon icon="location" width="20" height="20" style={{verticalAlign:'middle'}} fill="#000" strokeWidth="0.5"/>
+                <span className="text-blue" onClick={openDrawer}>Delivery to Phonix</span>
+            </p>
+        </div>
+        <Drawer show={false}/>
+    </section>
+
+}
+export function ProductItemTemplatePC(){
+    
     const escaparateRef = useRef(null);
     const scrollViewRef = useRef(null);
     const esCoverRef = useRef(null);
@@ -205,16 +313,11 @@ export default function ProductItemTemplate(){
                         <p>ACOTICK 玩具旗舰店<span>五星店铺</span></p>
                         <div>
                             <p>
-                                <svg height="18px" width="18px" id="Layer_1" version="1.1" viewBox="0 0 512 512">
-                                    <path d="M340.8,98.4c50.7,0,91.9,41.3,91.9,92.3c0,26.2-10.9,49.8-28.3,66.6L256,407.1L105,254.6c-15.8-16.6-25.6-39.1-25.6-63.9  c0-51,41.1-92.3,91.9-92.3c38.2,0,70.9,23.4,84.8,56.8C269.8,121.9,302.6,98.4,340.8,98.4 M340.8,83C307,83,276,98.8,256,124.8  c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8  c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z"/>
-                                </svg>
+                                <SvgIcon icon="heart" height="18px" width="18px"/>
                                 <span>关注店铺</span>
                             </p>
                             <p>
-                               <svg viewBox="0 0 1024 1024" width="18" height="18">
-                                    <path d="M894.1 355.6h-1.7C853 177.6 687.6 51.4 498.1 54.9S148.2 190.5 115.9 369.7c-35.2 5.6-61.1 36-61.1 71.7v143.4c0.9 40.4 34.3 72.5 74.7 71.7 21.7-0.3 42.2-10 56-26.7 33.6 84.5 99.9 152 183.8 187 1.1-2 2.3-3.9 3.7-5.7 0.9-1.5 2.4-2.6 4.1-3 1.3 0 2.5 0.5 3.6 1.2a318.46 318.46 0 0 1-105.3-187.1c-5.1-44.4 24.1-85.4 67.6-95.2 64.3-11.7 128.1-24.7 192.4-35.9 37.9-5.3 70.4-29.8 85.7-64.9 6.8-15.9 11-32.8 12.5-50 0.5-3.1 2.9-5.6 5.9-6.2 3.1-0.7 6.4 0.5 8.2 3l1.7-1.1c25.4 35.9 74.7 114.4 82.7 197.2 8.2 94.8 3.7 160-71.4 226.5-1.1 1.1-1.7 2.6-1.7 4.1 0.1 2 1.1 3.8 2.8 4.8h4.8l3.2-1.8c75.6-40.4 132.8-108.2 159.9-189.5 11.4 16.1 28.5 27.1 47.8 30.8C846 783.9 716.9 871.6 557.2 884.9c-12-28.6-42.5-44.8-72.9-38.6-33.6 5.4-56.6 37-51.2 70.6 4.4 27.6 26.8 48.8 54.5 51.6 30.6 4.6 60.3-13 70.8-42.2 184.9-14.5 333.2-120.8 364.2-286.9 27.8-10.8 46.3-37.4 46.6-67.2V428.7c-0.1-19.5-8.1-38.2-22.3-51.6-14.5-13.8-33.8-21.4-53.8-21.3l1-0.2zM825.9 397c-71.1-176.9-272.1-262.7-449-191.7-86.8 34.9-155.7 103.4-191 190-2.5-2.8-5.2-5.4-8-7.9 25.3-154.6 163.8-268.6 326.8-269.2s302.3 112.6 328.7 267c-2.9 3.8-5.4 7.7-7.5 11.8z" fill="#2c2c2c" p-id="4714">
-                                    </path>
-                                </svg>
+                                <SvgIcon icon="assistant" width="18" height="18"/>
                                 <span>联系客服</span>
                             </p>
                         </div>
@@ -229,9 +332,7 @@ export default function ProductItemTemplate(){
                     <div className={styles["escaparate"]} ref={escaparateRef} style={{height:escaparateHeight}}>
                         <div>
                             <button onClick={scrollUp}>
-                                <svg height="18" viewBox="0 0 48 48" width="18">
-                                    <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/><path d="M0 0h48v48h-48z" fill="none"/>
-                                </svg>
+                                <SvgIcon icon="up_breaket" width="18" hegiht="18" />
                             </button>
                             <div ref={scrollViewRef}>
                                 <div>
@@ -239,9 +340,7 @@ export default function ProductItemTemplate(){
                                 </div>
                             </div>
                             <button onClick={scrollDown}>
-                                <svg height="18" viewBox="0 0 48 48" width="18" style={{transform:'rotate(180deg)'}}>
-                                    <path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"/><path d="M0 0h48v48h-48z" fill="none"/>
-                                </svg>
+                                 <SvgIcon icon="up_breaket" width="18" hegiht="18" style={{transform:'rotate(180deg)'}}/>
                             </button>
                         </div>
                         <div onMouseEnter={(e)=>{zoomInObject(e)}} onMouseOut={(e)=>{cancelZoomOnObject(e)}}>
@@ -251,18 +350,14 @@ export default function ProductItemTemplate(){
                     </div>
                     <Tabs style={{marginTop:'1.2rem'}} defaultActiveKey="0" 
                         bindScroll={true}
-                        items={[{label:"大家评",key:"0",children:<h1>Hello</h1>},{label:"店铺",key:"1",children:"H2"},{label:"商品详情",key:"2",children:"H3"},{label:"售后保障",key:"3",children:"H4"},{label:"推荐","key":4,children:"H5"}]}
+                        items={[{label:"大家评",key:"0",children:<h1>Hello</h1>},{label:"店铺",key:"1",children:"H2"},{label:"商品详情",key:"2",children:"H3"},{label:"售后保障",key:"3",children:"H4"},{label:"推荐","key":"4",children:"H5"}]}
                     >
                        <div id="0">
                             <div className={styles['commentHead']}>
                                 <p>买家评价<span>(200+)</span></p>
                                 <p onClick={()=>{commentModalShow()}}>
                                     好评率高达<span>100%</span>
-                                    <svg id="Layer_1" version="1.1" viewBox="0 0 50 50" width="12" height="12">
-                                        <g id="Layer_1_1_">
-                                            <polygon points="13.854,48.707 37.561,25 13.854,1.293 12.439,2.707 34.732,25 12.439,47.293  "/>
-                                        </g>
-                                    </svg>
+                                    <SvgIcon icon="greater_than" width="12" height="12" strokeWidth={3} stroke="var(--disabled-color)"/>
                                 </p>
                             </div>
                             <div className={styles["commentSpecifics"]}>
@@ -303,16 +398,11 @@ export default function ProductItemTemplate(){
                                 </div>
                                 <div>
                                     <p>
-                                        <svg height="18px" width="18px" id="Layer_1" version="1.1" viewBox="0 0 512 512">
-                                            <path d="M340.8,98.4c50.7,0,91.9,41.3,91.9,92.3c0,26.2-10.9,49.8-28.3,66.6L256,407.1L105,254.6c-15.8-16.6-25.6-39.1-25.6-63.9  c0-51,41.1-92.3,91.9-92.3c38.2,0,70.9,23.4,84.8,56.8C269.8,121.9,302.6,98.4,340.8,98.4 M340.8,83C307,83,276,98.8,256,124.8  c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8  c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z"/>
-                                        </svg>
+                                        <SvgIcon icon="heart" height="18px" width="18px"/>
                                         <span>关注店铺</span>
                                     </p>
                                     <p>
-                                    <svg viewBox="0 0 1024 1024" width="18" height="18">
-                                            <path d="M894.1 355.6h-1.7C853 177.6 687.6 51.4 498.1 54.9S148.2 190.5 115.9 369.7c-35.2 5.6-61.1 36-61.1 71.7v143.4c0.9 40.4 34.3 72.5 74.7 71.7 21.7-0.3 42.2-10 56-26.7 33.6 84.5 99.9 152 183.8 187 1.1-2 2.3-3.9 3.7-5.7 0.9-1.5 2.4-2.6 4.1-3 1.3 0 2.5 0.5 3.6 1.2a318.46 318.46 0 0 1-105.3-187.1c-5.1-44.4 24.1-85.4 67.6-95.2 64.3-11.7 128.1-24.7 192.4-35.9 37.9-5.3 70.4-29.8 85.7-64.9 6.8-15.9 11-32.8 12.5-50 0.5-3.1 2.9-5.6 5.9-6.2 3.1-0.7 6.4 0.5 8.2 3l1.7-1.1c25.4 35.9 74.7 114.4 82.7 197.2 8.2 94.8 3.7 160-71.4 226.5-1.1 1.1-1.7 2.6-1.7 4.1 0.1 2 1.1 3.8 2.8 4.8h4.8l3.2-1.8c75.6-40.4 132.8-108.2 159.9-189.5 11.4 16.1 28.5 27.1 47.8 30.8C846 783.9 716.9 871.6 557.2 884.9c-12-28.6-42.5-44.8-72.9-38.6-33.6 5.4-56.6 37-51.2 70.6 4.4 27.6 26.8 48.8 54.5 51.6 30.6 4.6 60.3-13 70.8-42.2 184.9-14.5 333.2-120.8 364.2-286.9 27.8-10.8 46.3-37.4 46.6-67.2V428.7c-0.1-19.5-8.1-38.2-22.3-51.6-14.5-13.8-33.8-21.4-53.8-21.3l1-0.2zM825.9 397c-71.1-176.9-272.1-262.7-449-191.7-86.8 34.9-155.7 103.4-191 190-2.5-2.8-5.2-5.4-8-7.9 25.3-154.6 163.8-268.6 326.8-269.2s302.3 112.6 328.7 267c-2.9 3.8-5.4 7.7-7.5 11.8z" fill="#2c2c2c" p-id="4714">
-                                            </path>
-                                        </svg>
+                                        <SvgIcon icon="assistant" height="18px" width="18px"/>
                                         <span>联系客服</span>
                                     </p>
                                 </div>
@@ -390,14 +480,7 @@ export default function ProductItemTemplate(){
                                         <p>累计评价<span>200+</span></p>
                                     </div>
                                     <div>
-                                        <svg viewBox="0 0 32 32" width="20" height="20">
-                                            <g data-name="Layer 31" id="Layer_31" fill="var(--star-bg-color)">
-                                                <path d="M27,27H5a1,1,0,0,1-.89-1.45,18.14,18.14,0,0,0,1.89-8V14a10,10,0,0,1,20,0v3.53a18.14,18.14,0,0,0,1.89,8A1,1,0,0,1,27,27ZM6.55,25h18.9A20.14,20.14,0,0,1,24,17.53V14A8,8,0,0,0,8,14v3.53A20.14,20.14,0,0,1,6.55,25Z"/>
-                                                <path d="M16,31a5,5,0,0,1-5-5,1,1,0,0,1,2,0,3,3,0,0,0,.88,2.12,3.08,3.08,0,0,0,4.24,0,1,1,0,0,1,1.42,1.42A5,5,0,0,1,16,31Z"/>
-                                                <path d="M16,6a1,1,0,0,1-1-1V2a1,1,0,0,1,2,0V5A1,1,0,0,1,16,6Z"/>
-                                                <path d="M26,5a2,2,0,1,1,2-2A2,2,0,0,1,26,5Zm0-2h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Zm0,0h0Z"/>
-                                            </g>
-                                        </svg>
+                                        <SvgIcon icon="notify" width="20" height="20" fill="var(--star-bg-color)" stroke="none" strokeWidth="3"/>
                                         <p>降价通知</p>
                                     </div>
                                 </div>
@@ -478,16 +561,7 @@ export default function ProductItemTemplate(){
                     <div>
                         <p>ejuan鼓励真实、有用的评价</p>
                         <p>
-                            <svg height="15" version="1.1" viewBox="0 0 512 512" width="15">
-                                <g>
-                                    <g>
-                                        <circle cx="251.5" cy="172" r="20"/><polygon points="272,344 272,216 224,216 224,224 240,224 240,344 224,344 224,352 288,352 288,344   "/>
-                                    </g>
-                                    <g>
-                                        <path d="M256,48C141.1,48,48,141.1,48,256c0,114.9,93.1,208,208,208c114.9,0,208-93.1,208-208C464,141.1,370.9,48,256,48z     M256,446.7c-105.1,0-190.7-85.5-190.7-190.7c0-105.1,85.5-190.7,190.7-190.7c105.1,0,190.7,85.5,190.7,190.7    C446.7,361.1,361.1,446.7,256,446.7z"/>
-                                    </g>
-                                </g>
-                            </svg>
+                            <SvgIcon icon="info" width="15" height="15"  strokeWidth={3} stroke="#000"/>
                         </p>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import SvgIcon from "@img/icons/SvgIcon";
 import * as styles from '@com/css/com.module.css';
 const m = {
     title:{
@@ -15,8 +16,8 @@ function MenuList({isSub,list,itemConHeight,itemClicked,navBack}){
         {isSub?(
         <div style={{borderBottom:'1px solid #ddd'}}>
             <div onClick={navBack} style={{display:'flex',flexFlow:'row nowrap',alignItems:'center',justifyContent:'flex-start',lineHeight:'4.2rem',cursor:'pointer',width:'88%',margin:'0 auto'}}>
-                <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 512 512" width="28" height="28"><path d="M34,256,210,80l21.21,21.2L91.4,241H478v30H91.4L231.25,410.84,210,432Z"/></svg>
-                <h1 style={{marginLeft:'1.2rem'}}>Item 1</h1>
+                <SvgIcon icon="arrow_left" width="28" height="28" fill="#000000ff" stroke="none"/>
+                <h1 style={{marginLeft:'1.2rem'}}>Item 12</h1>
             </div>
         </div>
         ):null}
@@ -36,7 +37,7 @@ function MenuList({isSub,list,itemConHeight,itemClicked,navBack}){
                             <div style={{width:'88%',listStyleType:'none',margin:'0 auto'}}>
                                 <p >{iit.title}</p>
                                 {iit.subItems?(<p>
-                                    <svg style={{verticalAlign:'middle'}} id="Layer_1" version="1.1" viewBox="0 0 50 50" width="20" height="20"><g id="Layer_1_1_"><polygon points="13.854,48.707 37.561,25 13.854,1.293 12.439,2.707 34.732,25 12.439,47.293  "/></g></svg>
+                                    <SvgIcon icon="greater_than" width="20" height="20" style={{verticalAlign:'middle'}} strokeWidth="2" stroke="var(--disabled-color)"/>
                                 </p>):null}
                             </div>
                         </li>
