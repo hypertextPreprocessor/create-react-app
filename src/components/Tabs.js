@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState ,useCallback} from 'react';
 import * as styles from '@com/css/com.module.css';
 import * as moduleStyle from "@/views/css/view.module.css";
 import * as headerStyle from "@css/header.module.css";
@@ -20,7 +20,7 @@ export default function Tabs({style={},defaultActiveKey,items,bindScroll=true,ch
             })
         }
     }
-    window.addEventListener('scroll',(event)=>{
+    function scrollEvent(event){
         if(tabContainerRef.current.getBoundingClientRect().top <= 0){
             tabRef.current.style.left=tabContainerRef.current.getBoundingClientRect().left + 'px';
             tabRef.current.style.width=tabContainerRef.current.clientWidth + 'px';
@@ -35,7 +35,6 @@ export default function Tabs({style={},defaultActiveKey,items,bindScroll=true,ch
                 if(window.scrollY>=c-2){ //2为容错率
                     if(items[i+1]!== undefined){
                         if(window.scrollY<calcScrollTop(items[i+1].key)){
-                            console.log(items[i].key);
                             addActiveClass(items[i].key);
                         }
                     }else{
@@ -44,7 +43,15 @@ export default function Tabs({style={},defaultActiveKey,items,bindScroll=true,ch
                 }
             }
         }
-    })
+    }
+    let scrollEventCache = useCallback(scrollEvent,[bindScroll,items]);
+    useEffect(()=>{
+            window.addEventListener('scroll',scrollEventCache);
+            return ()=>{
+                window.removeEventListener('scroll',scrollEventCache);
+            }
+    },[scrollEventCache]);
+
     function addActiveClass(key){
        
         setActive(key);

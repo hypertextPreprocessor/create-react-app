@@ -1,6 +1,6 @@
 //bellow for PC
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router";
+import { Outlet ,useNavigate} from "react-router";
 import cn from 'classnames';
 import {SearchBar,Button,Tabs,Modal,RatingStar,PopOver,ProductGrid,SkuTemplate,ScrollSelectionList,Drawer} from "@com";
 import {canAllClassOnParentEle} from "@utlis";
@@ -48,11 +48,23 @@ export default function ProductItemTemplate(){
     }
 }
 export function ProductItemTemplateMobile(){
+    let navigate = useNavigate();
+    const [show,setShow] = useState(false);
+    function goComment(){
+        navigate("/comments");
+    }
     function openDrawer(){
+        
+        /*
         Drawer.show({
             title:false,
+            direction:"right",
             content:<DrawerContent/>
         });
+        */
+        
+       setShow(true);
+       //setShow(false);
     }
     return <section>
         <PhotoProvider>
@@ -111,8 +123,66 @@ export function ProductItemTemplateMobile(){
                 <SvgIcon icon="location" width="20" height="20" style={{verticalAlign:'middle'}} fill="#000" strokeWidth="0.5"/>
                 <span className="text-blue" onClick={openDrawer}>Delivery to Phonix</span>
             </p>
-        </div>
-        <Drawer show={false}/>
+            <div className="padding-tb-sm flex align-center justify-end ">
+                <Button ghost>-</Button>
+                <input type="number" min={1} max={99} defaultValue={1} style={{width:'50px',textAlign:'center',margin:'0 0.5rem',lineHeight:'2.3rem'}}/>
+                <Button>+</Button>
+            </div>
+            <div className="padding-tb-sm flex justify-between">
+                <p><Button size="large">Buy Now</Button></p>
+                <p><Button size="large" type="default" style={{backgroundColor:"gold"}}>Add to Cart</Button></p>
+            </div>
+        </div> 
+        <Tabs items={[{key:'0',label:'评价'},{key:'1',label:'详情'},{key:'2',label:'推荐'}]} defaultActiveKey="0" bindScroll={true}>
+            <div id="0" className={cn('padding-sm')}>
+                <div className={cn('flex','padding-tb-sm','justify-between')}>
+                    <p className={cn('text-xl','text-bold')}>评价<span className={cn('margin-left-sm')}>200+</span></p>
+                    <p className={cn('flex','align-center','text-xl','text-grey')}><span>好评度 100%</span><SvgIcon style={{verticalAlign:'middle'}} stroke="#8799a3" icon="greater_than" width="15" height="15" fill="none" strokeWidth={2}/></p>
+                </div>
+                <ProductSellingPoints points={["材质坚固","质量好","结实耐用","精美绝伦","功能强大","顶呱呱"]}/>
+                <div className={cn('padding-tb-sm',styles['commentContentExtracionMobile'])}>
+                    <div className={cn(styles['cce-m-head'],'flex','align-center','justify-between')}>
+                        <div className="flex align-center">
+                            <p class="margin-right-sm"><img src={icon['logo']} alt=""/></p>
+                            <p className="text-lg">用户昵称</p>
+                        </div>
+                        <div><p className="text-lg text-grey">2025-08-13</p></div>
+                    </div>
+                    <div className={styles['cce-m-content']}>
+                        <p className="padding-tb-sm text-xl">很好玩的玩具，小朋友4岁生日礼物，非常喜欢，功能很多，还可以学习，可以跟随，给小朋友养的电子宠物，帮助孩子学习英语，还能陪伴孩子。</p>
+                        <div>
+                            <PhotoProvider>
+                                {Array.from({length:9}).map((v,i)=><PhotoView key={i} src={image['example']}>
+                                    <p key={i}><img src={image['example']} alt=""/></p>
+                                </PhotoView>
+                                )}
+                            </PhotoProvider>
+                        </div>
+                    </div>
+                    <div className="flex align-center justify-center padding-sm"><Button size="small" onClick={goComment}>查看全部评价</Button></div>
+                </div>
+            </div>
+            <div id="1">
+                <div className="margin-top">
+                    <Tabs 
+                        defaultActiveKey="0" 
+                        bindScroll={false} 
+                        items={[{
+                            key:"0",label:"商品介绍",children:Array.from({length:9}).map((v,i)=><p><img style={{width:'100%',verticalAlign:'middle'}} src={image['example']} alt='' /></p>)},{
+                            key:"1",label:"规格参数",children:<ProductSpecifications/>},{
+                            key:"2",label:"售后保障",children:<StoreStatement/>}]}
+                    />
+                </div>
+            </div>
+            <div id="2">
+                <div className="padding-tb">
+                    <h1 className="padding-tb-sm">猜你喜欢</h1>
+                    <ProductGrid colNum={3}/>
+                </div>
+            </div>
+        </Tabs>
+        <Drawer show={show} content={<DrawerContent/>} direction="bottom" onClose={()=>{setShow(false)}}/>
+        
     </section>
 
 }
@@ -360,10 +430,7 @@ export function ProductItemTemplatePC(){
                                     <SvgIcon icon="greater_than" width="12" height="12" strokeWidth={3} stroke="var(--disabled-color)"/>
                                 </p>
                             </div>
-                            <div className={styles["commentSpecifics"]}>
-                                <p>材质坚固</p>
-                                <p>质量好</p>
-                            </div>
+                            <ProductSellingPoints points={["材质坚固","质量好","结实耐用","精美绝伦","功能强大","顶呱呱"]}/>
                             <div className={styles["commentContentExtracion"]}>
                                 <div className={styles["cce-head"]}>
                                     <p><img src={icon['logo']} alt=""/></p>
@@ -375,7 +442,6 @@ export function ProductItemTemplatePC(){
                                         {Array.from({length:9}).map((v,i)=>
                                             <p key={i} onClick={()=>{commentModalShow()}}><img src={image['example']} alt=""/></p>
                                         )}
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -411,41 +477,17 @@ export function ProductItemTemplatePC(){
                         </div>
                         <div id="2">
                             <div className={styles["productDetail"]}>
-                                <h1>商品详情</h1>
-                                <div className={styles['goods-base']}>
-                                    {Array.from({length:6}).map((v,i)=>
-                                        <div className={styles['item']} key={i}>
-                                            <div className={styles['flex-center']}><p>品牌</p></div>
-                                            <div className={styles['adaptive']}><p>AOCTIK</p></div>
-                                        </div>
-                                    )}
-                                    <div className={cn(styles['exclusive-row'],styles['item'])}>
-                                        <div className={styles['flex-center']}><p>包装清单</p></div>
-                                        <div className={styles['adaptive']}><p>AOCTIK</p></div>
-                                    </div>
+                                <h1 className="padding-tb-sm">商品详情</h1>
+                                <ProductSpecifications/>
+                                <div className="padding-top">
+                                        {Array.from({length:6}).map((v,i)=><p><img style={{width:'100%',verticalAlign:'middle'}} src={image['example']} alt=''/></p>)}
                                 </div>
-                                {Array.from({length:6}).map((v,i)=><p><img style={{width:'100%',verticalAlign:'middle'}} src={image['example']} alt=''/></p>)}
+                                
                             </div>
                             
                         </div>
                         <div id="3">
-                            <div className={cn(styles['afterSaleProof'],'margin-top')}>
-                                <h1>售后保障</h1>
-                                <div>
-                                    <h1 className="padding-tb">卖家服务</h1>
-                                    <div>
-                                        送货上门
-                                    </div>
-                                    <h1 className="padding-tb">卖家承诺</h1>
-                                    <div>
-                                        京东平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
-                                    </div>
-                                    <h1 className="padding-tb">正品行货</h1>
-                                    <div>
-                                        京东商城向您保证所售商品均为正品行货，京东自营商品开具机打发票或电子发票。
-                                    </div>
-                                </div>
-                            </div>
+                            <StoreStatement/>
                         </div>
                         <div id="4">
                             <div>
@@ -569,4 +611,48 @@ export function ProductItemTemplatePC(){
             </div>
         </Modal>
     </section>
+}
+
+function ProductSellingPoints({points=[]}){
+    return <div className={styles["commentSpecifics"]}>
+        <p>材质坚固</p>
+        <p>质量好</p>
+        <p>结实耐用</p>
+        <p>精美绝伦</p>
+        <p>功能强大</p>
+        <p>顶呱呱</p>
+    </div>
+}
+function ProductSpecifications(){
+    return <div className={styles['goods-base']}>
+        {Array.from({length:6}).map((v,i)=>
+            <div className={styles['item']} key={i}>
+                <div className={styles['flex-center']}><p>品牌</p></div>
+                <div className={styles['adaptive']}><p>AOCTIK</p></div>
+            </div>
+        )}
+        <div className={cn(styles['exclusive-row'],styles['item'])}>
+            <div className={styles['flex-center']}><p>包装清单</p></div>
+            <div className={styles['adaptive']}><p>AOCTIK</p></div>
+        </div>
+    </div>
+}
+function StoreStatement(){
+    return <div className={cn(styles['afterSaleProof'],'margin-top')}>
+        <h1>售后保障</h1>
+        <div>
+            <h1 className="padding-tb">卖家服务</h1>
+            <div>
+                送货上门
+            </div>
+            <h1 className="padding-tb">卖家承诺</h1>
+            <div>
+                京东平台卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
+            </div>
+            <h1 className="padding-tb">正品行货</h1>
+            <div>
+                京东商城向您保证所售商品均为正品行货，京东自营商品开具机打发票或电子发票。
+            </div>
+        </div>
+    </div>
 }

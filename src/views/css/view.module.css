@@ -906,5 +906,37 @@
     font-size: 1.6rem;
 }
 @media only screen and (max-width:1024px){
+    .commentContentExtracionMobile{
 
+    }
+    .cce-m-head{}
+    .cce-m-head>div:nth-of-type(1){
+
+    }
+    .cce-m-head>div:nth-of-type(1)>p:nth-of-type(1){
+        width:33px;
+        height:33px;
+        border-radius: 33px;
+        overflow:hidden;
+    }
+    .cce-m-head>div:nth-of-type(1)>p:nth-of-type(1)>img{
+        vertical-align: middle;
+        width:100%;
+    }
+    .cce-m-content>div:nth-of-type(1){
+        display:flex;
+        flex-flow:row wrap;
+        align-items: center;
+        gap:2%;
+    }
+    .cce-m-content>div:nth-of-type(1)>p{
+        margin-top:2%;
+        flex-basis: calc(25% - 2%);
+        border-radius:0.78rem;
+        overflow:hidden;
+    }
+    .cce-m-content>div:nth-of-type(1)>p>img{
+        vertical-align: middle;
+        width:100%;
+    }
 }
