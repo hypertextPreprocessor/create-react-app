@@ -160,6 +160,19 @@
     vertical-align: middle;
     cursor: pointer;
 }
+.union_input{
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.union_input>input{
+    border:none;
+    outline: none;
+}
+.custom_input{
+    
+}
 @media only screen and (max-width:1024px){
     .collapse_title{
 

@@ -363,9 +363,80 @@
     text-align: left;
     line-height: 3rem;
 }
+.login_logo_banner{
+    background-color: var(--main-color);
+    padding:1.2rem 1rem;
+    display:flex;
+    align-items: center;
+}
+.login_logo_banner>img{
+    width:40px;
+    vertical-align: middle;
+}
+.login_logo_banner>span{
+    color:#fff;
+    font-size:2rem;
+    margin-left:1rem;
+}
+.login_form_container{
+    width:550px;
+    margin:0 auto;
+    white-space: pre;
+    overflow:hidden;
+    /*
+    display:flex;
+    flex-flow:row nowrap;
+    align-items: center;
+    justify-content: center;
+    */
+}
+div.cu-form{
+    display:inline-block;
+    width:100%;
+    vertical-align: top;;
+}
+div.cu-form-group{
+    padding:1.2rem 1.2rem;
 
+}
+div.cu-form-group label.title{
+    font-size:1.8rem;
+    flex-basis:20%;
+}
+div.cu-form-group p{
+    flex-basis:80%;
+}
+div.cu-form-group>*{
+    flex-grow:1;
+    flex-shrink: 1;
+}
+div.cu-form-group input{
+    padding:1rem;
+    outline: none;;
+    font-size:1.8rem;
+    border:none;
+    border-bottom:2px solid var(--second-color);
+}
 .featuredItem>p>img{width:100%;}
+.cu-form-footer{
+    background-color: #fff;
+    padding:2rem;
+    text-align: center;
+}
+.login_copoyright_footer{
+    background-color: var(--main-color);
+    color:#ffffff;
+}
+div.form_ext>p:hover{
+    color:var(--tarifa-color);
+}
 @media only screen and (max-width:1024px){
+    .login_form_container{
+        width:100%;
+    }
+    div.cu-form{
+        width:100%;
+    }
     .cateCabinTarifa p:nth-of-type(1){
         display:flex;
         flex-flow:column wrap;
@@ -450,6 +521,10 @@
     }
     .menu_logo>div:nth-of-type(2) p:nth-of-type(1)>span{
         margin-right:0.8rem;
+    }
+    .menu_logo>div:nth-of-type(2) p:nth-of-type(1)>span a{
+        color:#fff;
+        text-decoration: none;
     }
     .menu_logo>div:nth-of-type(2) p:nth-of-type(2){
         display:flex;

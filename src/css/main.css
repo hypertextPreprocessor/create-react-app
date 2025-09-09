@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding:0;
+    -webkit-tap-highlight-color:transparent;
 }
 :root{
     --main-color:#454545;
@@ -67,6 +68,17 @@ body{
     transform-origin: center;
     border-radius: 2rem;
     overflow: hidden;
+}
+/* 去除 number 输入框的增减按钮 */
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spin {
+  -moz-appearance: textfield;
+  appearance:textfield;
 }
 @media only screen and (max-width:1024px){
     .nav-disabled .swiper-button-prev,

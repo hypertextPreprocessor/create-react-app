@@ -1,7 +1,7 @@
 import React, { useEffect,useState,useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay,Pagination, Scrollbar } from 'swiper/modules';
-import { useNavigate } from "react-router";
+import { useNavigate,NavLink } from "react-router";
 import {useWindowState} from "@caveats/externalStore";
 import {Menu} from "@com";
 import images from "@img/icons";
@@ -89,7 +89,7 @@ export default function Header(){
                     </div>
                     <div>
                         <p>
-                            <span>Sign in</span>
+                            <span><NavLink to="/login">Sign in</NavLink></span>
                             <SvgIcon icon="fulano" width="18" height="18" stroke="none" fill="#fff" estilo={1}/>
                         </p>
                         <p>

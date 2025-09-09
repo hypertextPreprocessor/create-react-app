@@ -1,4 +1,5 @@
 import React,{useRef,useImperativeHandle,useState} from 'react';
+import { NavLink } from "react-router";
 import {MenuGenerator} from "@com";
 import {useWindowState} from "@caveats/externalStore";
 import SvgIcon from "@img/icons/SvgIcon";
@@ -167,7 +168,7 @@ export default function Menu({ref}){
                 <p>
                     <SvgIcon icon="fulano" width="34" height="34" fill="#fff" stroke="none"/>
                 </p>
-                <h1 style={{marginLeft:'1.2rem'}}>Hello,Sign in</h1>
+                <h1 style={{marginLeft:'1.2rem'}}>Hello,<NavLink to="/login" style={{color:'#fff',textDecoration:'none'}}>Sign in</NavLink></h1>
             </div>
             <div className={styles["menuPanel"]} ref={menuPanelRef}>
                 <MenuGenerator list={menu} itemConHeight={itemConHeight} itemClicked={itemClicked} navBack={navBack}/>

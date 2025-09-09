@@ -19,10 +19,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import SvgIcon from "@img/icons/SvgIcon";
 function DrawerContent(){
+    const navigate = useNavigate();
+    function toSignIn(){
+        navigate("/login");
+    }
     return <div className={styles['drawer_content']}>
         <h2>Chooise your Location</h2>
         <p>Delivery options and delivery speeds may vary of different locations</p>
-        <p><Button>Sign in to see your address</Button></p>
+        <p><Button onClick={toSignIn}>Sign in to see your address</Button></p>
         <ul>
             <li>
                 <SvgIcon icon="location" width="25" height="25" fill="#000"/>

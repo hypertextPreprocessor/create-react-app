@@ -520,23 +520,23 @@ radio.white.checked .uni-radio-input {
 }
 
 .solids::after {
-	border: 0.32rem solid #eee;
+	border: 0.32rem solid var(--container-bg-color);
 }
 
 .solids-top::after {
-	border-top: 0.32rem solid #eee;
+	border-top: 0.32rem solid var(--container-bg-color);
 }
 
 .solids-right::after {
-	border-right: 0.32rem solid #eee;
+	border-right: 0.32rem solid var(--container-bg-color);
 }
 
 .solids-bottom::after {
-	border-bottom: 0.32rem solid #eee;
+	border-bottom: 0.32rem solid var(--container-bg-color);
 }
 
 .solids-left::after {
-	border-left: 0.32rem solid #eee;
+	border-left: 0.32rem solid var(--container-bg-color);
 }
 
 /* -- 虚线 -- */
@@ -2325,7 +2325,7 @@ button.cuIcon.lg {
 }
 
 .cu-form-group+.cu-form-group {
-	border-top: 0.04rem solid #eee;
+	border-top: 0.04rem solid var(--container-bg-color);
 }
 
 .cu-form-group .title {
@@ -3153,23 +3153,36 @@ scroll-view.cu-steps .cu-item {
 .padding-0 {
 	padding: 0;
 }
-
+.gap-0 {
+	gap: 0;
+}
+.gap-xs{
+	gap: 0.4rem;
+}
 .padding-xs {
 	padding: 0.4rem;
 }
-
+.gap-sm{
+	gap: 0.8rem;
+}
 .padding-sm {
 	padding: 0.8rem;
 }
-
+.gap{
+	gap: 1.2rem;
+}
 .padding {
 	padding: 1.2rem;
 }
-
+.gap-lg{
+	gap: 1.6rem;
+}
 .padding-lg {
 	padding: 1.6rem;
 }
-
+.gap-xl{
+	gap: 2rem;
+}
 .padding-xl {
 	padding: 2rem;
 }
