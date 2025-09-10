@@ -51,4 +51,18 @@ function makeContainerInsertion({className=getId({length:8}),targetDom=document.
     }
 
 }
-export {checkDevice,canAllClassOnParentEle,getId,makeContainerInsertion};
+//class 三属性控制 true,false,String 
+function tripleControl(property,keyString){
+  if(typeof property === 'boolean'){
+    if(property){
+      return true;
+    }else{
+      return false;
+    }
+  }else if(property === keyString){
+    return true;
+  }else{
+    return false;
+  }
+}
+export {checkDevice,canAllClassOnParentEle,getId,makeContainerInsertion,tripleControl};

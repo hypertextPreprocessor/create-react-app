@@ -70,6 +70,10 @@ export default function SvgIcon({
             return <Concentrate {...params} />;
         case "assets":
             return <Assets {...params} />;
+        case "delivery":
+            return <Delivery {...params}/>;
+        case "pay_pending":
+            return <PayPending {...params}/>;
         default:
             return null;
     }
@@ -235,7 +239,7 @@ function MenuTripleLine({
     onClick=null
 }){
     return <>
-        <svg id="Layer_1" version="1.1" viewBox="0 0 32 32" style={style} height={height} width={width} onClick={onClick}>
+        <svg version="1.1" viewBox="0 0 32 32" style={style} height={height} width={width} onClick={onClick}>
             <path fill={fill} stroke={stroke} strokeWidth={strokeWidth} d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"/>
         </svg>
     </>
@@ -249,7 +253,7 @@ function GreaterThan({
     stroke=DEFAULT_STROKE,
 }){
     return <>
-        <svg style={style} id="Layer_1" version="1.1" viewBox="0 0 50 50" width={width} height={height}>
+        <svg style={style} version="1.1" viewBox="0 0 50 50" width={width} height={height}>
             <g id="Layer_1_1_" fill={fill} stroke={stroke} strokeWidth={strokeWidth}>
                 <polygon points="13.854,48.707 37.561,25 13.854,1.293 12.439,2.707 34.732,25 12.439,47.293  "/>
             </g>
@@ -383,7 +387,7 @@ function ThumbUp({
     height=DEFAULT_HEIGHT
 }){
     return <>
-        <svg id="Layer_1" version="1.1" viewBox="0 0 64 64" width={width} height={height} style={style}>
+        <svg version="1.1" viewBox="0 0 64 64" width={width} height={height} style={style}>
             <g>
                 <g id="Icon-Like" transform="translate(78.000000, 528.000000)">
                     <path d="M-22-495.6c0-3.2-2.5-4.9-6-4.9h-10.1c0.7-2.7,1.1-5.3,1.1-7.5c0-8.7-2.4-10.5-4.5-10.5     c-1.4,0-2.4,0.1-3.8,1c-0.4,0.2-0.6,0.6-0.7,1l-1.5,8.1c-1.6,4.3-5.7,8-9,10.5v21.4c1.1,0,2.5,0.6,3.8,1.3     c1.6,0.8,3.3,1.6,5.2,1.6h14.3c3,0,5.2-2.4,5.2-4.5c0-0.4,0-0.8-0.1-1.1c1.9-0.7,3.1-2.3,3.1-4.1c0-0.9-0.2-1.7-0.5-2.3     c1.1-0.8,2.3-2.1,2.3-3.7c0-0.8-0.4-1.8-1-2.5C-22.9-492.8-22-494.2-22-495.6L-22-495.6z M-25.1-495.6c0,1.9-2,2.1-2.3,3     c-0.3,1,1.2,1.4,1.2,3.2c0,1.9-2.3,1.9-2.6,2.8c-0.4,1.1,0.7,1.5,0.7,3.3c0,0.1,0,0.2,0,0.3c-0.3,1.5-2.6,1.6-3,2.2     c-0.4,0.7,0.1,1.1,0.1,2.7c0,0.9-1,1.5-2.2,1.5h-14.3c-1.1,0-2.5-0.6-3.8-1.3c-1.2-0.6-2.4-1.2-3.7-1.5v-15.9     c3.7-2.8,8.5-7.1,10.4-12.3c0-0.1,0-0.2,0.1-0.2l1.4-7.5c0.5-0.2,0.9-0.2,1.7-0.2c0.3,0,1.5,1.8,1.5,7.5c0,2.2-0.4,4.7-1.2,7.5     h-0.4c-0.8,0-1.5,0.7-1.5,1.5c0,0.8,0.7,1.5,1.5,1.5H-28C-26.5-497.5-25.1-496.8-25.1-495.6L-25.1-495.6z" id="Fill-4_2_"/>
@@ -398,7 +402,7 @@ function Heart({
     width=DEFAULT_WIDTH,
     height=DEFAULT_HEIGHT
 }){
-    return <svg width={width} height={height} style={style}  id="Layer_1" version="1.1" viewBox="0 0 512 512">
+    return <svg width={width} height={height} style={style} version="1.1" viewBox="0 0 512 512">
         <path d="M340.8,98.4c50.7,0,91.9,41.3,91.9,92.3c0,26.2-10.9,49.8-28.3,66.6L256,407.1L105,254.6c-15.8-16.6-25.6-39.1-25.6-63.9  c0-51,41.1-92.3,91.9-92.3c38.2,0,70.9,23.4,84.8,56.8C269.8,121.9,302.6,98.4,340.8,98.4 M340.8,83C307,83,276,98.8,256,124.8  c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8  c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z"/>
     </svg>
 }
@@ -721,6 +725,141 @@ function Assets({
         id="path8" />
     </g>
     </svg>
+
+    </>
+}
+function Delivery({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill='none',
+    stroke=DEFAULT_STROKE,
+    strokeWidth=13.7,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    onClick=null
+}){
+    return <>
+        <svg
+            version="1.1"
+            style={style}
+            width={width}
+            height={height}
+            viewBox="0 0 338.54211 325.62497"
+            xmlns="http://www.w3.org/2000/svg"
+   >
+  <defs />
+  <g
+    stroke={stroke}
+    strokeWidth={strokeWidth}
+    fill={fill}
+    strokeLinejoin={strokeLinejoin}
+    strokeDasharray={strokeDasharray}
+    strokeOpacity={strokeOpacity}
+    strokeLinecap={strokeLinecap}
+    onClick={onClick}
+    transform="translate(-1.7614256,-15.15698)"
+>
+    <circle
+       cx="142.56694"
+       cy="85.635849"
+       r="63.628868" />
+    <path
+       d="m 121.03837,64.585692 c 0,0 21.05015,21.528564 21.05015,21.528564 0,0 34.4457,-33.010465 34.4457,-33.010465"
+       transform="translate(0.47841253,1.9136501)" />
+    <path
+       d="m 34.445702,165.05232 c 0,0 0,-29.18316 0,-29.18316 0,0 31.096815,0 31.096815,0" />
+    <path
+       d="m 5.2625378,192.32184 c 0,0 92.3336182,0 92.3336182,0"
+       transform="matrix(0.96841674,0,0,1,3.2987505,0)" />
+    <path
+       d="m 19.614914,221.98341 c 0,0 63.150454,0 63.150454,0"
+       transform="translate(0.95682506,-0.95682506)" />
+    <path
+       d="m 35.402527,244.94722 c 0,0 0,33.01046 0,33.01046 0,0 298.051003,0 298.051003,0" />
+    <path
+       d="m 235.37897,277.95768 c 0,0 0,-140.65328 0,-140.65328"/>
+    <path
+       d="m 217.19929,134.91233 c 0,0 60.27998,0.95683 60.27998,0.95683 0,0 25.35586,53.5822 25.35586,53.5822 0,0 30.13999,23.92063 30.13999,23.92063 0,0 0,91.8552 0,91.8552 0,0 -21.05015,0.47842 -21.05015,0.47842" />
+    <path
+       d="m 245.90404,307.61926 c 0,0 -116.25424,0 -116.25424,0" />
+    <path
+       d="m 58.366329,308.09767 c 0,0 -13.395551,-0.47841 -13.395551,-0.47841 0,0 1.435237,-26.31269 1.435237,-26.31269"
+       id="path10" />
+    <path
+       d="m 274.13038,192.80025 c 0,0 -37.79459,0 -37.79459,0" />
+    <circle
+       id="path12"
+       cx="94.247269"
+       cy="306.66245"
+       r="27.269514" />
+    <circle
+       cx="280.12167"
+       cy="306.10904"
+       r="27.269514" />
+  </g>
+</svg>
+    </>
+}
+function PayPending({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill='none',
+    stroke=DEFAULT_STROKE,
+    strokeWidth=40.5,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    onClick=null
+}){
+    return <>
+<svg
+   version="1.1"
+    style={style}
+    width={width}
+    height={height}
+    viewBox="0 0 1198.0325 1167.2277"
+    xmlns="http://www.w3.org/2000/svg"
+>
+  <defs d="defs1" />
+  <g
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill={fill}
+        strokeLinejoin={strokeLinejoin}
+        strokeDasharray={strokeDasharray}
+        strokeOpacity={strokeOpacity}
+        strokeLinecap={strokeLinecap}
+        onClick={onClick}
+     transform="translate(-86.192045,-98.399395)">
+    <path
+       d="M 283.22019,122.4736 172.2285,235.37894 285.13384,354.02524 283.22019,294.70209 H 688.91398 L 576.00864,183.7104 296.61574,181.79675 Z"
+        />
+    <path
+       d="M 698.48223,181.79675 H 1083.1259 V 118.6463 l 112.9053,120.55994 -114.819,116.73265 v -59.32315 l -277.47922,1.91365 z"
+        />
+    <path
+       d="m 415.26204,564.52674 c 0,0 178.25446,-27.20963 283.22019,-51.66855 185.93158,-43.32544 449.69977,-64.75056 518.59917,-63.15045 30.2256,0.70195 50.0423,34.53946 45.9276,105.25075 -4.2494,73.02667 0,512.85821 0,512.85821 0,0 11.1256,46.5737 -44.014,49.7549 -99.5098,5.741 -138.9906,-8.3908 -344.45697,22.9638 -161.63717,24.6661 -373.18163,97.5125 -631.50449,97.5962 -88.04868,0.029 -141.367,41.956 -135.86914,-82.2871 6.37241,-144.0065 -5.72673,-231.75384 1.91365,-539.64922 1.61382,-65.03438 72.91146,-16.65129 244.94719,-47.84124" />
+    <path
+       d="m 1023.8027,1039.112 c 0,0 111.1646,-2.1907 109.078,-15.3093 -5.551,-34.90138 42.1004,-42.10027 42.1004,-42.10027 -7.689,-28.69557 13.0033,-391.70839 -10e-5,-392.29824 -40.4737,-1.83595 -45.9275,-53.5822 -45.9275,-53.5822 0,0 -310.53689,25.76231 -509.03092,80.37329 -118.61802,32.63497 -380.51826,43.96823 -378.90269,55.49585 6.41025,45.7391 -44.01394,42.1003 -44.01394,42.1003 L 191.365,1108.0033 c 0,0 42.10029,3.8273 53.58219,34.4457 11.4819,30.6184 296.30701,-18.092 350.19795,-32.532 86.0867,-23.0669 344.45699,-63.1505 344.45699,-63.1505" />
+    <path
+       d="m 757.80538,782.68283 c 9.56825,-38.273 -106.81787,-112.61915 -145.4374,-15.3092 -26.33767,66.36325 129.66684,86.51145 135.86915,130.1282 13.78222,96.92124 -107.1644,103.33707 -137.7828,21.05015" />
+    <path
+       d="m 685.08668,687.00033 c 0,0 0,331.06147 0,331.06147"/>
+    <circle
+       cx="344.457"
+       cy="924.29291"
+       r="44.01395" />
+    <circle
+       cx="1024.2865"
+       cy="794.23035"
+       r="44.01395" />
+  </g>
+</svg>
 
     </>
 }

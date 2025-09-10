@@ -6,7 +6,8 @@ import ProductItemTemplate from "@/views/ProductItemTemplate";
 import CommentTemplate from "@/views/CommentTemplate";
 import CommentMobileTemplate from "@/views/CommentMobileTemplate";
 import Login from "@/Login";
-import User from "@/views/User";
+import User from "@/views/user/User";
+import {StyledUserHome} from "@/views/user/UserHome";
 
 // eslint-disable-next-line no-undef
 const PUBLICPATH = PUBLIC_PATH || '/';
@@ -25,7 +26,10 @@ const router = createBrowserRouter([
             }]
         },{
             path:"/user",
-            Component:User
+            Component:User,
+            children:[{
+                index:true,Component:StyledUserHome
+            }]
         }]
     },{
         path:"/comments/:id?/:user?/:commentId?",

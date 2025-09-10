@@ -4,6 +4,8 @@ import detector from "i18next-browser-languagedetector";
 import resourcesToBackend from 'i18next-resources-to-backend'
 import i18n from "i18next";
 import { RouterProvider } from "react-router/dom";
+import {ThemeProvider} from "styled-components";
+import theme from "@css";
 import router from "@router";
 import '@css/main.css';
 import '@css/home.css';
@@ -41,7 +43,9 @@ const PUBLICPATH = PUBLIC_PATH || '/';
 export default function App(){
     return (
         <I18nextProvider i18n={i18n} defaultNS={['common']}>
-            <RouterProvider router={router}/>
+            <ThemeProvider theme={theme}>
+                <RouterProvider router={router} unstable_onError={(error,errorInfo)=>{console.error(error,errorInfo)}}/>
+            </ThemeProvider>
         </I18nextProvider>
     )
 }
