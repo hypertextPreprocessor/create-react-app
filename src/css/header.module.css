@@ -197,6 +197,10 @@
     cursor: pointer;
     border: 1px solid transparent;
 }
+.nav li a{
+    color:#fff;
+    text-decoration: none;
+}
 .nav li:not(:first-child):hover{
     border:1px solid #ffffff;
 }

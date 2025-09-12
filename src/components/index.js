@@ -2,7 +2,6 @@ export {default as LanguageSelect} from "./common";
 export {default as SignIn} from "./SignIn";
 export {default as Modal} from "./Modal";
 export {default as Menu} from "./Menu";
-export {default as MenuGenerator} from "./MenuList";
 export {default as ProductCabin,TopSellerProduct,Tarifa} from "./ProductCabin";
 export {default as CategoryCabin} from "./CatogaryCabin";
 export {default as RatingStar} from "./RatingStar";

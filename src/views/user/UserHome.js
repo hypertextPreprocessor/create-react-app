@@ -3,6 +3,7 @@ import cn from "classnames";
 import styled from 'styled-components';
 import image from "@img";
 import SvgIcon from "@img/icons/SvgIcon";
+import { useNavigate } from "react-router";
 export const StyledUserHome = styled(UserHome).attrs({title:''})`
 
     background:${props=>props.theme.containerBgColor};
@@ -68,15 +69,48 @@ export const StyledUserHome = styled(UserHome).attrs({title:''})`
         min-width:15px;
     }
     .func_area>div:hover p:nth-of-type(2){
-        color:red;
+        color:${props=>props.theme.tarifaColor};
     }
+    .func_area>div:hover p:nth-of-type(1)>svg.fill g{
+        fill:${props=>props.theme.tarifaColor};
+    }
+    .list{
+        padding-top:1.6rem;
+        border-bottom:1px solid #dedede;
+        padding-bottom:1.6rem;
+    }
+    .list>div>div:nth-of-type(1)>p{
+        width:80px;
+        height:80px;
+        overflow:hidden;
+        border-radius:0.3rem;
+    }
+    .list>div>div:nth-of-type(1)>p>img{
+        width:100%;
+        vertical-align:center;
+    }
+    .list>div{
+        display:flex;
+        flex-flow:row nowrap;
+        align-items:center;
+        gap:1.6rem;
+    }
+    .list>div>div:nth-of-type(2){
+        overflow:hidden;
+    }
+    .list>div>div:nth-of-type(2)>p:nth-of-type(1){
+        font-size:1.5rem;
+        padding-bottom:0.4rem;
+    }
+
 `;
 function UserHome({className,type}){
+    const navigate = useNavigate();
     return <div className={className}>
         <div>
             <div className={cn('padding-sm','radius','bg-white')}>
                 <div className={cn('UserCon')}>
-                    <div className={cn('avtarCon')}>
+                    <div className={cn('avtarCon')} onClick={()=>{navigate('/user/user-info')}}>
                         <div><p className={cn('avtar')}><img src={image['cantingsumiao']} alt=""/></p></div>
                         <div className={cn('user_name','margin-left')}>
                             <h2 className="text-xl">User name</h2>
@@ -104,7 +138,7 @@ function UserHome({className,type}){
                 <h1 className="solid-bottom padding-bottom-sm text-xl">我的订单</h1>
                 <div className={cn('flex','align-center','func_area','padding-tb-df','solid-bottom')}>
                     <div>
-                        <p><SvgIcon icon="pay_pending" width="26" height="26" strokeWidth={42} /><span>12</span></p>
+                        <p><SvgIcon icon="pay_pending" width="26" height="26" strokeWidth={42}/><span>12</span></p>
                         <p className="text-lg padding-tb-sm">待付款</p>
                     </div>
                     <div>
@@ -112,15 +146,15 @@ function UserHome({className,type}){
                         <p className="text-lg padding-tb-sm">待收货</p>
                     </div>
                     <div>
-                        <p><SvgIcon icon="delivery" width="26" height="26" /></p>
+                        <p><SvgIcon icon="comment_rate" width="26" height="26" strokeWidth={30}/></p>
                         <p className="text-lg padding-tb-sm">待评价</p>
                     </div>
                     <div>
-                        <p><SvgIcon icon="delivery" width="26" height="26" /><span>1</span></p>
+                        <p><SvgIcon className="fill" icon="refund" width="26" height="26" fill="#000"/><span>1</span></p>
                         <p className="text-lg padding-tb-sm">退换/售后</p>
                     </div>
                     <div>
-                        <p><SvgIcon icon="delivery" width="26" height="26" /></p>
+                        <p><SvgIcon className="fill" icon="collapse-all" width="26" height="26" fill="#000" /></p>
                         <p className="text-lg padding-tb-sm">全部</p>
                     </div>
                 </div>
@@ -128,7 +162,19 @@ function UserHome({className,type}){
                         
                 </div>
             </div>
-
+            <div className="margin-top radius bg-white padding-sm">
+                {Array.from({length:3}).map((v,i)=><div key={i} className={cn('list')}>
+                    <div>
+                        <div>
+                            <p><img src={image['example']} alt=""/></p>
+                        </div>
+                        <div>
+                            <p className="oneLineTxt">订单已送达,您的快递已暂存至DHL快递【005】柜</p>
+                            <p><span>普通快递</span>|<span>2025-09-11 12:46:55</span></p>
+                        </div>
+                    </div>
+                </div>)}
+            </div>
         </div>
     </div>
 }

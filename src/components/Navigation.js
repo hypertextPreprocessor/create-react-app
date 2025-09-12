@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from "classnames";
 import styled from 'styled-components';
 import {tripleControl} from "@utlis";
 import SvgIcon from "@img/icons/SvgIcon";
+import { useNavigate,useLocation,useMatch } from "react-router";
 /*
     style - style for menu list on the every level of ul
     items - list item ,Array-object, [{label,key,icon,children}]
@@ -38,6 +39,25 @@ const StyledNavigation = styled.div`
 `;
 
 export default function Navigation({style={},items,mainStyle={},subStyle={},expandAll=true}){
+    let navigate = useNavigate();
+    let location = useLocation();
+    //let match = useMatch(location.pathname);
+    function activeByKey(key){
+        if(typeof key === 'string'){
+            var divs = document.querySelectorAll('ul.outerContainer li>div');
+            for(var k=0;k<divs.length;k++){
+                if(divs[k].dataset.isTab === 'false'){
+                    if(divs[k].dataset.url===key){
+                        divs[k].style.setProperty('background-color','var(--light-tarifa)');
+                        divs[k].style.setProperty('color','var(--tarifa-color)');
+                    }
+                }
+            }
+        }
+    }
+    useEffect(()=>{
+        activeByKey(location.pathname);
+    },[location]);
     const mainMenuStyle = {
         ...mainStyle,
         background:"#ffffffff"
@@ -67,14 +87,29 @@ export default function Navigation({style={},items,mainStyle={},subStyle={},expa
         }else{
             event.currentTarget.classList.add('active');
         }
-        
+        if(item.url){
+            var divs = document.querySelectorAll('ul.outerContainer li>div');
+            for(var j=0;j<divs.length;j++){
+                //console.log(window.getComputedStyle(divs[j]).getPropertyValue('background-color'));
+                if(divs[j].dataset.isTab === 'false'){
+                    divs[j].removeAttribute('style');
+                    Object.assign(divs[j].style,subMenuStyle);
+                }
+            }
+            navigate(item.url);
+            event.currentTarget.style.setProperty('background-color','var(--light-tarifa)');
+            event.currentTarget.style.setProperty('color','var(--tarifa-color)');
+            
+        }
     }
-    return items.map((item,index)=><ul key={item.key} style={{...computedSytle}}>
+    return items.map((item,index)=><ul key={item.key} style={{...computedSytle}} className="outerContainer">
         <li style={{cursor:'pointer'}}>
             <StyledNavigation 
                 onClick={(event)=>{itemClick(event,item)}} 
                 expandall={(typeof expandAll=== 'boolean' && expandAll)?'true':'false'} item={item} 
                 className={cn('flex','align-center','justify-between','padding-sm',{'active':tripleControl(expandAll,item.key)})} 
+                data-is-tab={(item.children && item.children.length)?true:false}
+                data-url={item.url?item.url:''}
                 style={(item.children && item.children.length)?mainMenuStyle:subMenuStyle}
             >
                 <p className={cn('flex','align-center','justify-start','gap-sm')}>

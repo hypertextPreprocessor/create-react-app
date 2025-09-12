@@ -23,7 +23,7 @@ export default function Input({
     bgColor="#f2f2f2",
     txtColor="#000",
     border='underline',
-    autoComplete=true,
+    autoComplete="true",
     onChange,
     onKeyDown,
     onFocus,
@@ -32,6 +32,7 @@ export default function Input({
     defaultValue,
     id,
     name,
+    className=null
 }){
     const [passwordVisiblity,setPasswordVisiblity] = useState(false);
     var inputRef = useRef(null);
@@ -78,7 +79,7 @@ export default function Input({
                 ref={inputRef} 
                 type={passwordVisiblity?'text':type} 
                 autoComplete={autoComplete}
-                className={cn('padding-sm','radius',styles['custom_input'])} 
+                className={cn('padding-sm','radius',styles['custom_input'],className)} 
                 style={inputStyle} 
                 placeholder={placeholder} 
                 onChange={onChange} 

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay,Pagination, Scrollbar } from 'swiper/modules';
 import { useNavigate,NavLink } from "react-router";
 import {useWindowState} from "@caveats/externalStore";
+import {mainMenu,userMenu} from "@router/menu.js";
 import {Menu} from "@com";
 import images from "@img/icons";
 import image from "@img";
@@ -15,18 +16,20 @@ import 'swiper/css/pagination';
 import "swiper/css/autoplay";
 import 'swiper/css/scrollbar';
 import * as styles from "@css/header.module.css"; //className={styles["sectionTop"]}
+
 export default function Header(){
     let navigate = useNavigate();
-   const [state,setState] = useGeoLocation({latitude:33.4484,longitude:-112.074});
+   //const [state,setState] = useGeoLocation({latitude:33.4484,longitude:-112.074});
    const [model,setModel] = useState(false);
+   const [menuLocation,setMenuLocation] = useState('left');
+   const [menuObj,setMenuObj] = useState([]);
    const menuRef = useRef(null);
    function menuclick(){
-        menuRef.current.openMenu();
+        //menuRef.current.openMenu();
    }
     useEffect(()=>{
-
         
-    },[]);
+    },[menuObj]);
     function toHome(){
         navigate("/");
     }
@@ -66,7 +69,7 @@ export default function Header(){
                                 <option value="zh">zh</option>
                             </select>
                         </li>
-                        <li>sing in</li>
+                        <li><NavLink to="/login">sing in</NavLink></li>
                         <li>orders</li>
                         <li className={styles["cartbtn"]}>
                             <SvgIcon icon="cart" width="25" height="25" fill="none" stroke="#fff" strokeWidth={16} />
@@ -76,7 +79,11 @@ export default function Header(){
                 </div>
             </section>
             <section className={styles["sectionBottom"]}>
-                <HotSellCategory menuClick={menuclick}/>
+                <HotSellCategory menuClick={()=>{
+                    setMenuObj(x=>mainMenu);
+                    setMenuLocation(x=>'left');
+                    menuclick();
+                }}/>
             </section>
             <Model show={model} title="choose your location" content="We are trying to access your location ,you have to allow us to have your geo location permission." onClose={()=>{setModel(false)}}/>
         </section>
@@ -84,12 +91,22 @@ export default function Header(){
             <section className={styles["sectionTop"]}>
                 <div className={styles["menu_logo"]}>
                     <div>
-                        <SvgIcon onClick={menuclick} icon="menu_triple_line" fill="#fff" width="32" height="32" stroke="none"/>
+                        <SvgIcon onClick={()=>{
+                            setMenuObj(x=>mainMenu);
+                            setMenuLocation(x=>'left');
+                            menuclick();
+                        }} icon="menu_triple_line" fill="#fff" width="32" height="32" stroke="none"/>
                         <img src={images["logo"]} alt="logo" onClick={toHome}/>
                     </div>
                     <div>
                         <p>
-                            <span><NavLink to="/login">Sign in</NavLink></span>
+                            {/*<span><NavLink to="/login">Sign in</NavLink></span>*/}
+                            <span onClick={()=>{
+                                //setMenuLocation('right');
+                                setMenuObj(x=>userMenu);
+                                setMenuLocation(x=>'right');
+                                menuclick();
+                            }}>Lattie</span>
                             <SvgIcon icon="fulano" width="18" height="18" stroke="none" fill="#fff" estilo={1}/>
                         </p>
                         <p>
@@ -116,7 +133,7 @@ export default function Header(){
                 <span style={{marginLeft:3}}>Delivery to China</span>
             </section>
         </section>
-        <Menu ref={menuRef}/>
+        <Menu ref={menuRef} items={menuObj} location={menuLocation} onClose={()=>{setMenuObj([])}}/>
     </>
     );
 }

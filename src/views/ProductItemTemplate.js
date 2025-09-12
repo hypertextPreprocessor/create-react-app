@@ -147,7 +147,7 @@ export function ProductItemTemplateMobile(){
                 <div className={cn('padding-tb-sm',styles['commentContentExtracionMobile'])}>
                     <div className={cn(styles['cce-m-head'],'flex','align-center','justify-between')}>
                         <div className="flex align-center">
-                            <p class="margin-right-sm"><img src={icon['logo']} alt=""/></p>
+                            <p className="margin-right-sm"><img src={icon['logo']} alt=""/></p>
                             <p className="text-lg">用户昵称</p>
                         </div>
                         <div><p className="text-lg text-grey">2025-08-13</p></div>

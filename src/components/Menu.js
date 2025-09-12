@@ -1,182 +1,228 @@
-import React,{useRef,useImperativeHandle,useState} from 'react';
-import { NavLink } from "react-router";
-import {MenuGenerator} from "@com";
+import React,{useRef,useImperativeHandle,useState, useEffect, useCallback} from 'react';
+import { useNavigate } from "react-router";
 import {useWindowState} from "@caveats/externalStore";
 import SvgIcon from "@img/icons/SvgIcon";
-import * as styles from '@com/css/com.module.css';
-
-const m = {
-    container:{
-        display:'none',
-        position:'fixed',
-        top:0,
-        left:0,
-        width:'100%',
-        height:'100%',
-        backgroundColor:'rgba(0,0,0,0.5)',
-        zIndex:9999
-    },
-    menu:{
-        position:'fixed',
-        top:0,
-        left:'-375px',
-        backgroundColor:'#fff',
-        width:'375px',
-        height:'100%',
-        transition:'all 0.8s 0.2s ease-in-out'
-    },
-    usertitle:{
-        backgroundColor:'var(--second-color)',
-        display:'flex',
-        flexFlow:'row nowrap',
-        alignItems:'center',
-        //justifyContent:'center'
-        padding:'3%',
-        color:'#ffffff'
-    },
-    close:{
-        position:'fixed',
-        top:'2%',
-        left:'390px',
-        cursor:'pointer',
-        transition:'all 2s .2s ease-in-out'
-    },
-    title:{
-        padding:'2%',
-        width:'88%',
-        margin:'0 auto'
+import styled from 'styled-components';
+/*
+const scrollMove = keyframes`
+    from {
+        transform:translateX(0) rotate(0deg);
     }
-}
-export default function Menu({ref}){
-    const {devices} = useWindowState();
-    const [itemConHeight,setItemConHeight] = useState('auto');
-    const menu = [{
-        title:'Trending',
-        items:[{title:'Best Sellers',url:"/category/12"},{title:'New Releases'},{title:'Movers & Shakers'}]
-    },{
-        title:'Digital Content And Devices',
-        items:[{
-            title:'Prime Video',
-            subItems:[{
-                    title:'Prime Video',
-                    items:[{title:"Video1"}]
-                },{
-                    title:'Categories',
-                    items:[{title:"Categories1"}]
-                },{
-                    title:'My Stuff',
-                    items:[{title:"Stuff1"}]
-                },{
-                    title:'Watch Anywhere',
-                    items:[{title:"Anywhere1"}]
-                },{
-                    title:'Getting Started',
-                    items:[{title:"Started1"}]
-                }
-            ]
-        },{
-            title:'More to Explore',
-            subItems:[{
-                title:'Kids',
-                items:[{title:"Kids"}]
-            },{
-                title:"Olds",
-                items:[{
-                    title:"Olds",
-                    subItems:[{
-                        title:"Olds",
-                        items:[{title:"facilities"}]
-                    }]
-                }]
-            }]
-        },{title:'Echo & Alexa'},{title:'Fire Tablets'},{title:'Fire TV'},{title:'Kindle E-readers & Books'},{title:'Audible Audiobooks'}]
-    },{
-        title:'Shop By Department',
-        items:[{
-            title:'Clothing,Shoes,Jewelry & watches'
-        },{
-            title:'Amazon Fresh'
-        },{
-            title:'Whole Foods Market'
-        },{
-            title:'Books'
-        },{
-            title:'Old styles'
-        },{
-            title:"New Products"
-        }]
-    }];
-    const bgCover = useRef();
-    const menuRef = useRef();
-    const userLogRef = useRef();
-    const closeMenuRef = useRef();
-    const menuPanelRef = useRef();
-    function closeMenu(){
-        document.body.style.overflow='auto';
-        //menuRef.current.classList.add(styles["moveOut"]);
-        menuRef.current.style.left='-375px';
-        closeMenuRef.current.style.left='-390px';
+    to {
+        transform:translateX(100px) rotate(360deg);
+    }
+`;
+*/
+//animation:${scrollMove} .3s ease-in-out 1;
+export const StyledMenu = styled.div`
+    display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    z-index:9999;
+    background-color:rgba(0,0,0,0.7);
+    >div{
+        position:absolute;
+        top:0;
+        background:white;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: flex-start;
+        width:15%;
+        min-width:${props=>props['data-min-width']}px;
+        overflow:hidden;
+    }
+    >div>div{
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+    >div>div ul{
+        list-style-type:none;
+    }
+    >div>div ul li:not(.outerUl>li){
+        display:flex;
+        flex-flow:row nowrap;
+        align-items:center;
+        justify-content:space-between;
+    }
+    >div>div ul li p:not(.outerUl>li>p){
+        font-size:1.6rem;
+        cursor:pointer
+    }
+    >div>div ul li li:hover:not(.outerUl>li>p){
+        color:${props=>[props.theme.tarifaColor]};
+        background-color:${props=>[props.theme.lightTarifa]};
+    }
+    >div>div>ul>li>p{
+        font-size:1.8rem;
+        font-weight:bold;
+    }
+    >div>div ul li p:has( svg){
+        
+    }
+    >div>div>div{
+        background-color:${props=>props.theme.secondColor};
+        color:#fff;
+        display:flex;
+        flex-flow:row nowrap;
+        align-items:center;
+        gap:1rem;
+    }
+    >div>div>div:nth-of-type(2){
+        background-color:${props=>props.theme.containerBgColor};
+        color:#000;
+    }
+    >p{
+        cursor:pointer;
+        position:absolute;
+        top:0;
+        transform:rotate(0deg); 
+    }
+    
+`;
+export default function Menu({ref,items=[],minWidth=325,onOpen,onClose,location="left",knockOnCover=true}){
+    const navigate = useNavigate();
+    const {winHeight} = useWindowState();
+    const menuContainerRef = useRef(null);
+    const closeRef = useRef(null);
+    var execClose = useCallback(function(){
+        menuContainerRef.current.style.setProperty(location,`${-menuContainerRef.current.clientWidth}px`);
+        closeRef.current.style.setProperty(location,-closeRef.current.clientWidth + 'px');
+        closeRef.current.style.setProperty('transform','rotate(0deg)');
+        
         setTimeout(()=>{
-            bgCover.current.style.display='none';
-        },1000);
-    }
-    function openMenu(){
-        document.body.style.overflow='hidden';
-        bgCover.current.style.display='block';
+            menuContainerRef.current.style.removeProperty('transform');
+            closeRef.current.style.removeProperty('transform');
+            menuContainerRef.current.parentElement.style.setProperty('display','none');
+            document.body.style.setProperty('overflow','auto');
+            onClose && onClose();
+        },300);
+    },[location,onClose]);
+    const [menuSerise,setMenuSerise] = useState([items]);
+    const openCache = useCallback(open,[onOpen,location]);
+    const closeCache = useCallback(close,[knockOnCover,execClose]);
+    function open(){
+        menuContainerRef.current.parentElement.style.setProperty('display','block');
+        document.body.style.setProperty('overflow','hidden');
+        if(location === 'right'){
+            closeRef.current.style.setProperty('width',closeRef.current.clientHeight+'px');
+        }
+        menuContainerRef.current.style.setProperty(location,-menuContainerRef.current.clientWidth + 'px');
+        closeRef.current.style.setProperty(location,-closeRef.current.clientWidth + 'px');
+        
+        menuContainerRef.current.style.setProperty('transition','all .3s 0s ease-in-out');
+        closeRef.current.style.setProperty('transition','all .3s 0s ease-in-out');
         setTimeout(()=>{
-            var docH = document.documentElement.clientHeight - userLogRef.current.clientHeight;
-            //setItemConHeight(`calc(100% - ${userLogRef.current.clientHeight})`);
-            setItemConHeight(docH + 'px')
-            menuRef.current.style.left='0';
-            var toWidth = menuRef.current.clientWidth;
-            closeMenuRef.current.style.left=Number(toWidth + 10) + 'px';
 
-        })
+            menuContainerRef.current.style.setProperty(location,"0px");
+            closeRef.current.style.setProperty(location,`${menuContainerRef.current.clientWidth}px`);
+
+            closeRef.current.style.setProperty('transform','rotate(360deg)');
+            document.body.style.setProperty('overflow','hidden');
+            onOpen && onOpen();
+        },300);
     }
-    const [menulist,setMenulist] = useState(menu);
+    function close(e){
+        if(knockOnCover){
+            if(e.currentTarget !== closeRef.current && e.currentTarget !== e.target){
+                return false;
+            }
+        }
+        execClose();
+    }
+     useEffect(() => {
+        setMenuSerise([items]);
+    }, [items]);
+    useEffect(()=>{
+        if(items && items.length){
+            menuContainerRef.current.style.setProperty('height',winHeight + 'px');
+            if(location === 'left'){
+                menuContainerRef.current.style.removeProperty('right');
+                closeRef.current.style.removeProperty('right');
+            }else if(location === 'right'){
+                menuContainerRef.current.style.removeProperty('left');
+                closeRef.current.style.removeProperty('left');
+            }
+            menuContainerRef.current.style.setProperty(location,-menuContainerRef.current.clientWidth + 'px');
+            closeRef.current.style.setProperty(location,-closeRef.current.clientWidth + 'px');
+            openCache();
+        }
+    },[items,winHeight,menuSerise,location,openCache]);
     useImperativeHandle(ref,()=>{
         return {
-            openMenu:openMenu,
-            closeMenu:closeMenu
+            openMenu:openCache,
+            closeMenu:closeCache, 
+            container:menuContainerRef?.current?.parentElement
         }
-    },[])
-    function itemClicked(subItems,num){
-        console.log('subItems',subItems);
-        if(!subItems){
-            closeMenu();
-        }else{
-            setTimeout(()=>{
-                menuPanelRef.current.scroll({
-                    left:userLogRef.current.clientWidth*(num+1),
-                    behavior:"smooth"
-                })
-            })
-        }
+    },[openCache,closeCache])
+    if(items && items.length){
+        function navBack(){
 
-    }
-    function navBack(num){
-        console.log('num',num);
-        menuPanelRef.current.scroll({
-            left:userLogRef.current.clientWidth * (num),
-            behavior:"smooth"
-        })
-    }
-    return (
-    <div style={m.container} ref={bgCover}>
-        <menu style={{...m.menu,width:devices.isDesktop?m.menu.width:'76%',minWidth:'290px'}} ref={menuRef}>
-            <div id="menu" style={m.usertitle} ref={userLogRef}>
-                <p>
-                    <SvgIcon icon="fulano" width="34" height="34" fill="#fff" stroke="none"/>
-                </p>
-                <h1 style={{marginLeft:'1.2rem'}}>Hello,<NavLink to="/login" style={{color:'#fff',textDecoration:'none'}}>Sign in</NavLink></h1>
+            menuContainerRef.current.scroll({
+                left:menuContainerRef.current.scrollLeft -  menuContainerRef.current.clientWidth,
+                behavior:"smooth"
+            })
+
+            setTimeout(()=>{
+                setMenuSerise(s=>s.slice(0,-1));
+            },300)
+            
+        }
+        function subMenuClick(e,item){
+            if(item.url){
+                navigate(item.url);
+                execClose();
+            }else if(item.children && item.children.length){
+                //createRoot(menuContainerRef.current).render(<GenMenu items={item.children} subMenuClick={subMenuClick}/>);
+                //menuContainerRef.current.appendChild(<GenMenu items={item.children} subMenuClick={subMenuClick}/>)
+                setMenuSerise(s=>[...s,item.children]);
+                setTimeout(()=>{
+                    menuContainerRef.current.scroll({
+                        left:menuContainerRef.current.clientWidth * menuSerise.length,
+                        behavior:"smooth"
+                    })
+                })
+            }
+        }
+        return <StyledMenu data-min-width={minWidth} onClick={knockOnCover?close:null}>
+            <div ref={menuContainerRef}>
+                {menuSerise.length?menuSerise.map((v,i)=><GenMenu index={i} key={i} items={v} subMenuClick={subMenuClick} navBack={navBack}/>):<h1>{menuSerise},Empty,{JSON.stringify(menuSerise)}</h1>}
             </div>
-            <div className={styles["menuPanel"]} ref={menuPanelRef}>
-                <MenuGenerator list={menu} itemConHeight={itemConHeight} itemClicked={itemClicked} navBack={navBack}/>
-            </div>
-        </menu>
-        <p ref={closeMenuRef} style={m.close} onClick={closeMenu}>
-            <SvgIcon icon="close_cross" width="32" height="32" fill="#fff" stroke='#fff' strokeWidth="2"/>
-        </p>
-    </div>
-    );
+            <p className="padding-sm" ref={closeRef} onClick={close}>
+                <SvgIcon icon="close_cross" width="32" height="32" fill="#fff" stroke='#fff' strokeWidth="2"/>
+            </p>
+        </StyledMenu>
+    }else{
+        return null;
+    }
+}
+function GenMenu({items=[],subMenuClick,index=0,navBack}){
+    useEffect(()=>{
+
+    },[items])
+    return <div>
+            <div className="padding-sm"><SvgIcon icon="fulano" width="34" height="34" fill="#fff" stroke="none"/><h1>Sing in</h1></div>
+            {index>0?<div className="padding-sm">
+                <SvgIcon style={{cursor:'pointer'}} onClick={navBack && navBack} icon="arrow_left" width="28" height="28" fill="#000000ff" stroke="none"/>
+                <h1>Title</h1>
+            </div>:null}
+            <ul className="outerUl">
+                {items.map((v,i)=>
+                <li key={v.key}>
+                    <p className="padding-sm">{v.label}</p>
+                    {v.children && v.children.length?(
+                        <ul>
+                            {v.children && v.children.length?(v.children.map((sv ,si)=><li data-key={sv.key} key={sv.key} onClick={(event)=>{subMenuClick && subMenuClick(event,sv)}}>
+                                <p className="padding-sm">{sv.label}</p>
+                                {sv.children && sv.children.length?<p className="padding-sm">
+                                    <SvgIcon icon="greater_than" width="20" height="20" style={{verticalAlign:'middle'}} strokeWidth="2" stroke="var(--disabled-color)"/>
+                                </p>:null}
+                            </li>)):null}
+                        </ul>
+                    ):null}
+                </li>)}
+            </ul>
+        </div>
 }

@@ -24,9 +24,9 @@ function getLocation(){
     }
 }
 export function useGeoLocation(state) {
-
     getLocation();
     const [optimisticState,setOptimisticState] = useOptimistic(state,(currentState,newState)=>{
+        console.log('newState',newState);
         if (currentState === newState) {
             return currentState;
         }

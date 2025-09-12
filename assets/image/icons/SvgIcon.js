@@ -9,17 +9,20 @@ export default function SvgIcon({
     strokeWidth=DEFAULT_STROKE_WIDTH,
     fill=DEFAULT_FILL,
     stroke=DEFAULT_STROKE,
+    onClick=null,
+    className=null,
     //差异化参数
     continentColor="#37c871",
     strokeLinecap="round",
     strokeLinejoin="round",
     strokeDasharray="none",
     strokeOpacity=1,
+    strokeMiterlimit=null,
     estilo=0,
-    onClick=null
+
 }){
     var params = {
-        style,width,height,strokeWidth,fill,stroke,onClick
+        style,width,height,strokeWidth,fill,stroke,onClick,className
     }
     switch(icon){
         case "world_wide":
@@ -74,6 +77,18 @@ export default function SvgIcon({
             return <Delivery {...params}/>;
         case "pay_pending":
             return <PayPending {...params}/>;
+        case "comment_rate":
+            return <CommentRate {...params} />;
+        case "refund":
+            return <Refund {...params} />;
+        case "collapse-all":
+            return <CollapseAll {...{...params,strokeWidth:1}} />;
+        case "upload":
+            return <Upload {...params} strokeMiterlimit="10"/>;
+        case "edit":
+            return <Edit {...{...params,storkeWidth:22}} />;
+        case "setting":
+            return <Setting {...params} />;
         default:
             return null;
     }
@@ -595,6 +610,7 @@ function Concentrate({
    height={height}
    viewBox="0 0 651.97376 645.76612"
    xmlns="http://www.w3.org/2000/svg"
+   onClick={onClick}
 >
   <g
      stroke={stroke}
@@ -678,6 +694,7 @@ function Assets({
         height={height}
         viewBox="0 0 475.89936 489.61276"
         xmlns="http://www.w3.org/2000/svg"
+        onClick={onClick}
     >
     <g
         fill={fill}
@@ -749,6 +766,7 @@ function Delivery({
             height={height}
             viewBox="0 0 338.54211 325.62497"
             xmlns="http://www.w3.org/2000/svg"
+             onClick={onClick}
    >
   <defs />
   <g
@@ -759,7 +777,7 @@ function Delivery({
     strokeDasharray={strokeDasharray}
     strokeOpacity={strokeOpacity}
     strokeLinecap={strokeLinecap}
-    onClick={onClick}
+   
     transform="translate(-1.7614256,-15.15698)"
 >
     <circle
@@ -824,6 +842,7 @@ function PayPending({
     height={height}
     viewBox="0 0 1198.0325 1167.2277"
     xmlns="http://www.w3.org/2000/svg"
+    onClick={onClick}
 >
   <defs d="defs1" />
   <g
@@ -834,7 +853,6 @@ function PayPending({
         strokeDasharray={strokeDasharray}
         strokeOpacity={strokeOpacity}
         strokeLinecap={strokeLinecap}
-        onClick={onClick}
      transform="translate(-86.192045,-98.399395)">
     <path
        d="M 283.22019,122.4736 172.2285,235.37894 285.13384,354.02524 283.22019,294.70209 H 688.91398 L 576.00864,183.7104 296.61574,181.79675 Z"
@@ -861,6 +879,294 @@ function PayPending({
   </g>
 </svg>
 
+    </>
+}
+function CommentRate({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill='none',
+    stroke=DEFAULT_STROKE,
+    strokeWidth=20.5932,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    onClick=null
+}){
+    return <>
+<svg
+    style={style}
+    width={width}
+    height={height}
+    onClick={onClick}
+    version="1.1"
+    viewBox="0 0 647.7085 537.26355"
+    xmlns="http://www.w3.org/2000/svg"
+>
+
+    <g
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill={fill}
+        strokeLinejoin={strokeLinejoin}
+        strokeDasharray={strokeDasharray}
+        strokeOpacity={strokeOpacity}
+        strokeLinecap={strokeLinecap}
+        transform="translate(-18.016144,-80.899902)"
+    >
+    <path
+       d="m 156.96597,382.26629 -41.677,-22.51976 -42.178567,21.56573 8.538662,-46.59618 -33.544116,-33.45003 46.954187,-6.27826 21.447164,-42.23897 20.48062,42.71599 46.79919,7.34491 -34.29646,32.67819 z"
+       transform="matrix(1.3062563,0,0,1.3062563,-31.372784,-234.56725)" />
+    <path
+       d="m 156.96597,382.26629 -41.677,-22.51976 -42.178567,21.56573 8.538662,-46.59618 -33.544116,-33.45003 46.954187,-6.27826 21.447164,-42.23897 20.48062,42.71599 46.79919,7.34491 -34.29646,32.67819 z"
+       transform="matrix(1.3062563,0,0,1.3062563,412.20441,-235.80653)" />
+    <path
+       d="m 292.7798,264.93812 c 0,0 -6.95078,1.53177 -8.0638,-0.79969 -2.7179,-5.69326 8.87759,-58.90329 8.87759,-58.90329 l -40.94993,-46.0823 57.98045,-10.90028 30.56911,-53.046257 31.52594,53.251457 c 0,0 50.92035,4.17555 58.53391,11.13949 5.51425,5.04375 -1.4282,6.38935 -1.4282,6.38935"
+     />
+    <path
+       d="m 360.72305,604.71344 c 0,0 -106.686,-42.57872 -142.08852,-77.50283 -8.85514,-8.73547 -16.7033,-66.3353 34.4457,-67.93458 29.40077,-0.91927 87.06722,63.62887 81.33013,-19.61491 2.18973,-39.50591 -1.43524,-121.19833 0.47841,-201.41168 1.91366,-18.17968 45.87854,-67.03008 81.33013,-9.56825 3.69297,5.98577 3.3489,80.14219 2.39207,113.86218 65.32422,-2.39206 129.17138,42.57872 139.69645,56.45268 0,0 54.06062,64.10728 -20.57174,172.22851"
+    />
+    <path
+       d="m 563.56996,521.46966 z m 9.56825,-36.35935 z m -5.74095,17.22285 z"
+       id="path4" 
+    />
+  </g>
+</svg>
+
+    </>
+}
+function Refund({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill='#000',
+    stroke=DEFAULT_STROKE,
+    strokeWidth=1,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    onClick=null,
+    className=null
+}){
+    return <>
+<svg
+    className={className}
+    style={style}
+    width={width}
+    height={height}
+    onClick={onClick}
+    version="1.1"
+    viewBox="0 0 328.43173 328.45742"
+    xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill={fill}
+        strokeLinejoin={strokeLinejoin}
+        strokeDasharray={strokeDasharray}
+        strokeOpacity={strokeOpacity}
+        strokeLinecap={strokeLinecap}
+     transform="translate(-6.4832249,-6.8891608)">
+    <path
+       d="m 225.63859,55.817642 c 0,0 -49.36629,-29.086399 -115.69475,3.382888 -19.430916,9.511878 21.18381,-4.358811 11.50182,23.680212 L 43.300959,123.47539 c 0,0 -13.192384,1.53765 -13.490508,-4.29515 -0.795926,-15.57229 4.315671,-79.381167 6.109718,-91.461083 0.239206,-0.837222 5.515606,-11.570271 14.621457,-5.033291 9.866129,7.082775 9.130275,14.775061 16.777834,20.615093 3.237499,2.472305 65.28973,-60.553685 163.73175,-25.033367 98.44202,35.520319 113.66502,157.642558 98.10374,198.575498 -3.75961,9.8894 -2.84262,-15.245 -32.54339,-13.69337 -3.99708,0.20882 4.91979,-28.10334 1.14898,-44.84492 -7.19647,-31.95086 -11.52087,-69.561883 -72.12195,-102.487158 z"
+    />
+    <path
+       d="m 45.330692,138.69839 c 0,0 -25.810468,-1.16723 -29.769409,-15.223 -4.926282,-17.4902 -35.349928,120.071 58.862241,179.96961 115.911366,73.69462 200.605226,-5.41261 200.605226,-5.41261 9.95081,17.2353 26.0402,29.8453 28.75455,15.89957 5.51101,-28.31442 7.11192,-48.71331 8.45721,-87.2785 0.24879,-7.13187 -7.78064,-11.84011 -23.34192,-4.05947 -15.56128,7.78065 -60.05909,33.02197 -64.27486,35.85861 -19.08746,12.84331 11.50067,21.09406 11.8401,20.9739 4.12178,-1.45914 -58.53287,41.96631 -126.51999,2.70631 C 24.20063,232.61933 45.330692,145.8346 45.330692,138.69839 Z"
+    />
+    <path
+       d="M 316.97655,203.64982 Z"
+    />
+    <path
+       d="m 204.3264,131.93261 8.45722,-24.0185 c 0,0 -13.8118,-10.268266 -29.0348,-9.929977 l -0.0384,-12.587496 c 0,0 -12.02011,-20.21293 -23.62162,-0.598016 l -1e-5,14.11317 c 0,0 -46.79751,9.337719 -29.00376,57.529109 2.00325,5.42548 13.70411,16.03952 26.27638,19.68408 20.18831,5.85235 45.37322,25.1909 19.89043,39.87828 -12.14209,6.99827 -32.91312,-2.58262 -44.01395,-10.04667 -1.33162,-0.89536 -3.4576,17.86814 -9.08984,23.68142 -2.50921,2.58986 25.02235,13.36988 33.96729,12.91715 0.15113,-0.008 0.48696,14.35837 0.56811,14.53177 0.90712,1.93839 12.10268,13.95968 22.27961,1.93242 2.51298,-2.96989 1.79053,-17.42102 1.79053,-17.42102 0,0 36.23125,-8.20308 34.07839,-45.51926 -2.15285,-37.31618 -46.87279,-40.04752 -55.60696,-50.88087 -6.79576,-8.42906 -6.92654,-36.6978 35.16332,-16.98364 z"
+    />
+  </g>
+</svg>
+
+    </>
+}
+function CollapseAll({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill=DEFAULT_FILL,
+    stroke=DEFAULT_STROKE,
+    strokeWidth=1,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    onClick=null,
+    className=null
+}){
+    return <>
+        <svg 
+            className={className}
+            height={height}
+            viewBox="0 0 32 32" 
+            width={width}
+            style={style}
+            onClick={onClick}
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+            >
+                <path d="M30,15H28V7H13V5H28a2.0023,2.0023,0,0,1,2,2Z"/>
+                <path d="M25,20H23V12H8V10H23a2.0023,2.0023,0,0,1,2,2Z"/>
+                <path d="M18,27H4a2.0023,2.0023,0,0,1-2-2V17a2.0023,2.0023,0,0,1,2-2H18a2.0023,2.0023,0,0,1,2,2v8A2.0023,2.0023,0,0,1,18,27ZM4,17v8H18.0012L18,17Z"/>
+                <rect className="cls-1" data-name="&lt;Transparent Rectangle&gt;" height={height} id="_Transparent_Rectangle_" width={width} fill="none" opacity={0}/>
+             </g>
+        </svg>
+    </>
+}
+function Upload({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=2,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+        <svg 
+            className={className}
+            width={width}
+            height={height}
+            style={style}
+            onClick={onClick}
+            enableBackground="new 0 0 50 50" 
+            version="1.1" 
+            viewBox="0 0 50 50" 
+            xmlns="http://www.w3.org/2000/svg" 
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+            >
+                <rect fill="none" height="50" width="50" stroke="none"/>
+                <path 
+                    d="M32,35c0,0,8.312,0,9.098,0C45.463,35,49,31.463,49,27.099s-3.537-7.902-7.902-7.902c-0.02,0-0.038,0.003-0.058,0.003  c0.061-0.494,0.103-0.994,0.103-1.504c0-6.71-5.439-12.15-12.15-12.15c-5.229,0-9.672,3.309-11.386,7.941  c-1.087-1.089-2.591-1.764-4.251-1.764c-3.319,0-6.009,2.69-6.009,6.008c0,0.085,0.01,0.167,0.013,0.251  C3.695,18.995,1,22.344,1,26.331C1,31.119,4.881,35,9.67,35c0.827,0,8.33,0,8.33,0" 
+                />
+                <polyline points="20,28 25,23 30,28   " 
+                />
+                <line x1="25" x2="25" y1="43" y2="23.333"
+                />
+            </g>
+        </svg>
+    </>
+}
+function Edit({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=22,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+<svg
+    className={className}
+    width={width}
+    height={height}
+    style={style}
+    onClick={onClick}
+   version="1.1"
+   viewBox="0 0 568.67414 568.6742"
+   xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    stroke={stroke}
+    strokeWidth={strokeWidth}
+    fill={fill}
+    strokeLinejoin={strokeLinejoin}
+    strokeDasharray={strokeDasharray}
+    strokeOpacity={strokeOpacity}
+    strokeLinecap={strokeLinecap}
+    strokeMiterlimit={strokeMiterlimit}
+    transform="translate(-32.300991,-85.074432)">
+    <path
+       d="m 43.300959,520.96467 c 0,0 427.596971,-424.890667 427.596971,-424.890667 0,0 119.07764,112.311867 119.07764,112.311867 0,0 -424.89066,428.95012 -424.89066,428.95012 0,0 -113.665021,4.05947 -113.665021,4.05947 z"
+     />
+    <path
+       d="m 423.53751,150.2002 c 0,0 115.01817,110.95871 115.01817,110.95871"
+    />
+    <path
+       d="m 257.09945,642.74861 c 0,0 278.74992,0 278.74992,0"
+   />
+  </g>
+</svg>
+
+    </>
+}
+function Setting({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=22,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+        <svg 
+            className={className}
+            width={width}
+            height={height}
+            style={style}
+            onClick={onClick}
+            enableBackground="new 0 0 32 32" 
+            version="1.1" 
+            viewBox="0 0 32 32" 
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+            >
+                <path d="M30,16c0-1.969-1.431-3.611-3.307-3.94l-0.347-0.835c1.095-1.56,0.945-3.731-0.447-5.124   c-1.346-1.346-3.599-1.521-5.125-0.448l-0.835-0.346C19.61,3.431,17.969,2,16,2c-1.969,0-3.611,1.431-3.94,3.307l-0.835,0.346   C9.667,4.56,7.494,4.708,6.101,6.101c-0.756,0.755-1.172,1.76-1.172,2.829c0,0.833,0.253,1.628,0.724,2.296L5.307,12.06   C3.43,12.389,2,14.031,2,16c0,0,0,0,0,0s0,0,0,0c0,1.97,1.431,3.611,3.307,3.94l0.346,0.834c-1.094,1.561-0.945,3.732,0.448,5.125   c1.344,1.345,3.601,1.521,5.125,0.448l0.835,0.346c0.329,1.876,1.971,3.307,3.94,3.307c1.97,0,3.611-1.431,3.939-3.307l0.835-0.347   c1.559,1.095,3.73,0.947,5.125-0.447c0.756-0.756,1.172-1.76,1.172-2.829c0-0.833-0.254-1.628-0.724-2.296l0.346-0.834   C28.569,19.612,30,17.971,30,16C30,16.001,30,16.001,30,16C30,16,30,16,30,16z M26,18.002c-0.404,0-0.769,0.243-0.924,0.617   l-0.808,1.948c-0.155,0.374-0.069,0.804,0.217,1.09c0.378,0.378,0.586,0.88,0.586,1.414c0,0.535-0.208,1.037-0.586,1.415   c-0.78,0.78-2.051,0.778-2.829,0c-0.286-0.286-0.716-0.372-1.09-0.217l-1.949,0.808C18.243,25.232,18,25.597,18,26.001   c0,1.103-0.897,2-2,2c-1.103,0-2-0.897-2-2c0-0.404-0.244-0.77-0.617-0.924l-1.95-0.808c-0.375-0.155-0.803-0.069-1.09,0.217   c-0.756,0.756-2.072,0.756-2.828,0c-0.78-0.78-0.78-2.049,0-2.829c0.286-0.286,0.372-0.716,0.217-1.09l-0.808-1.948   C6.769,18.245,6.404,18.002,6,18.002c-1.103,0-2-0.897-2-2.001c0,0,0,0,0,0s0,0,0,0c0-1.103,0.897-2,2-2   c0.404,0,0.769-0.244,0.924-0.617l0.808-1.95c0.155-0.374,0.069-0.804-0.217-1.09c-0.378-0.378-0.586-0.88-0.586-1.414   c0-0.534,0.208-1.037,0.586-1.415c0.78-0.78,2.049-0.78,2.829,0c0.286,0.286,0.716,0.37,1.09,0.217l1.949-0.808   C13.756,6.769,14,6.404,14,6c0-1.103,0.897-2,2-2c1.103,0,2,0.897,2,2c0,0.404,0.244,0.769,0.617,0.924l1.95,0.808   c0.374,0.154,0.804,0.07,1.09-0.217c0.756-0.756,2.072-0.756,2.828,0c0.779,0.78,0.779,2.049,0,2.829   c-0.286,0.286-0.372,0.716-0.217,1.09l0.808,1.95C25.23,13.756,25.596,14,26,14c1.103,0,2,0.897,2,2c0,0,0,0,0,0s0,0,0,0   C28,17.104,27.103,18.002,26,18.002z"/><path d="M16,11c-2.757,0-5,2.243-5,5s2.243,5,5,5c0.552,0,1-0.447,1-1s-0.448-1-1-1c-1.654,0-3-1.346-3-3s1.346-3,3-3s3,1.346,3,3   c0,0.582-0.166,1.146-0.481,1.632c-0.301,0.463-0.169,1.082,0.295,1.383c0.463,0.301,1.082,0.17,1.383-0.295   C20.722,17.91,21,16.969,21,16C21,13.243,18.757,11,16,11z"/>
+            </g>
+        </svg>
     </>
 }
 function NormalSvgContainer({
