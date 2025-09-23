@@ -16,3 +16,13 @@ export default function AppBar({title,titleAlign="text-left"}){
         <div className={titleAlign}><h1>{title}</h1></div>
     </div>
 }
+export function NavBack({url=-1,title="返回"}){
+    const navigate = useNavigate();
+    function navBack(){
+         navigate(url);
+    }
+    return <div className="padding-sm bg-white radius solid-bottom flex align-center gap-sm">
+        <SvgIcon onClick={navBack} icon="arrow_left" width="22" height="22" strokeWidth="8" fill="#333"/>
+        {title?<h1 onClick={navBack} className="text-lg">{title}</h1>:null}
+    </div>
+}

@@ -4,7 +4,7 @@ import { Navigation, Autoplay,Pagination, Scrollbar } from 'swiper/modules';
 import { useNavigate,NavLink } from "react-router";
 import {useWindowState} from "@caveats/externalStore";
 import {mainMenu,userMenu} from "@router/menu.js";
-import {Menu} from "@com";
+import {Menu,Input} from "@com";
 import images from "@img/icons";
 import image from "@img";
 import Model from "@com/Modal";
@@ -55,7 +55,8 @@ export default function Header(){
                     <select>
                         <option value="en">全部类目</option>
                     </select>
-                    <input type="text" value="" placeholder="search"/>
+                    <Input type="search" border="none" padding={false} placeholder="keywords..."/>
+                    
                     <button>search</button>
                 </div>
                 <div>

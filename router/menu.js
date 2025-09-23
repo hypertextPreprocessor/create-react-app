@@ -124,13 +124,13 @@ export const userMenu = [{
     children:[{
         label:"我的订单",
         key:"order_mine",
-        url:null,
+        url:"/user/user-order",
         icon:null,
         children:null
     },{
         label:"评价晒单",
         key:"order_show",
-        url:null,
+        url:'/user/user-comment',
         icon:null,
         children:null
     }]

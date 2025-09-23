@@ -154,7 +154,7 @@ function UserHome({className,type}){
                         <p className="text-lg padding-tb-sm">退换/售后</p>
                     </div>
                     <div>
-                        <p><SvgIcon className="fill" icon="collapse-all" width="26" height="26" fill="#000" /></p>
+                        <p><SvgIcon className="fill" icon="collapse_all" width="26" height="26" fill="#000" /></p>
                         <p className="text-lg padding-tb-sm">全部</p>
                     </div>
                 </div>

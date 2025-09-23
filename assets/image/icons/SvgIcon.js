@@ -81,7 +81,7 @@ export default function SvgIcon({
             return <CommentRate {...params} />;
         case "refund":
             return <Refund {...params} />;
-        case "collapse-all":
+        case "collapse_all":
             return <CollapseAll {...{...params,strokeWidth:1}} />;
         case "upload":
             return <Upload {...params} strokeMiterlimit="10"/>;
@@ -89,6 +89,20 @@ export default function SvgIcon({
             return <Edit {...{...params,storkeWidth:22}} />;
         case "setting":
             return <Setting {...params} />;
+        case "delete":
+            return <Delete {...params} />;
+        case "pc":
+            return <Pc {...params} />;
+        case "mobile":
+            return <Mobile {...params} />;
+        case "tick":
+            return <Tick {...params} />;
+        case "submit_order":
+            return <SubmitOrder {...params} />;
+        case "receive":
+            return <Receive {...params} />;
+        case "next":
+            return <Next {...params} />;
         default:
             return null;
     }
@@ -493,17 +507,16 @@ function Eye({
 }){
     return <>
     <svg
-    viewBox="0 0 570.97693 380.62561"
-    style={style}
-    onClick={onClick}
-    version="1.1"
-    id="svg1"
-    width={width}
-    height={height}
-    xmlns="http://www.w3.org/2000/svg"
+        style={style}
+        onClick={onClick}
+        version="1.1"
+        id="svg1"
+        width={width}
+        height={height}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 546.84125 363.45349"
     >
-    <defs
-        id="defs1" />
+    <defs />
     <g
         fill="#000"
         fillOpacity={1}
@@ -511,17 +524,21 @@ function Eye({
         strokeWidth={strokeWidth}
         strokeDasharray={strokeDasharray}
         strokeOpacity={1}
+        transform="matrix(0.949313,0,0,0.94649344,-30.388028,-60.57558)"
     >
         <path
         d="M 296.79,146.47 431.58,251.85 C 429.36,191.91 380.48,144 320,144 c -7.80148,0.0146 -15.58018,0.84242 -23.21,2.47 z M 343.21,365.54 208.42,260.16 C 210.65,320.09 259.53,368 320,368 c 7.80084,-0.0167 15.57899,-0.84106 23.21,-2.46 z M 320,112 c 98.65,0 189.09,55 237.93,144 -11.97216,21.90372 -26.76493,42.14292 -44,60.2 l 37.74,29.5 c 21.01184,-22.47806 38.81383,-47.7542 52.9,-75.11 4.63927,-9.177 4.63927,-20.013 0,-29.19 C 550.29,135.59 442.93,64 320,64 283.3,64 248.29,71 215.37,82.81 l 46.41,36.29 C 280.72,114.8 300.12,112 320,112 Z m 0,288 c -98.65,0 -189.08,-55 -237.93,-144 11.987808,-21.90347 26.79752,-42.13948 44.05,-60.19 l -37.74,-29.5 c -21.00855,22.4748 -38.807229,47.74764 -52.89,75.1 -4.639271,9.177 -4.639271,20.013 0,29.19 C 89.72,376.41 197.08,448 320,448 c 36.7,0 71.71,-7.05 104.63,-18.81 L 378.22,392.91 C 359.28,397.2 339.89,400 320,400 Z"
-        />
+        id="path1" />
         <path
+       
         d="m 87.424111,168.84853 c 0,0 39.637329,-54.49503 134.287269,-87.632079 28.06325,-9.824974 56.25658,-5.791727 40.82879,37.063229 0,0 -82.13937,19.46487 -136.5466,77.99602 -42.326501,45.53474 -38.569459,-27.42717 -38.569459,-27.42717 z"
-        />
+        id="path2" />
         <path
+
         d="m 552.29325,344.76812 c -3.34167,3.62226 -45.841,58.79543 -128.45773,84.42427 -57.33728,-15.36348 -53.96427,-2.05622 -47.38203,-35.05454 65.61314,-21.97533 92.7756,-36.08468 137.80599,-77.86827 24.28973,-24.28973 55.65128,10.88103 38.03377,28.49854 z"
-        />
+        id="path3" />
         <ellipse
+        id="path4"
         cx="320.35504"
         cy="256.00543"
         rx="109.69077"
@@ -1169,6 +1186,180 @@ function Setting({
         </svg>
     </>
 }
+function Delete({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=22,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+        <svg 
+            xmlns="http://www.w3.org/2000/svg"  
+            viewBox="0 0 100 100" 
+            className={className}
+            width={width}
+            height={height}
+            style={style}
+            onClick={onClick}
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+            >
+                <path d="M 46 13 C 44.35503 13 43 14.35503 43 16 L 43 18 L 32.265625 18 C 30.510922 18 28.879517 18.922811 27.976562 20.427734 L 26.433594 23 L 23 23 C 20.802666 23 19 24.802666 19 27 C 19 29.197334 20.802666 31 23 31 L 24.074219 31 L 27.648438 77.458984 C 27.88773 80.575775 30.504529 83 33.630859 83 L 66.369141 83 C 69.495471 83 72.11227 80.575775 72.351562 77.458984 L 75.925781 31 L 77 31 C 79.197334 31 81 29.197334 81 27 C 81 24.802666 79.197334 23 77 23 L 73.566406 23 L 72.023438 20.427734 C 71.120481 18.922811 69.489078 18 67.734375 18 L 57 18 L 57 16 C 57 14.35503 55.64497 13 54 13 L 46 13 z M 46 15 L 54 15 C 54.56503 15 55 15.43497 55 16 L 55 18 L 45 18 L 45 16 C 45 15.43497 45.43497 15 46 15 z M 32.265625 20 L 43.832031 20 A 1.0001 1.0001 0 0 0 44.158203 20 L 55.832031 20 A 1.0001 1.0001 0 0 0 56.158203 20 L 67.734375 20 C 68.789672 20 69.763595 20.551955 70.306641 21.457031 L 71.833984 24 L 68.5 24 A 0.50005 0.50005 0 1 0 68.5 25 L 73.5 25 L 77 25 C 78.116666 25 79 25.883334 79 27 C 79 28.116666 78.116666 29 77 29 L 23 29 C 21.883334 29 21 28.116666 21 27 C 21 25.883334 21.883334 25 23 25 L 27 25 L 61.5 25 A 0.50005 0.50005 0 1 0 61.5 24 L 28.166016 24 L 29.693359 21.457031 C 30.236405 20.551955 31.210328 20 32.265625 20 z M 64.5 24 A 0.50005 0.50005 0 1 0 64.5 25 L 66.5 25 A 0.50005 0.50005 0 1 0 66.5 24 L 64.5 24 z M 26.078125 31 L 73.921875 31 L 70.357422 77.306641 C 70.196715 79.39985 68.46881 81 66.369141 81 L 33.630859 81 C 31.53119 81 29.803285 79.39985 29.642578 77.306641 L 26.078125 31 z M 38 35 C 36.348906 35 35 36.348906 35 38 L 35 73 C 35 74.651094 36.348906 76 38 76 C 39.651094 76 41 74.651094 41 73 L 41 38 C 41 36.348906 39.651094 35 38 35 z M 50 35 C 48.348906 35 47 36.348906 47 38 L 47 73 C 47 74.651094 48.348906 76 50 76 C 51.651094 76 53 74.651094 53 73 L 53 69.5 A 0.50005 0.50005 0 1 0 52 69.5 L 52 73 C 52 74.110906 51.110906 75 50 75 C 48.889094 75 48 74.110906 48 73 L 48 38 C 48 36.889094 48.889094 36 50 36 C 51.110906 36 52 36.889094 52 38 L 52 63.5 A 0.50005 0.50005 0 1 0 53 63.5 L 53 38 C 53 36.348906 51.651094 35 50 35 z M 62 35 C 60.348906 35 59 36.348906 59 38 L 59 39.5 A 0.50005 0.50005 0 1 0 60 39.5 L 60 38 C 60 36.889094 60.889094 36 62 36 C 63.110906 36 64 36.889094 64 38 L 64 73 C 64 74.110906 63.110906 75 62 75 C 60.889094 75 60 74.110906 60 73 L 60 47.5 A 0.50005 0.50005 0 1 0 59 47.5 L 59 73 C 59 74.651094 60.348906 76 62 76 C 63.651094 76 65 74.651094 65 73 L 65 38 C 65 36.348906 63.651094 35 62 35 z M 38 36 C 39.110906 36 40 36.889094 40 38 L 40 73 C 40 74.110906 39.110906 75 38 75 C 36.889094 75 36 74.110906 36 73 L 36 38 C 36 36.889094 36.889094 36 38 36 z M 59.492188 41.992188 A 0.50005 0.50005 0 0 0 59 42.5 L 59 44.5 A 0.50005 0.50005 0 1 0 60 44.5 L 60 42.5 A 0.50005 0.50005 0 0 0 59.492188 41.992188 z"/>
+            </g>
+        </svg>
+    </>
+}
+function Pc({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=22,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+        return <>
+        <svg 
+            xmlns="http://www.w3.org/2000/svg"  
+            viewBox="0 0 512 512"
+            enableBackground="new 0 0 512 512"
+            className={className}
+            width={width}
+            height={height}
+            style={style}
+            onClick={onClick}
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+            >
+                <path d="M195.038,359.833c-4.729,13.1-12.547,28.837-22.993,34.741h-12.397c-8.515,0-15.421,4.9-15.421,10.944  c0,6.048,6.906,10.949,15.421,10.949h170.667c8.525,0,15.422-4.901,15.422-10.949c0-6.044-6.896-10.944-15.422-10.944h-7.914  c-10.445-5.904-18.264-21.642-22.994-34.741h87.617c38.49,0,69.795-34.108,69.795-76.036V171.562  c0-41.922-31.305-76.03-69.795-76.03H124.966c-38.479,0-69.783,34.108-69.783,76.03v112.234c0,41.928,31.304,76.036,69.783,76.036  H195.038z M294.217,394.075h-93.988c7.839-11.448,12.912-24.843,15.829-34.242h62.329  C281.305,369.232,286.377,382.627,294.217,394.075z M78.025,171.562c0-28.243,21.02-51.139,46.94-51.139h262.058  c25.932,0,46.951,22.896,46.951,51.139v112.234c0,5.529-0.836,10.843-2.326,15.83H80.342c-1.491-4.987-2.316-10.301-2.316-15.83  V171.562z M88.085,315.369h335.832c-8.602,11.904-21.91,19.572-36.893,19.572H124.966  C109.984,334.941,96.675,327.273,88.085,315.369z"/>
+            </g>
+        </svg>
+    </>
+}
+function Mobile({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=22,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+        return <>
+        <svg 
+            xmlns="http://www.w3.org/2000/svg"  
+            viewBox="0 0 100.4 100.4"
+            enableBackground="new 0 0 100.4 100.4"
+            className={className}
+            width={width}
+            height={height}
+            style={style}
+            onClick={onClick}
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+            >
+                <path d="M69.3,8.6H28c-5.3,0-9.7,4.3-9.7,9.6v66.2c0,5.3,4.3,9.6,9.7,9.6h41.3c5.3,0,9.7-4.3,9.7-9.6V18.2   C79,12.9,74.7,8.6,69.3,8.6z M76,84.4c0,3.7-3,6.6-6.7,6.6H28c-3.7,0-6.7-3-6.7-6.6V18.2c0-3.7,3-6.6,6.7-6.6h41.3   c3.7,0,6.7,3,6.7,6.6V84.4z"/><path d="M60.9,18.1H36.2c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h24.7c0.8,0,1.5-0.7,1.5-1.5S61.7,18.1,60.9,18.1z"/><path d="M48.6,75.4c-2.8,0-5,2.3-5,5c0,1.3,0.5,2.6,1.5,3.5c0.9,0.9,2.2,1.4,3.5,1.4c0,0,0,0,0,0c2.8,0,5-2.3,5-5   C53.6,77.6,51.4,75.4,48.6,75.4z M48.7,82.4C48.7,82.4,48.7,82.4,48.7,82.4c-0.5,0-1-0.2-1.4-0.6c-0.4-0.4-0.6-0.9-0.6-1.4   c0-1.1,0.9-2,2-2c0,0,0,0,0,0c1.1,0,2,0.9,2,2C50.7,81.5,49.8,82.4,48.7,82.4z"/>
+            </g>
+        </svg>
+    </>
+}
+function Tick({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill1="#27ae60",
+    fill2="#2ecc71",
+    fill3="#27ae60",
+    fill4="#ecf0f1",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=22,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <svg 
+            xmlns="http://www.w3.org/2000/svg"  
+            className={className}
+            width={width}
+            height={height}
+            style={style}
+            onClick={onClick}
+            viewBox='0 0 30 30'
+        >
+            <g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+                transform="translate(0 -1028.4)"
+            >
+                <path 
+                    d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z"  
+                    transform="translate(0 1029.4)"
+                    fill={fill1}
+                />
+                <path d="m22 12c0 5.523-4.477 10-10 10-5.5228 0-10-4.477-10-10 0-5.5228 4.4772-10 10-10 5.523 0 10 4.4772 10 10z"
+                    transform="translate(0 1028.4)"
+                    fill={fill2}
+                />
+                <path d="m16 1037.4-6 6-2.5-2.5-2.125 2.1 2.5 2.5 2 2 0.125 0.1 8.125-8.1-2.125-2.1z" fill={fill3}/>
+                <path d="m16 1036.4-6 6-2.5-2.5-2.125 2.1 2.5 2.5 2 2 0.125 0.1 8.125-8.1-2.125-2.1z" fill={fill4}/>
+            </g>
+        </svg>
+}
 function NormalSvgContainer({
     viewBox="0 0 48 48",
     style={},
@@ -1185,5 +1376,164 @@ function NormalSvgContainer({
                 {children}
             </g>
         </svg>
+    </>
+}
+function SubmitOrder({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    enableBackground="new 0 0 64 64",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=DEFAULT_STROKE_WIDTH,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+    <svg 
+        version="1.1" 
+        viewBox="0 0 64 64" 
+        enableBackground={enableBackground}
+        className={className}
+        width={width}
+        height={height}
+        style={style}
+        onClick={onClick}
+    ><g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+    >
+        <path d="M60,3h-9.184C50.402,1.839,49.302,1,48,1H34c-1.302,0-2.402,0.839-2.816,2H22c-1.654,0-3,1.346-3,3v13h-3.406   c-1.217,0-2.418,0.319-3.474,0.923L6.734,23H1v18h6.697l4.236,2.824C13.087,44.594,14.43,45,15.816,45H19v15c0,1.654,1.346,3,3,3   h38c1.654,0,3-1.346,3-3V6C63,4.346,61.654,3,60,3z M25,27h2c2.206,0,4-1.794,4-4s-1.794-4-4-4h-2V9h6.184   c0.414,1.161,1.514,2,2.816,2h14c1.302,0,2.402-0.839,2.816-2H57v48H25V27z M33,4c0-0.552,0.448-1,1-1h14c0.552,0,1,0.448,1,1v4   c0,0.552-0.448,1-1,1H34c-0.552,0-1-0.448-1-1V4z M21,6c0-0.552,0.448-1,1-1h9v2h-8v12h-2V6z M15.816,43   c-0.99,0-1.949-0.29-2.773-0.84L8.303,39H3V25h4.266l5.847-3.341C13.867,21.228,14.725,21,15.594,21H27c1.103,0,2,0.897,2,2   s-0.897,2-2,2H15v1c0,2.757-2.243,5-5,5v2c3.521,0,6.442-2.612,6.929-6H19v16H15.816z M61,60c0,0.552-0.448,1-1,1H22   c-0.552,0-1-0.448-1-1V27h2v32h36V7h-8V5h9c0.552,0,1,0.448,1,1V60z"/>
+        <rect height="2" width="2" x="35" y="5"/>
+        <rect height="2" width="2" x="45" y="5"/>
+        <path d="M48.373,47.209l-3.375-0.964l-0.001-0.507C46.81,44.472,48,42.374,48,40v-2c0-3.859-3.141-7-7-7s-7,3.141-7,7v2   c0,2.372,1.189,4.469,3,5.736v0.51l-3.374,0.963C31.491,47.82,30,49.797,30,52.018V55h22v-2.982   C52,49.797,50.509,47.82,48.373,47.209z M36,40v-2c0-2.757,2.243-5,5-5s5,2.243,5,5v2c0,2.757-2.243,5-5,5S36,42.757,36,40z    M42.965,46.714L41,49.333l-1.965-2.619C39.659,46.897,40.318,47,41,47S42.341,46.897,42.965,46.714z M50,53H32v-0.982   c0-1.332,0.895-2.519,2.176-2.885l3.437-0.982L41,52.667l3.387-4.516l3.437,0.982C49.105,49.499,50,50.686,50,52.018V53z"/>
+        <rect height="2" width="2" x="27" y="13"/><rect height="2" width="24" x="31" y="13"/><rect height="2" width="22" x="33" y="17"/>
+        <rect height="2" width="22" x="33" y="21"/>
+        <rect height="2" width="2" x="53" y="25"/>
+        <rect height="2" width="18" x="33" y="25"/>
+    </g></svg>
+    </>
+}
+function Receive({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    enableBackground="new 0 0 64 64",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=13.2,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+    <svg 
+        version="1.1" 
+        viewBox="0 0 675.32294 671.50171"
+        enableBackground={enableBackground}
+        className={className}
+        width={width}
+        height={height}
+        style={style}
+        onClick={onClick}
+    ><g
+                stroke={stroke}
+                strokeWidth={strokeWidth}
+                fill={fill}
+                strokeLinejoin={strokeLinejoin}
+                strokeDasharray={strokeDasharray}
+                strokeOpacity={strokeOpacity}
+                strokeLinecap={strokeLinecap}
+                strokeMiterlimit={strokeMiterlimit}
+                transform="translate(-2.9682507,-4.8758797)"
+    >
+    <rect
+       width="76.546005"
+       height="174.14217"
+       x="9.5682507"
+       y="222.94023"
+       ry="2.1988769" />
+    <path
+
+       d="M 87.071081,245.90404 H 235.37897 c 0,0 41.14347,33.48888 89.94155,90.89838 10.52508,16.26603 8.0079,61.36349 -43.05713,59.32316 -12.8625,-0.51393 -54.53903,-52.62538 -54.53903,-52.62538"
+       />
+    <path
+
+       d="m 87.071081,383.68685 20.093329,0.95682 109.07805,65.06411 327.23417,-0.95683 c 29.66158,3.8273 41.20334,-66.39424 -1.91365,-66.02093 l -221.02658,1.91365"
+ />
+    <path
+
+       d="m 611.41121,554.95854 60.27998,-1.91365 V 669.77754 H 325.32052 L 170.31486,580.79281 c -9.56825,0.95683 -27.01885,-63.34612 27.74793,-58.36633 16.31092,1.48311 142.56693,63.15046 142.56693,63.15046 h 178.92629 l -116.73266,-1.91365 c 0,0 -47.25208,-40.52719 5.74095,-66.02093 14.73392,-7.08815 156.91931,-7.6546 156.91931,-7.6546 z"
+ />
+    <path
+       d="m 293.74529,156.91931 80.37331,-50.71173 86.11425,53.58221 v 81.33013 l -88.0279,58.36632 -81.33013,-53.5822 z"
+      />
+    <path
+
+       d="M 186.58088,243.03356 C 173.18533,196.14914 199.22649,10.246952 363.59352,11.481901 c 198.36564,1.490392 203.80375,181.796759 201.8901,208.587869 -2.87048,20.09332 -10.52508,103.3371 -105.25077,156.9193"
+    />
+    </g>
+</svg>
+    </>
+}
+function Next({
+    style={},
+    width=DEFAULT_WIDTH,
+    height=DEFAULT_HEIGHT,
+    fill="none",
+    enableBackground="new 0 0 64 64",
+    stroke=DEFAULT_STROKE,
+    strokeWidth=13.2,
+    strokeDasharray="none",
+    strokeLinecap="round",
+    strokeLinejoin='round',
+    strokeOpacity="1",
+    strokeMiterlimit="10",
+    onClick=null,
+    className=null
+}){
+    return <>
+<svg 
+    version="1.1" 
+    enableBackground={enableBackground} 
+    viewBox="0 0 91 91" 
+    className={className}
+    width={width}
+    height={height}
+    style={style}
+    onClick={onClick}
+    
+
+><g
+    stroke={stroke}
+    strokeWidth={strokeWidth}
+    fill={fill}
+    strokeLinejoin={strokeLinejoin}
+    strokeDasharray={strokeDasharray}
+    strokeOpacity={strokeOpacity}
+    strokeLinecap={strokeLinecap}
+    strokeMiterlimit={strokeMiterlimit}
+><path 
+    d="M37.426,46.086c-0.342,0.391-21.391,22.668-25.339,28.934c-0.811,1.288,0.854,3.089,2.16,2.162   c5.325-3.774,9.769-8.958,14.438-13.499c3.405-3.313,15.957-15.273,16.262-15.809c1.665-2.913-1.797-5.667-3.589-7.533   c-3.281-3.418-24.095-24.74-26.263-25.579c-0.811-0.439-1.672-0.483-2.454-0.249c-0.021,0.004-0.041,0.004-0.062,0.009   c0.007,0,0.014,0.002,0.022,0.004c-2.111,0.66-3.619,3.302-1.973,5.376C11.488,21.57,36.378,45.047,37.426,46.086z"/>
+<path 
+    d="M39.215,0.717c3.154,1.191,32.3,31.116,37.038,35.986c2.691,2.769,7.148,6.22,6.431,10.486   c-0.188,1.117-1.03,2.097-2.023,2.728c-0.367,0.375-34.475,34.777-42.558,40.507c-1.877,1.332-4.268-1.257-3.104-3.104   c5.551-8.81,35.755-40.814,36.414-41.531c-1.396-1.384-37.272-35.233-38.53-37.656c-2.339-2.993-0.142-6.791,2.905-7.709   L35.665,0.39C35.818,0.361,38.188,0.192,39.215,0.717z"/>
+
+</g>
+</svg>
     </>
 }

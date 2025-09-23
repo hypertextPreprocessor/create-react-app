@@ -10,6 +10,10 @@ import User from "@/views/user/User";
 import {StyledUserHome} from "@/views/user/UserHome";
 import {StyledUserInfo} from "@/views/user/UserInfo";
 import {StyledDeliveryAddress} from "@/views/user/DeliveryAddress";
+import {StyledMyOrder} from "@/views/order/MyOrder";
+import UserComment from "@/views/comment/UserComment";
+import Comment from "@/views/comment/Comment";
+import OrderInfo from "@/views/order/OrderInfo";
 //import { checkDevice } from '@utlis/index';
 // eslint-disable-next-line no-undef
 const PUBLICPATH = PUBLIC_PATH || '/';
@@ -37,6 +41,18 @@ const router = createBrowserRouter([
             },{
                 path:"user-delivery-address",
                 Component:StyledDeliveryAddress
+            },{
+                path:"user-order",
+                Component:StyledMyOrder
+            },{
+                path:"user-comment",
+                Component:UserComment
+            },{
+                path:"user-comment-create",
+                Component:Comment
+            },{
+                path:"user-order-info",
+                Component:OrderInfo
             }]
         }]
     }

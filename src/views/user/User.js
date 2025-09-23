@@ -15,11 +15,11 @@ export default function User(){
 }
 User.Pc = function({LeftMenuWidth=178,containerClass=mainContent}){
     return <>
-        <section className={cn('flex',containerClass,'bg-white')}>
+        <section style={{flexFlow:'row nowrap'}} className={cn('flex',containerClass,'bg-white')}>
             <section style={{flexGrow:0,flexShrink:0,flexBasis:LeftMenuWidth+'px'}}>
                 <Navigation items={userMenu} expandAll={true}/>
             </section>
-            <section style={{flexGrow:1,flexShrink:0}}>
+            <section style={{flexGrow:1,flexShrink:0,backgroundColor:'var(--container-bg-color)',flexBasis:'50%'}}>
                 <Outlet/>
             </section>
         </section>

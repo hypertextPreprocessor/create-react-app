@@ -19,10 +19,10 @@ import { useNavigate,useLocation,useMatch } from "react-router";
 const StyledNavigation = styled.div`
       &[style]:hover{
         color:${props=>props.theme.tarifaColor};
-        background:${props=>props.item.children && props.item.children.length?'none':props.theme.lightTarifa} !important;
+        background:${props=>props['data-item'].children && props['data-item'].children.length?'none':props.theme.lightTarifa} !important;
       }
       & ~ ul{
-        height:${props=>props.expandall==='true'?'auto':'0'};
+        height:${props=>props['data-expand-all']==='true'?'auto':'0'};
         overflow:hidden;
         transition:all .3s 0s ease-in-out;
       }
@@ -106,7 +106,8 @@ export default function Navigation({style={},items,mainStyle={},subStyle={},expa
         <li style={{cursor:'pointer'}}>
             <StyledNavigation 
                 onClick={(event)=>{itemClick(event,item)}} 
-                expandall={(typeof expandAll=== 'boolean' && expandAll)?'true':'false'} item={item} 
+                data-expand-all={(typeof expandAll=== 'boolean' && expandAll)?'true':'false'} 
+                data-item={item} 
                 className={cn('flex','align-center','justify-between','padding-sm',{'active':tripleControl(expandAll,item.key)})} 
                 data-is-tab={(item.children && item.children.length)?true:false}
                 data-url={item.url?item.url:''}

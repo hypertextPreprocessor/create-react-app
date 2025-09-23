@@ -2888,6 +2888,9 @@ scroll-view.cu-steps .cu-item {
 .justify-around {
 	justify-content: space-around;
 }
+.justify-evenly {
+	justify-content:space-evenly;
+}
 
 /* grid布局 */
 
@@ -3473,7 +3476,10 @@ scroll-view.cu-steps .cu-item {
 	background-color: #a5673f;
 	color: #ffffff;
 }
-
+.bg-theme {
+	background-color:var(--container-bg-color);
+	color:#333333;
+}
 .bg-grey {
 	background-color: #8799a3;
 	color: #ffffff;

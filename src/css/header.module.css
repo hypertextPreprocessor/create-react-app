@@ -170,6 +170,9 @@
     border: none;
     outline: none;
 }
+.search p{
+    flex:3;
+}
 .search select{
     color:#ffffff;
     padding:10px 20px;
