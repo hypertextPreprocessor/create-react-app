@@ -66,6 +66,5 @@ function MyOrder({className}){
                 <StyledOrderList devices={devices} example="lin"/>
             </div>
         </div>
-       
     </div>
 }

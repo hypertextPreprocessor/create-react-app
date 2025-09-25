@@ -30,6 +30,9 @@ export default function Header(){
     useEffect(()=>{
         
     },[menuObj]);
+    function toShopingCart(){
+        navigate("/cart");
+    }
     function toHome(){
         navigate("/");
     }
@@ -72,7 +75,7 @@ export default function Header(){
                         </li>
                         <li><NavLink to="/login">sing in</NavLink></li>
                         <li>orders</li>
-                        <li className={styles["cartbtn"]}>
+                        <li className={styles["cartbtn"]} onClick={toShopingCart}>
                             <SvgIcon icon="cart" width="25" height="25" fill="none" stroke="#fff" strokeWidth={16} />
                             <p>Cart</p>
                         </li>
@@ -110,7 +113,7 @@ export default function Header(){
                             }}>Lattie</span>
                             <SvgIcon icon="fulano" width="18" height="18" stroke="none" fill="#fff" estilo={1}/>
                         </p>
-                        <p>
+                        <p onClick={toShopingCart}>
                             <SvgIcon icon="cart" width="30" height="30" fill="none" stroke="#fff" strokeWidth={16}/>
                         </p>
                     </div>

@@ -14,6 +14,7 @@ import {StyledMyOrder} from "@/views/order/MyOrder";
 import UserComment from "@/views/comment/UserComment";
 import Comment from "@/views/comment/Comment";
 import OrderInfo from "@/views/order/OrderInfo";
+import Cart from "@/views/cart/Cart";
 //import { checkDevice } from '@utlis/index';
 // eslint-disable-next-line no-undef
 const PUBLICPATH = PUBLIC_PATH || '/';
@@ -54,6 +55,9 @@ const router = createBrowserRouter([
                 path:"user-order-info",
                 Component:OrderInfo
             }]
+        },{
+            path:"cart",
+            Component:Cart
         }]
     }
     ,{
