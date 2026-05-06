@@ -54,7 +54,7 @@ module.exports = {
         rules:[
             {
                 test: /\.(?:jsx?|mjs|cjs)$/,
-                exclude: /node_modules/,
+                exclude:/node_modules/,
                 use:{
                     loader:'babel-loader',
                     options:{
@@ -65,12 +65,37 @@ module.exports = {
             },
             {
                 test:/\.css$/i,
+                include:path.resolve(__dirname,'src/index.css'),
+                use:[{
+                    loader:'style-loader',
+                },{
+                    loader:'css-loader',
+                    options:{
+                        modules:false,
+                        importLoaders:2
+                    }
+                },
+                {
+                    loader:'postcss-loader',
+                    options:{
+                        postcssOptions:{
+                            plugins:{
+                                "@tailwindcss/postcss": {},
+                            }
+                        }
+                    }
+                }
+                ]
+            },
+            {
+                test:/\.css$/i,
+                exclude:[path.resolve(__dirname,'src/index.css')],
                 use:[dynamicLoader,{
                     loader:'css-loader'
                 }]
             },
             {
-                test:/\.(png|svg|jpg|jpeg|gif)$/,
+                test:/\.(png|svg|jpg|jpeg|gif|webp)$/,
                 type:'asset/resource'
             },
             {
@@ -84,6 +109,7 @@ module.exports = {
             '@':path.resolve(__dirname,'src'),
             '@css':path.resolve(__dirname,'src/css'),
             '@img':path.resolve(__dirname,'assets/image'),
+            '@video':path.resolve(__dirname,'assets/video'),
             '@caveats':path.resolve(__dirname,'src/caveats'),
             '@locale':path.resolve(__dirname,'locales')
         },

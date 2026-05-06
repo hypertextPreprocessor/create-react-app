@@ -6,6 +6,8 @@ import i18n from "i18next";
 import { BrowserRouter, Routes, Route } from "react-router";
 import '@css/main.css';
 import Home from './Home';
+import Menu from '@/components/Menu';
+import "./index.css";
 
 //const fs = import('node:fs');
 
@@ -39,9 +41,14 @@ const PUBLICPATH = PUBLIC_PATH || '/';
 export default function App(){
     return (
         <I18nextProvider i18n={i18n} defaultNS={['common']}>
+            <Menu />
             <BrowserRouter basename={PUBLICPATH}>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<h1>About</h1>} />
+                    <Route path="/contact" element={<h1>Contact</h1>} />
+                    <Route path="/pricing" element={<h1>Pricing</h1>} />
+                    <Route path="/rule" element={<h1>Rule</h1>} />
                 </Routes>
             </BrowserRouter>
         </I18nextProvider>
