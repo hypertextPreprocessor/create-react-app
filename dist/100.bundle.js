@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpage=self.webpackChunkwebpage||[]).push([[100],{100:e=>{e.exports={mgmt:"GESTIÓN"}}}]);

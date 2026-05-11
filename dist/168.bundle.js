@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpage=self.webpackChunkwebpage||[]).push([[168],{7168:e=>{e.exports={mgmt:"يدير"}}}]);

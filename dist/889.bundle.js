@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpage=self.webpackChunkwebpage||[]).push([[889],{3889:e=>{e.exports=JSON.parse('{"ruleBtn":"Посмотреть правила"}')}}]);

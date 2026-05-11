@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpage=self.webpackChunkwebpage||[]).push([[485],{3485:e=>{e.exports={ruleBtn:"ルールを表示"}}}]);

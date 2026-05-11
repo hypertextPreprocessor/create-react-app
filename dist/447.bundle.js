@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebpage=self.webpackChunkwebpage||[]).push([[447],{9447:e=>{e.exports=JSON.parse('{"ruleBtn":"عرض القواعد"}')}}]);

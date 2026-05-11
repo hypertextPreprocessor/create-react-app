@@ -51,7 +51,7 @@ module.exports = {
     },
     plugins:[
         new HtmlWebpackPlugin({
-            title:devMode?'恒韵翡翠-开发中...':'恒韵翡翠-非凡品质',
+            title:devMode?'互联互卷-开发中...':'互联互卷 - 优化未来',
             //template:'./src/index.html'
         }),
         new MiniCssExtractPlugin(),
