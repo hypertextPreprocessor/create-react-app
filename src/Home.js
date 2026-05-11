@@ -26,6 +26,7 @@ import face2 from "@img/face-02.png";
 import face3 from "@img/face-03.png";
 import '@css/home.css';
 import 'swiper/css';
+import { useNavigate } from "react-router";
 
 export default function Home(){
     const winRec = useWindowState();
@@ -88,6 +89,10 @@ export default function Home(){
         }
         
     }
+    let navigate = useNavigate();
+    function navToRule(){
+        navigate("/rule");
+    }
     return (
         <section style={{width:'100%',position:'relative'}}>
             <LanguageSelect />
@@ -95,7 +100,7 @@ export default function Home(){
                 <h1> { t('s1-title1') } </h1>
                 <h2>{ t('s1-title2') }</h2>
                 <p>{ t('s1-title3') }</p>
-                <p><button>{t('widgets:ruleBtn')} &gt;&gt;</button></p>
+                <p><button onClick={navToRule}>{t('widgets:ruleBtn')} &gt;&gt;</button></p>
             </div>
             <div className="body" data-0="z-index:100;" data-1000="z-index:100">
                 <ul>
