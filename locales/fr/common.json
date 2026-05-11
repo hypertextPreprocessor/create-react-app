@@ -1,5 +1,137 @@
 {
-  "s1-title1": "Gratuit n'est en aucun cas le plus cher",
-  "s1-title2": "Nous réitérons solennellement qu'il n'y a pas de routines commerciales !",
-  "s1-title3": "Qu'il n'y ait pas de pommes de terre chaudes dans le monde et que les civils aient les outils pour en profiter."
+  "menu": {
+    "company": "Présentation de l'entreprise",
+    "team": "Notre équipe",
+    "rule": "Règles de gratuité",
+    "contact": "Contactez-nous",
+    "home": "Accueil"
+  },
+  "test": "Test",
+  "s1-title1": "Ce qui est gratuit n'est jamais le plus cher",
+  "s1-title2": "Nous déclarons solennellement : Aucun artifice commercial !",
+  "s1-title3": "Que personne ne se retrouve avec une patate chaude, que les citoyens ordinaires aient des outils performants",
+  "s1-title4": "IoT pour tout - Transmettre des solutions",
+  "company": {
+    "name": "Guangzhou Zhichang Qier Juanjin Internet Technology Co., Ltd.",
+    "address": "Chambre 303, Immeuble Commercial Huaying, No. 280-1 Zhongshan Avenue East, District de Huangpu, Guangzhou",
+    "description": "Bonjour, je m'appelle Tang Lin, un développeur technique délaissé par le marché du travail. J'ai pris l'initiative de fonder Guangzhou Zhichang Qier Juanjin Internet Technology Co., Ltd., une entreprise nouvellement créée, pleine de vitalité et de courage. Le personnel interne est composé de techniciens seniors d'un certain âge, délaissés par le marché du travail, avec une ancienneté moyenne de 5 ans. Ce sont des collègues et amis avec qui j'ai travaillé et qui, comme moi, ont été marginalisés. J'ai toujours voulu créer ma propre entreprise, c'était un résultat inévitable. J'admets avoir été un peu informel pour le nom de l'entreprise ; j'avais pensé à \"Sur Mesure Privé\" ou \"Sur Mesure pour Entreprises Privées\", mais j'ai estimé que cela n'exprimait pas mon histoire et mon parcours. Le nom actuel explique directement ma situation et ce que je veux faire à ce stade. Choisir ce mode opératoire est possible grâce à la tendance actuelle de l'Internet. Nous sommes une équipe diligente qui aime apprendre et effectuer des recherches, et nous aimons partager nos résultats en fournissant gratuitement divers outils et services. Nous souhaitons explorer l'avant-garde technologique et assumer pour vous les risques liés à l'innovation. Je ferai tout mon possible pour soutenir chaque entrepreneur qui ose poursuivre ses rêves. Nous pouvons personnaliser gratuitement pour vous des systèmes ERP, CMS, OA, ainsi que des mini-programmes, des applications et des petits jeux 2D. Nous couvrons les logiciels Internet pour PC et mobiles (hors matériel pour l'instant) et les technologies de pointe comme l'IoT, l'IA, l'OCR, la VR/AR, le RVC et le WRTC. Si possible, nous étendrons nos activités à la combinaison de matériel et de logiciel sur mesure. Notre objectif est que vous aimiez nos produits et services autant que nous aimons fabriquer des outils adaptés à chaque secteur."
+  },
+  "rule": {
+    "contents": "Contenu de cette page",
+    "p1": {
+      "title": "Introduction",
+      "p11": "Ouverture - Tous les outils suivent le protocole open source GPL",
+      "p12": "Liberté - La liberté n'est pas de faire ce que l'on veut, c'est de pouvoir choisir de ne pas faire ce que l'on ne veut pas",
+      "p13": "Équité - Ne pas pratiquer de concurrence déloyale quand on est petit, ne pas monopoliser quand on est grand",
+      "p14": "Transparence - Recettes et dépenses publiques, services clairs sans petits caractères ni jeux de mots",
+      "p15": "Faire tout son possible pour soutenir chaque entrepreneur qui a un rêve~"
+    },
+    "p2": {
+      "title": "Révélations sur les dessous du secteur",
+      "p21": "L'entreprise présente ici les règles. Toute omission sera complétée ici même. En même temps, nous révélons les dessous du secteur ; les pièges courants de la gratuité commerciale :",
+      "p22": {
+        "p221": "<strong>Exploiter les utilisateurs sous couvert de gratuité</strong> : soit les publicités sont incessantes, soit d'autres outils sont payants. Courant dans certains grands jeux ou applications, vous pouvez effectivement les télécharger et y jouer gratuitement, mais l'expérience ne sera pas fluide ni agréable, vous poussant à acheter volontairement des accessoires ou des outils. En résumé : <strong>\"Le gratuit est ce qu'il y a de plus cher\"</strong>.",
+        "p222": {
+          "p2221": "<strong>Sous couvert de gratuité mais avec un autre but.</strong> La gratuité n'est qu'une façade, le véritable but est ailleurs. Courant dans certaines applications gratuites qui visent en réalité à collecter des données utilisateur ou à promouvoir d'autres services payants, voire à mener des activités de marketing malveillant.",
+          "p2222": "Essentiellement une expérience gratuite, comme les services avec renouvellement payant à l'échéance (ce qui est assez normal).",
+          "p2223": "Essentiellement une escroquerie, où le produit gratuit ne correspond pas au produit réellement promu, bien qu'ils soient liés, comme dans les formations professionnelles.",
+          "p2224": "Essentiellement un échange, utiliser la gratuité pour gagner une place sur le marché (les entreprises malveillantes échangeront vos données privées ou d'autres données commerciales à d'autres fins), ce que le secteur appelle \"le surmenage concurrentiel\".",
+          "p2225": "Essentiellement une destruction, utiliser la gratuité pour saboter afin d'atteindre ses propres objectifs. Comme les logiciels piratés dont le patch peut contenir des scripts détruisant votre système ou s'introduisant dans votre ordinateur pour lire vos données."
+        },
+        "p223": "Publicité omniprésente, ne révélant qu'une partie de l'activité, faisant une promotion massive favorable à la concurrence. La gratuité est réelle ici, mais d'autres accessoires payants sont nécessaires pour constituer un produit complet. Exemple courant : l'open source est réel mais la documentation est payante."
+      }
+    },
+    "p3": {
+      "title": "Pourquoi sommes-nous gratuits ?",
+      "p31": "Nous avons aussi besoin de gagner notre place sur le marché. Ce type de concurrence, nous l'appelons \"concurrence par le haut\", par opposition à la \"concurrence par le bas\" qui désigne les stratégies de prix bas sans limite et l'exploitation de la main-d'œuvre. La \"concurrence par le haut\" s'appuie sur l'innovation pour créer de nouveaux emplois et stimuler le progrès social. On peut dire que nous planifions une révolution.",
+      "p32": "Essentiellement, nous sommes vos actionnaires techniques. Notre but le plus pur est de fournir les outils de production nécessaires pour que chaque entrepreneur réussisse.",
+      "p33": "La valeur des outils sous la commercialisation de l'Internet est inégale. Si le prix est trop élevé, vous êtes un sous-traitant ; s'il est trop bas, vous êtes une société commerciale vendant des logiciels. Cependant, dans le contexte économique actuel, le marché ne paiera pas pour un système dont le prix de vente correspondrait au coût de développement. L'outil ne prend de la valeur qu'en servant un produit.",
+      "p34": "Réduire au maximum les coûts des entreprises en techniciens spécialisés, éliminant à la source le gaspillage de ressources humaines.",
+      "p35": "Rassembler les chercheurs d'emploi seniors délaissés par le marché, explorer de nouveaux modes d'emploi adaptés à la situation actuelle, redonner du pouvoir à l'emploi et redéfinir le travail pour créer un écosystème de travail indépendant proche de la perfection.",
+      "p36": "Maximiser la valeur de chaque individu pour la société.",
+      "p37": "Viser la solution optimale : contrairement au secteur de la sous-traitance traditionnelle, nous adapterons les modalités et le personnel en fonction de votre budget et de la rentabilité du projet. Nous proscrivons les projets \"fast-food\" pour n'offrir que la solution optimale à nos clients."
+    },
+    "p4": {
+      "title": "Mode de fonctionnement",
+      "p41": "Le projet fonctionne via les trois types de relations suivants :",
+      "p42": {
+        "title": "Trois types de relations",
+        "p421": {
+          "title": "1. Relation de coopération",
+          "p4211": "Comme son nom l'indique, les deux parties collaborent pour gérer le projet. Nous fournissons gratuitement la main-d'œuvre pour personnaliser vos produits. Notez que dans ce mode, nous ne commençons à percevoir une part que lorsque votre projet génère des revenus. Notre équipe comprend des chefs de produit, des designers UI, des testeurs, des développeurs et des agents de maintenance. Deux options sont proposées :",
+          "p4212": {
+            "title": "Mode 1 : Jusqu'au remboursement des coûts",
+            "p42121": "Nous ne récupérons que 2 fois notre coût de main-d'œuvre. Le coût est calculé selon le <a1>premier palier</a1> du mode salarié. Nous définissons une fourchette de prix pour votre projet, et vous déterminez un pourcentage de partage des bénéfices (équivalent à un paiement échelonné flexible sur votre chiffre d'affaires total). Nous n'intervenons pas dans votre gestion. Si le revenu est nul ou négatif, nous ne percevons rien ce mois-là. Une fois les coûts récupérés (fin du contrat), les nouvelles fonctionnalités suivent le <a2>deuxième palier</a2> et la maintenance le <a3>troisième palier</a3> (voir mode salarié ci-dessous). Deux types de résiliation : naturelle par remboursement total, ou forcée par liquidation ou abandon du projet. En cas de résiliation forcée, le client ne dispose pas des ressources du produit ni des droits d'auteur."
+          },
+          "p4213": {
+            "title": "Mode 2 : Jusqu'à l'échéance",
+            "p42131": "Nous percevons un montant fixe mensuel basé sur la valeur de contribution du projet (définition ci-dessous) jusqu'à l'échéance fixée au contrat. En cas de résiliation non naturelle, la valeur de liquidation est perçue au prorata de la contribution. Comme pour le mode 1, le client ne dispose pas des droits d'auteur en cas de résiliation forcée."
+          },
+          "p4214": "Pendant toute la période d'exploitation sous ces deux modes, nous ne facturons aucun frais de maintenance supplémentaire. La gratuité jusqu'au bout ! Les nouvelles fonctionnalités ajoutées pendant cette période seront également réalisées gratuitement, avec seulement un ajout des coûts réels consommés.",
+          "p4215": "Si vous estimez avoir plus de 80 % de chances de réussite, le mode 2 est conseillé. Si vous êtes une startup ou cherchez des partenaires, choisissez le mode 1.",
+          "p4216": "Si vous craignez que les ressources restent chez un tiers ou souhaitez protéger des données sensibles, utilisez le mode 2 avec une période courte ou le mode salarié."
+        },
+        "p422": {
+          "title": "2. Relation d'associé",
+          "p4221": "Si le projet est excellent et que vous appréciez mon profil, je peux envisager de devenir votre associé avec toute l'équipe. C'est la forme de gratuité la plus totale. Nous apportons notre expertise technique au capital. Idéal pour les projets innovants à l'avant-garde du secteur."
+        },
+        "p423": {
+          "title": "3. Relation de salarié",
+          "p4231": "Travail à temps partiel ou complet au forfait horaire. Lieu de travail libre, livraison basée sur les délais et la qualité. 8 heures de travail = 1 jour. Chaque membre a un tarif affiché selon son expérience. Trois paliers de prix :",
+          "p4232": "Premier palier : Valeur réelle de chaque membre (moyenne de 60-75 CNY/h).",
+          "p4233": "Deuxième palier : Remise de 15 % sur le premier palier.",
+          "p4234": "Troisième palier : Remise de 75 % sur le premier palier.",
+          "p4235": "Note : Dans les modes coopération et associé, nous partageons les risques avec vous. Le mode coopération correspond mieux à notre positionnement. Le droit d'interprétation final appartient aux membres du projet.",
+          "p4236": "Veuillez distinguer le mode salarié de l'externalisation ou de l'intérim. Bien que les tarifs soient proches (<a1>calculateur de devis</a1>), le mode salarié convient mieux aux besoins de main-d'œuvre continus."
+        }
+      }
+    },
+    "p5": {
+      "title": "Questions fréquentes",
+      "p51": "Comment connaissez-vous les revenus de mon projet ?",
+      "p52": "L'exploitation est chez vous, mais le centre de données est chez nous. Nous évaluons via les données, inutile d'éplucher les rapports financiers. Si l'équipe abandonne, les ressources restent chez nous.",
+      "p53": "Comment garantir l'honnêteté mutuelle ?",
+      "p54": "Nous participons tous les deux à l'évaluation du projet. Le système est établi conjointement et les risques sont partagés. Nous fournissons d'abord les ressources (code, serveurs) gratuitement, puis nous transférons tous les accès à la fin du contrat.",
+      "p55": "Qu'est-ce que la valeur de contribution du projet ?",
+      "p56": "C'est un pourcentage. Formule : Valeur de contribution = Bénéfice lié au projet / Bénéfice total de l'entreprise * 100 %. Ce bénéfice est évalué par vous-même.",
+      "p57": "Comment gérer l'abandon du projet par l'équipe entrepreneuriale ?",
+      "p58": "Un accord est signé. Une résiliation pour raisons internes à la partie A entraîne un dédommagement basé sur le travail accompli selon le mode salarié. Pas de dédommagement pour d'autres causes.",
+      "p59": "Pour toute autre question, contactez-nous !"
+    },
+    "p6": {
+      "title": "Conclusion",
+      "p61": "Il s'agit d'une aide pure, sans prendre le statut d'associé technique (soutien), sans salaire, avec une rémunération basée sur les revenus finaux. Si le projet échoue, je ne reçois rien (partage des risques). Adapté aux entrepreneurs ayant peu de capital ou ne souhaitant pas de CTO au capital initial. Deux options après le lancement :",
+      "p62": "Jusqu'au remboursement des coûts (paiement flexible)",
+      "p63": "Perception d'une part des revenus après lancement. Possibilité de solde anticipé. Le taux d'intérêt est de 0,25 % par mois (plus bas que n'importe quelle banque !) et simple (sans artifice). Formule : Tarif horaire x Cycle du projet x Taux x 2. Avant le solde, aucun changement de nom ou de représentant n'est permis. La résiliation forcée entraîne la perte des droits d'auteur.",
+      "p64": "Jusqu'à l'échéance (paiement fixe)",
+      "p65": "Mode d'évaluation basé sur la valeur intrinsèque du produit, avec une durée fixée (généralement 2 à 5 ans). Le montant mensuel est calculé selon le tarif horaire x cycle. Ce mode impose un versement fixe tant que le projet existe, indépendamment des bénéfices. Les conditions de résiliation sont identiques au mode précédent.",
+      "p66": "Si nous pensons que le projet va probablement échouer, nous ne l'accepterons pas. Ces méthodes nécessitent que nous comprenions le projet et participions aux décisions.",
+      "p67": "L'idée est de sortir le produit et de lancer l'exploitation. L'exécution prime."
+    }
+  },
+  "cal": {
+    "title": "Calculateur de devis",
+    "p1": "UI visible",
+    "p2": "Nombre total de pages",
+    "p21": "Fonctions non visibles",
+    "p22": "Points de fonction non représentés sur l'UI, généralement backend ou logique frontend (ex: développement SDK).",
+    "p23": "Besoin de tests",
+    "p24": "Cochez pour garantir un minimum de bugs à la livraison.",
+    "p25": "Besoin d'interface (API)",
+    "p26": "Ne pas cocher si aucun scénario backend n'est requis.",
+    "p27": "Nombre d'architectures",
+    "p28": "Fondation du projet. Une architecture minimum. Si vous utilisez un framework open source sans modification, ne cochez pas. Comptez une architecture par plateforme native différente.",
+    "p29": "Nombre de personnes",
+    "p210": "Nombre de personnes assignées au projet (minimum 1).",
+    "p211": "Mode de paiement",
+    "p212": "Veuillez choisir",
+    "p213": "Remises selon l'échelonnement (signature, fin de dév, livraison).",
+    "p214": "Estimation de la durée",
+    "p215": "Jours",
+    "p216": "Résultat du calcul :",
+    "p217": "Calculer",
+    "hint1": "Saisir la quantité",
+    "hint2": "Résultat estimatif, le contrat fait foi !",
+    "resutlHint": "Note : Unité en heures (h), prix en CNY. '?' indique un besoin manquant, '-' indique une logique pure sans UI, 'x' indique une absence de lien avec le backend."
+  }
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { I18nextProvider } from 'react-i18next';
+import React, { useEffect } from 'react';
+import { I18nextProvider,useTranslation } from 'react-i18next';
 import detector from "i18next-browser-languagedetector";
 import resourcesToBackend from 'i18next-resources-to-backend'
 import i18n from "i18next";
@@ -7,6 +7,11 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import '@css/main.css';
 import Home from './Home';
 import Menu from '@/components/Menu';
+import Company from '@/pages/Company';
+import Team from '@/pages/Team';
+import Contact from '@/pages/Contact';
+import Rule from '@/pages/Rule';
+import Calculator from '@/pages/Calculator';
 import "./index.css";
 
 //const fs = import('node:fs');
@@ -21,6 +26,7 @@ i18n.use(detector).use(resourcesToBackend((lng,ns)=>
     ns:['common','contents','widgets'],
     fallbackLng: 'zh-Hans-CN',
     debug: true,
+    transSupportBasicHtmlNodes: true,
     interpolation: {
         escapeValue: false
     },
@@ -41,14 +47,15 @@ const PUBLICPATH = PUBLIC_PATH || '/';
 export default function App(){
     return (
         <I18nextProvider i18n={i18n} defaultNS={['common']}>
-            <Menu />
             <BrowserRouter basename={PUBLICPATH}>
+                <Menu />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<h1>About</h1>} />
-                    <Route path="/contact" element={<h1>Contact</h1>} />
-                    <Route path="/pricing" element={<h1>Pricing</h1>} />
-                    <Route path="/rule" element={<h1>Rule</h1>} />
+                    <Route path="/about" element={<Company />} />
+                    <Route path="/team" element={<Team/>} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/rule" element={<Rule />} />
+                    <Route path="/calculator" element={<Calculator/>} />
                 </Routes>
             </BrowserRouter>
         </I18nextProvider>

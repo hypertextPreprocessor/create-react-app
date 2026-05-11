@@ -39,7 +39,7 @@ export default function Home(){
     useEffect(()=>{
         //document.documentElement.setAttribute('lang','zh-Hans-CN');
         //i18n.changeLanguage('zh-Hans-CN');
-        window.skrollr.init({
+        var scroll = window.skrollr.init({
            
             
             render:function(data){
@@ -47,14 +47,15 @@ export default function Home(){
             },
             
             keyframe:function(element,name,direction){
-                caseLeft.current.classList.add('caseLeft');
-                caseRight.current.classList.add('caseRight');
-                if(element.className.includes('scr2')){
-                   console.log(caseLeft.current);
-                   caseLeft.current.classList.remove('caseLeft');
-                   caseRight.current.classList.remove('caseRight');
+                if(caseLeft){
+                    caseLeft.current.classList.add('caseLeft');
+                    caseRight.current.classList.add('caseRight');
+                    if(element.className.includes('scr2')){
+                    console.log(caseLeft.current);
+                    caseLeft.current.classList.remove('caseLeft');
+                    caseRight.current.classList.remove('caseRight');
+                    }
                 }
-                
             }
         });
         var plist = faceswitchlist.current.querySelectorAll('p');
@@ -74,6 +75,10 @@ export default function Home(){
                     setFace(c3);
                 }
             }
+        }
+        return ()=>{
+            scroll.destroy();
+
         }
     },[])
     function mouseenterevent(e){
@@ -126,8 +131,8 @@ export default function Home(){
                         </div>
                     </li>
                     <li style={{height:winRec.winHeight}} className="scr2" data-emit-events  data-2200="display:flex;z-index:99;opacity:0;background:#ffffff;clip-path:circle(10%);" data-3200="display:flex;z-index:2;opacity:1;background:#ffffff;clip-path:circle(100%);">
-                        <h1>万物物联 - 传递解决方案</h1>
-                        <h2>设备您来采购.不包办旨在公开透明,不作为中间商介入.</h2>
+                        <h1>{t("s1-title4")}</h1>
+                        <h2>{t("s1-title5")}</h2>
                         <ul className="showcaselist">
                             <li className="caseLeft" ref={caseLeft}> 
                                 <div className="showcaseitem">

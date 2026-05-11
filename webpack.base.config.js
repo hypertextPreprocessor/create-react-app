@@ -19,17 +19,27 @@ module.exports = {
             import:'./src/index.js',
             dependOn:'skrollr'
         },
-        skrollr:'./src/skrollr.min.js'
+        skrollr:{
+            import:'./src/skrollr.min.js',
+            library:{
+                name:'skrollr',
+                type:'var'
+            }
+        },
+        // jspread:{
+        //     import: "jspreadsheet-ce",
+        //     library:{
+        //         name:'jspread',
+        //         type:'var',
+        //         export: 'default'
+        //     }
+        // }
     },
     output:{
         filename:'[name].bundle.js',
         path:path.resolve(__dirname,'dist'),
         clean:true,
-        publicPath:PUBLIC_PATH,
-        library:{
-            name:'skrollr',
-            type:'var'
-        }
+        publicPath:PUBLIC_PATH
     },
     optimization:{
         splitChunks:{

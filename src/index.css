@@ -1,10 +1,10 @@
 @import "tailwindcss";
 @theme {
-  --breakpoint-2xl: initial;
+  /* --breakpoint-2xl: initial; */
 }
 /*全部重置*/
 @theme {
-  --breakpoint-*: initial;
+  /* --breakpoint-*: initial; */
   --breakpoint-tablet: 40rem;
   --breakpoint-laptop: 64rem;
   --breakpoint-desktop: 80rem;

@@ -1,5 +1,137 @@
 {
-  "s1-title1": "Kostenlos ist nicht der teuerste",
-  "s1-title2": "Wir geben feierlich an: Es gibt keine kommerzielle Routine!",
-  "s1-title3": "Lassen Sie es keine heißen Kartoffeln auf der Welt geben, und lassen Sie die einfachen Menschen die richtigen Werkzeuge haben"
+  "menu": {
+    "company": "Unternehmensvorstellung",
+    "team": "Unser Team",
+    "rule": "Kostenlose Regeln",
+    "contact": "Kontaktieren Sie uns",
+    "home": "Startseite"
+  },
+  "test": "Test",
+  "s1-title1": "Kostenlos ist niemals am teuersten",
+  "s1-title2": "Wir erklären feierlich: Keinerlei kommerzielle Maschen!",
+  "s1-title3": "Damit es auf der Welt keine heißen Kartoffeln gibt und auch einfache Bürger handliche Werkzeuge besitzen",
+  "s1-title4": "Internet der Dinge - Lösungen vermitteln",
+  "company": {
+    "name": "Guangzhou Zhichang Qier Juanjin Internet Technology Co., Ltd.",
+    "address": "Zimmer 303, Huaying Commercial Building, Nr. 280-1 Zhongshan Avenue East, Distrikt Huangpu, Guangzhou",
+    "description": "Hallo, mein Name ist Tang Lin, ein von der Arbeitswelt verstoßener Technologieentwickler. Ich war federführend bei der Gründung der Guangzhou Zhichang Qier Juanjin Internet Technology Co., Ltd. Es ist ein frisch gegründetes Unternehmen voller Vitalität und Kampfgeist. Die internen Mitarbeiter sind alle ältere, erfahrene Fachkräfte, die vom Arbeitsmarkt ausgeschlossen wurden, mit einer durchschnittlichen Betriebszugehörigkeit von 5 Jahren. Es sind Kollegen und Freunde aus meiner gesamten Laufbahn, die genau wie ich an den Rand gedrängt wurden. Schon während meiner Anstellung wollte ich eine eigene Firma gründen; die Firmengründung war ein unausweichliches Ergebnis. Ich denke, bei der Namensgebung war ich etwas willkürlich; zuvor dachte ich an Namen wie \"Maßgeschneidert für Privatpersonen\" oder \"Maßgeschneidert für Privatunternehmen\", fand aber, dass diese nicht meine Geschichte und meinen Weg ausdrücken. Der jetzige Name erklärt hingegen direkt meine aktuelle Situation und was ich in dieser Phase tun möchte. Dass ich mich für diese Betriebsweise entschieden habe, verdanke ich dem aktuellen Trend des Internets. Wir sind ein fleißiges Team, das gerne lernt und forscht. Wir teilen unsere Forschungsergebnisse auch gerne mit allen und bieten kostenlos verschiedene Werkzeuge und Dienste an. Wir sind bereit, an der Spitze der technologischen Forschung zu stehen und die Risiken möglicher Innovationen für Sie zu tragen. Ich werde mein Bestes tun, um jeden mutigen Gründer bei seinen Träumen zu unterstützen. Das Unternehmen kann für Sie kostenlos kommerzielle ERP-, CMS-, OA-Systeme sowie Miniprogramme, APPs und andere 2D-Minispiele anpassen. Wir decken Softwareprodukte für PC und mobile Endgeräte ab (derzeit ohne Hardware), einschließlich technischer Bereiche wie IoT, KI, OCR, VR/AR, RVC, WRTC usw. Falls möglich, wird das Unternehmen in Zukunft Geschäfte ausweiten, die Hardware und Software in Verbindung mit \"Privat-/Unternehmensanpassung\" kombinieren – das ist unser großes Ziel. Wir hoffen, dass Ihnen unsere Produkte und Dienstleistungen gefallen, so wie wir es lieben, uns auf die Herstellung verschiedenster handlicher Werkzeuge für alle Branchen zu konzentrieren."
+  },
+  "rule": {
+    "contents": "Inhalt dieser Seite",
+    "p1": {
+      "title": "Vorwort",
+      "p11": "Offen - Alle Werkzeuge folgen dem GPL-Open-Source-Protokoll",
+      "p12": "Freiheit - Freiheit bedeutet nicht, tun zu können, was man will; Freiheit bedeutet, die Wahl zu haben, das nicht zu tun, was man nicht tun möchte",
+      "p13": "Fairness - In kleinen Maßstäben keinen böswilligen Wettbewerb führen und keine eigennützigen Handlungen zum Nachteil anderer begehen; in großen Maßstäben nicht monopolisieren",
+      "p14": "Offenheit - Einnahmen und Ausgaben sind transparent und öffentlich, Dienstleistungen sind klar definiert ohne versteckte Klauseln oder Wortspiele",
+      "p15": "Mit ganzer Kraft jeden Gründer unterstützen, der einen Traum hat~"
+    },
+    "p2": {
+      "title": "Enthüllung von Brancheninsidern",
+      "p21": "Unser Unternehmen stellt hier die Regeln vor. Jegliche Auslassungen oder Nachlässigkeiten werden hier lückenlos vervollständigt. Gleichzeitig enthüllen wir hier Brancheninsider; häufige kommerzielle Kostenlos-Fallen:",
+      "p22": {
+        "p221": "<strong>Nutzer im Namen der Kostenlosigkeit ausbeuten</strong>: Im Produkt taucht entweder ständig Werbung auf oder andere Werkzeuge sind kostenpflichtig. Bekannt bei bestimmten großen Spielen oder Anwendungen: Man kann sie zwar kostenlos herunterladen und spielen, aber die Erfahrung wird nicht reibungslos oder angenehm sein, sodass man freiwillig Geld für Requisiten oder Werkzeuge ausgibt. Zusammenfassend lässt sich sagen: <strong>\"Kostenlos ist erst recht teuer\"</strong>.",
+        "p222": {
+          "p2221": "<strong>Unter dem Vorwand der Kostenlosigkeit eigentlich andere Ziele verfolgen.</strong> Die Kostenlosigkeit ist nur eine Fassade, während das eigentliche Ziel ein anderes ist. Häufig bei bestimmten kostenlosen APPs: Oberflächlich sind sie gratis, aber ihr eigentlicher Zweck könnte das Sammeln von Nutzerdaten, die Werbung für andere kostenpflichtige Dienste oder sogar bösartige Marketingaktivitäten sein.",
+          "p2222": "Im Kern handelt es sich um eine kostenlose Testphase, wie Dienste mit kostenpflichtiger Verlängerung nach Ablauf (dies ist noch relativ normal, ähnlich wie Punkt 3).",
+          "p2223": "Im Kern Betrug: Das kostenlose Produkt stimmt nicht mit dem tatsächlich beworbenen Produkt überein, obwohl eine Verbindung besteht, häufig bei Berufs- oder Stellentrainings.",
+          "p2224": "Im Kern ein Austausch: Kostenlosigkeit gegen einen Platz am Markt eintauschen (bösartige Unternehmen tauschen dies gegen Ihre Privatsphäre oder andere kommerzielle Daten ein), in der Branche als \"Juan\" (Internalisierung/Überwettbewerb) bezeichnet.",
+          "p2225": "Im Kern Zerstörung: Im Namen der Kostenlosigkeit Zerstörungen anrichten, um eigene Ziele zu erreichen. Wie bei Cracking-Software, deren Patches Skripte enthalten können, die Ihr System beschädigen oder in Ihren PC eindringen könnten, um Daten zu lesen."
+        },
+        "p223": "Penetrante Werbung, bei der die Geschäftsabläufe nur zur Hälfte offengelegt werden. Man wirbt massiv für Dinge, die dem Wettbewerb nützen, und greift jenen Teil ab, der den emotionalen Werten der Nutzer entspricht. Hier ist die Kostenlosigkeit zwar echt, aber es sind andere Zusatzprodukte nötig, um ein vollständiges Produkt zu bilden, wobei diese Zusatzprodukte kostenpflichtig sind. Häufig ist etwa die Open-Source-Software echt, aber die Dokumentation kostet Geld."
+      }
+    },
+    "p3": {
+      "title": "Warum sind wir kostenlos?",
+      "p31": "Wir müssen uns ebenfalls einen Platz am Markt erarbeiten. Diese Art von \"Juan\" nennen wir \"Aufwärts-Juan\" (Shangjuan). Im Gegensatz zum \"Abwärts-Juan\" (Xiaojuan) – womit die Preiskampfstrategien ohne Untergrenze und die Ausbeutung der Arbeitskraft durch bösartige Konkurrenten gemeint sind – bedeutet \"Aufwärts-Juan\", durch Innovation neue Arbeitsplätze zu schaffen und den gesellschaftlichen Fortschritt voranzutreiben. Dies kann die Produktionseffizienz steigern und traditionelle Arbeitsweisen ablösen. Man könnte sagen, wir planen eine Revolution.",
+      "p32": "Im Grunde sind wir Ihr Technologie-Aktionär; es ist unser reinstes Ziel, jedem Gründer die Produktionswerkzeuge zur Verfügung zu stellen, die er für eine erfolgreiche Landung benötigt.",
+      "p33": "Der Wert von Werkzeugen unter der Kommerzialisierung des Internets ist sehr unterschiedlich. Ist der Preis zu hoch, sind Sie ein Outsourcing-Partner; ist er zu niedrig, sind Sie ein kommerzielles Softwareunternehmen. In der aktuellen Wirtschaftslage wird der Markt jedoch kaum für ein Paket kommerzieller Werkzeuge/Systeme bezahlen, selbst wenn diese zum Selbstkostenpreis der Entwicklung verkauft werden. Ein Werkzeug gewinnt erst dann an Wert, wenn es dem Produkt dient. Software, für die man per Registrierungscode bezahlt, verkörpert den Wert der Lösung eines einzelnen Problems. Da solche Software mehrfach kopiert und verteilt werden kann, ist ein Verkauf zum Selbstkostenpreis der Entwickler offensichtlich unangemessen; wie viel man verkaufen kann, hängt von der Verkaufsfähigkeit und der Marktanerkennung ab.",
+      "p34": "Die Kosten für Fachpersonal in Unternehmen maximal reduzieren und die Verschwendung von Humanressourcen, wie das Bummeln während der Arbeitszeit, an der Wurzel packen.",
+      "p35": "Vom Markt verstoßene, erfahrene Arbeitssuchende sammeln und neue Beschäftigungsformen erforschen, die zur aktuellen nationalen und wirtschaftlichen Lage passen. Wir wollen dem Angestelltenverhältnis neue Energie geben, das Arbeiten neu definieren und ein nahezu perfektes Ökosystem für Freiberufler schaffen.",
+      "p36": "Den Wert jedes einzelnen Mitglieds maximal in die Gesellschaft einbringen.",
+      "p37": "Streben nach der optimalen Lösung: Im Unterschied zur traditionellen Outsourcing-Branche werden wir entsprechend Ihrem Budget und der Rentabilität des Projekts geeignete Methoden und Mitarbeiter zuordnen. Wir lehnen \"Fast-Food-Projekte\" ab (hierbei richtet sich die Kritik nicht gegen das schnelle Erreichen von Zielen, sondern gegen die Einstellung, Gewinnmaximierung und Abnahme als einziges Ziel zu verfolgen, ohne die Kopplung zwischen Produkt und Betriebsweise zu berücksichtigen) und bieten Kunden nur die optimalen Lösungen an."
+    },
+    "p4": {
+      "title": "Betriebsmodell",
+      "p41": "Der Projektbetrieb erfolgt über die folgenden drei Beziehungswege:",
+      "p42": {
+        "title": "Drei Arten von Beziehungen",
+        "p421": {
+          "title": "I. Kooperationsbeziehung",
+          "p4211": "Wie der Name sagt, tragen beide Seiten gemeinsam die Verantwortung für das Projekt in einer Win-Win-Kooperation. Wir stellen Ihnen kostenlos Arbeitskraft zur Verfügung, um Ihr Werkzeugprodukt nach Ihren tatsächlichen Vorstellungen und Bedürfnissen anzupassen. Bitte beachten Sie: In diesem Modell partizipieren wir erst an den Einnahmen, wenn Ihr Projekt Gewinne erzielt. Unser Team bietet Dienstleistungen wie Produktmanagement, UI, Testing, Entwicklung und Betrieb (DevOps). Daher kann unser Team vor Beginn der Arbeit konstruktive Vorschläge basierend auf unserem Fachwissen unterbreiten. Für Kooperationsbeziehungen gibt es zwei Varianten zur Auswahl:",
+          "p4212": {
+            "title": "Modell 1: Bis zur Kostendeckung",
+            "p42121": "Wir fordern lediglich unsere Personalkosten x2 zurück. Die Kosten werden nach der <a1>ersten Stufe</a1> der Beschäftigungspreise berechnet. Wir legen basierend auf Ihrem Projekt einen Rahmen fest und Sie definieren innerhalb dieses Rahmens eine Gewinnbeteiligung für uns (entspricht einer flexiblen Ratenzahlung, wobei dieser Anteil an Ihren Gesamteinnahmen gemessen wird). Während dieser Zeit nehmen wir keinen Einfluss auf Ihren Betrieb, bis die Kosten gedeckt sind. Bei Null-Umsatz oder Verlusten in einem Monat nehmen wir nicht an der Ausschüttung teil; im Folgemonat kann die Beteiligungsrate angepasst werden. Nach der Rückzahlung (nach Vertragsende) werden neue Funktionen nach der <a2>zweiten Stufe</a2> und Wartungsfunktionen nach der <a3>dritten Stufe</a3> berechnet (siehe Beschäftigungsbeziehung unten). Es gibt zwei Arten der Vertragsbeendigung: das natürliche Ende bei Rückzahlung der Kosten und das erzwungene Ende durch Liquidation des Unternehmens oder Projektaufgabe durch das Gründerteam. Bei einer anderen als der natürlichen Beendigung stehen dem Kunden keine Produktressourcen oder Urheberrechte zu."
+          },
+          "p4213": {
+            "title": "Modell 2: Bis zum Fristablauf",
+            "p42131": "Wir erheben monatlich einen festen Betrag basierend auf dem Projektbeitragswert (Begriffserklärung siehe unten: ich spüre, dass Sie fragen wollen) – eine feste Ratenzahlung. Dieses Modell ist ein Schätzmodell; unser Gesamtertrag kann höher oder niedriger als die Kosten sein, basierend auf der vereinbarten Einigung. Dies läuft bis zum Ende der vertraglich festgelegten Frist. Bei nicht natürlicher Vertragsbeendigung wird der Liquidationswert anteilig zum Projektbeitragswert erhoben. Wie bei Modell 1 stehen dem Kunden bei nicht natürlicher Beendigung keine Produktressourcen oder Urheberrechte zu."
+          },
+          "p4214": "Während der Betriebsphase unter diesen beiden Modellen erheben wir keine zusätzlichen Wartungsgebühren – wir ziehen die Kostenlosigkeit bis zum Ende durch! Neue Funktionen können während der Betriebsphase hinzugefügt werden; diese werden wir ebenfalls kostenlos für Sie umsetzen, wobei lediglich die tatsächlichen Mehrkosten (als Addition zur Basis) berücksichtigt werden.",
+          "p4215": "Wenn Sie der Meinung sind, dass die Erfolgswahrscheinlichkeit Ihres Projekts bei über 80 % liegt, empfehlen wir die zweite Variante. Wenn Sie ein Startup sind, nach Finanzierung suchen oder Partner in Erwägung ziehen, empfehlen wir die erste Variante.",
+          "p4216": "Wenn Sie besonderen Wert darauf legen, dass Ressourcen nicht bei Dritten verbleiben, oder wenn Kundenressourcen und sensible Daten geschützt werden müssen, empfehlen wir Modell 2 mit einer kürzeren Frist oder das Modell der Beschäftigungsbeziehung."
+        },
+        "p422": {
+          "title": "II. Partnerschaftsbeziehung",
+          "p4221": "Wenn das Projekt sehr gut ist und Sie mich persönlich schätzen, können ich oder das gesamte Team in Erwägung ziehen, Ihre Partner zu werden. Dies ist der Weg, Kostenlosigkeit am konsequentesten umzusetzen. Gleichzeitig leisten wir eine technologische Einlage. Wenn Ihr Premiumprojekt ständig neue Werkzeuge und Upgrades benötigt oder an der Spitze der Branche forscht, ist die Partnerschaft die optimale Lösung. Man kämpft für ein gemeinsames Ziel; dieser Weg erfordert Gespräche."
+        },
+        "p423": {
+          "title": "III. Beschäftigungsbeziehung",
+          "p4231": "Teilzeit oder Vollzeit auf Stundenbasis. Arbeitsort ungebunden, Lieferstandard nach Zeitlimit und Qualität. 8 Arbeitsstunden entsprechen 1 Arbeitstag. Jedes unserer Teammitglieder hat einen klaren Preis entsprechend seiner Branchenerfahrung. In diesem Modell gibt es drei Preisstufen:",
+          "p4232": "Erste Stufe: Tatsächlicher Marktwert der einzelnen Mitglieder (Durchschnittspreis im Team 60-75/h, detaillierte Informationen zu den Mitgliedern erhalten Sie auf Anfrage).",
+          "p4233": "Zweite Stufe: 15 % Rabatt auf die erste Stufe.",
+          "p4234": "Dritte Stufe: 75 % Rabatt auf die erste Stufe.",
+          "p4235": "Hinweis: Bei Kooperations- und Partnerschaftsbeziehungen tragen wir das Risiko gemeinsam mit Ihnen. Das Kooperationsmodell entspricht eher unserer Ausrichtung; wir nehmen in diesem Modell nicht jedes Projekt an. Das endgültige Interpretationsrecht liegt bei den Mitgliedern der Projektgruppe für Individualanpassungen.",
+          "p4236": "Bitte unterscheiden Sie die Beschäftigungsbeziehung von \"Outsourcing\" oder \"Arbeitnehmerüberlassung\". Bei den Angebotspreisen gibt es kaum Unterschiede (<a1>Angebotsrechner</a1>), aber bei der Art des Arbeitseinsatzes gibt es deutliche Unterschiede: Outsourcing ist eine projektbezogene Kooperation, Arbeitnehmerüberlassung ist eine personalbezogene Kooperation. Ersteres eignet sich eher für Kunden mit klaren Projektbedürfnissen, Letzteres für Kunden mit kontinuierlichem Personalbedarf."
+        }
+      }
+    },
+    "p5": {
+      "title": "Häufig gestellte Fragen (FAQ)",
+      "p51": "Woher wissen Sie, wie hoch meine Projekteinnahmen sind, zum Beispiel wann Gewinne erzielt werden und in welcher Höhe?",
+      "p52": "Der Betrieb liegt bei Ihnen, das Rechenzentrum bei uns. Wir können die Lage anhand der Daten einschätzen; eine Einsicht in Finanzberichte ist gar nicht nötig. Sollte das Gründerteam das Projekt aufgeben wollen, verbleiben die Ressourcen bei uns, also besteht kein Grund zur Sorge.",
+      "p53": "Wie wird die gegenseitige Ehrlichkeit garantiert?",
+      "p54": "Sowohl Sie als auch wir müssen an der Projektbewertung und der Wertschöpfung teilnehmen. Die Glaubwürdigkeit der Bewertung ist für die andere Seite nicht kritisch, da diese ebenfalls kontrollierend eingreift. Das heißt, das System wird gemeinsam festgelegt und das Risiko wird gemeinsam getragen. Ressourcen wie Quellcode, Server und verschiedene Hardware-Geräte werden zunächst von uns kostenlos zur Verfügung gestellt und erst nach Vertragsende werden alle Zugriffsrechte übertragen.",
+      "p55": "Was ist der Projektbeitragswert?",
+      "p56": "Der Projektbeitragswert ist ein Prozentwert. Da das für Sie angepasste Projekt vielleicht nur ein Teil Ihres gesamten Betriebs oder nur die Spitze des Eisbergs ist. Die Formel lautet: Projektbeitragswert = Gewinn durch dieses Projekt / Gesamtgewinn des Unternehmens * 100 %. Dieser \"Gewinn durch dieses Projekt\" wird von Ihnen selbst geschätzt. Es ist uns egal, wie klein diese Zahl ist, aber in Modell 2 der Kooperation bestimmen wir die Frist, daher sollten Sie versuchen, eine genaue Zahl zu schätzen.",
+      "p57": "Wie wird mit dem vorzeitigen Abbruch eines Projekts durch das Gründerteam umgegangen?",
+      "p58": "Es wird eine Vereinbarung unterzeichnet. Bei einem Abbruch aufgrund interner Gründe des Auftraggeber-Teams wird eine Entschädigung basierend auf dem Arbeitsaufwand der bisherigen Ergebnisse nach dem Beschäftigungsmodell geleistet. Bei einem Abbruch aus anderen Gründen ist keine Entschädigung nötig.",
+      "p59": "Bei weiteren Fragen kontaktieren Sie uns bitte, wir werden Ihnen umgehend antworten!"
+    },
+    "p6": {
+      "title": "Schlusswort",
+      "p61": "Es ist reine Hilfe, keine Teilnahme am Projekt als Technologiepartner (Förderung), kein Gehalt, sondern eine Belohnung aus den Einnahmen des Endprodukts. Das heißt, wenn das Projekt des Auftraggebers scheitert, bekomme ich ebenfalls nichts (Risikoteilung). Geeignet für Gründer mit großen Abweichungen zwischen Angebot und Markterwartung, geringem Kapital oder Gründer, die keine Anteile für die Position eines technischen Gründers (CTO) reservieren möchten. Nach dem Go-Live gibt es zwei Optionen:",
+      "p62": "Bis zur Kostendeckung (flexible Ratenzahlung)",
+      "p63": "Nach dem Start wird ein Anteil der Einnahmen erhoben. Bei guten Einnahmen kann vorzeitig abgerechnet werden. Den Anteil bestimmen Sie selbst basierend auf der Rentabilität und den Kosten Ihres Projekts. Aber bei 10.000 Einnahmen einen Anteil von 0,0001 % anzusetzen, ist offensichtlich unangemessen. Immerhin ist der Zinssatz ein fairer monatlicher Zinssatz von 0,25 % (niedriger als bei jeder Bank!) und es handelt sich um einfache Zinsen (keine Wortspiele, keine Tricks). Kostenformel: Stundenpreis x Projektlaufzeit x Zinssatz x 2. Vor der vollständigen Abrechnung darf der Name des Unternehmens oder Partners nicht geändert werden, ebenso wenig wie Telefonnummer oder gesetzlicher Vertreter. Es gibt zwei Arten der Vertragsbeendigung: natürliches Ende bei Erfüllung der Austrittsbedingungen und erzwungenes Ende durch Liquidation oder Projektaufgabe. Bei nicht natürlicher Beendigung stehen dem Kunden keine Ressourcen oder Urheberrechte zu.",
+      "p64": "Bis zum Fristablauf (feste Ratenzahlung)",
+      "p65": "Schätzmodell: Der Auftraggeber schätzt die Rentabilität des Projekts und legt basierend auf dem geschätzten Wert des Produkts selbst eine feste Frist für monatliche Zahlungen fest, üblicherweise 2-5 Jahre Provision (nicht unrealistische 20-70 Jahre). Der Auftragnehmer berechnet den monatlichen Betrag basierend auf Stundenpreis x Projektlaufzeit. Dieses Modell kann nur angewendet werden, wenn die Schätzungen beider Seiten grob übereinstimmen. Im Unterschied zum Kostendeckungsmodell oben muss hier fest gezahlt werden, solange das Projekt existiert, unabhängig vom Gewinn. Wie oben gilt: Bei nicht natürlicher Beendigung keine Ressourcen oder Urheberrechte.",
+      "p66": "Sollte der Eindruck entstehen, dass das Projekt mit hoher Wahrscheinlichkeit scheitern wird oder nur herumprobiert wird, wird es wahrscheinlich nicht angenommen, da man selbst Verluste machen würde. Daher setzen beide Wege voraus, dass der Auftragnehmer das Projekt versteht, tief involviert ist und an Diskussionen, Recherchen, Projektführung und Abstimmungen teilnimmt.",
+      "p67": "Beide Wege zielen darauf ab, das Produkt erst einmal zu erstellen und in Betrieb zu nehmen. Gründer müssen zuerst handeln, Umsetzungskraft steht an erster Stelle; Probleme werden gelöst, wenn sie auftreten."
+    }
+  },
+  "cal": {
+    "title": "Angebotsrechner",
+    "p1": "Sichtbare UI",
+    "p2": "Gesamtanzahl der Seiten",
+    "p21": "Unsichtbare Funktionen",
+    "p22": "Projektfunktionspunkte, die nicht in der UI erscheinen, meist Backend-Funktionen oder Frontend-Logik, wie SDK-Entwicklung oder Build-Prozesse.",
+    "p23": "Testen erforderlich",
+    "p24": "Empfohlen, falls eine Auslieferung mit wenigen oder keinen Fehlern garantiert werden soll.",
+    "p25": "Schnittstellenanbindung erforderlich",
+    "p26": "Nicht auswählen, falls keine Backend-Szenarien vorliegen oder Backend vorhanden ist, aber keine Anbindung benötigt wird.",
+    "p27": "Anzahl der Architekturen",
+    "p28": "Die Architektur ist das \"Fundament\" des Projekts. Ein vollständiges Projekt hat mindestens eine Architektur. Bei Verwendung von Open-Source-Frameworks ohne Eigenentwicklung kann dies weggelassen werden. Falls ein Projekt für mehrere Plattformen nativ entwickelt werden soll, entspricht dies mehreren Architekturen. Cross-Plattform-Lösungen (ein Code für alle) zählen als eine Architektur.",
+    "p29": "Anzahl der Personen",
+    "p210": "Anzahl der für das Projekt abgestellten Personen. Ein Projekt erfordert mindestens 1 Person.",
+    "p211": "Zahlungsweise",
+    "p212": "Bitte wählen",
+    "p213": "Rabattstandard basierend auf der Ratenzahlung. Drei Zahlen stehen für drei Projektphasen: nach Vertragsschluss, nach Abschluss der Entwicklung und nach Abnahme. Verschiedene Ratenmodelle genießen unterschiedliche Rabatte.",
+    "p214": "Schätzung der Projektdauer",
+    "p215": "Tage",
+    "p216": "Berechnungsergebnis:",
+    "p217": "Berechnung starten",
+    "hint1": "Hier Anzahl eingeben",
+    "hint2": "Das Ergebnis ist eine Schätzung; Abweichungen sind möglich, maßgeblich ist der Vertrag!",
+    "resutlHint": "Hinweis: Zeiteinheit ist Stunde (h), Preiseinheit ist Renminbi (CNY). Das Symbol \"?\" steht für fehlende Anforderungen (Schätzung des Arbeitsaufwands). Das Symbol \"-\" bedeutet, dass die Funktion nur Geschäftslogik ist und nicht in der UI erscheint. Das Symbol \"x\" bedeutet, dass dieser Vorgang nichts mit dem Backend zu tun hat (kein Zeitaufwand)."
+  }
 }
