@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebpage=self.webpackChunkwebpage||[]).push([[732],{6732:e=>{e.exports=JSON.parse('{"mgmt":"Verwaltung"}')}}]);
